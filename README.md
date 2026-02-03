@@ -1,2 +1,3 @@
-# AngularMaptalks
-Angular оболочка для Maptalks
+# AngularMaptalksGL
+
+Angular оболочка для MaptalksGL
