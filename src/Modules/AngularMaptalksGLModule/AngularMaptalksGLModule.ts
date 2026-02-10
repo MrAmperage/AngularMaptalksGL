@@ -16,6 +16,7 @@ import TruckIconComponent from "./Components/UIKitComponents/IconsComponents/Tru
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import TripIconComponent from "./Components/UIKitComponents/IconsComponents/TripIconComponent/TripIconComponent";
 import { NzSwitchModule } from "ng-zorro-antd/switch";
+import TimeIntervalSelectorComponent from "./Components/UIKitComponents/TimeIntervalSelectorComponent/TimeIntervalSelectorComponent";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NzSwitchModule } from "ng-zorro-antd/switch";
     RoadStateMapToolComponent,
     TruckIconComponent,
     TripIconComponent,
+    TimeIntervalSelectorComponent,
   ],
   exports: [
     RoadStateMapToolComponent,
