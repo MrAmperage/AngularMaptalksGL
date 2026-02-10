@@ -19,3 +19,7 @@
   display: flex;
   gap: var(--MinimalGap);
 }
+
+.Input {
+  width: 150px !important;
+}
