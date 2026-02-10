@@ -23,3 +23,7 @@
 .Input {
   width: 150px !important;
 }
+
+.SmallInput {
+  width: 45px !important;
+}

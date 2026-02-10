@@ -15,6 +15,7 @@ import { NzSelectModule } from "ng-zorro-antd/select";
 import TruckIconComponent from "./Components/UIKitComponents/IconsComponents/TruckIconComponent/TruckIconComponent";
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import TripIconComponent from "./Components/UIKitComponents/IconsComponents/TripIconComponent/TripIconComponent";
+import { NzSwitchModule } from "ng-zorro-antd/switch";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,12 @@ import TripIconComponent from "./Components/UIKitComponents/IconsComponents/Trip
     TileLayerDirective,
   ],
   providers: [HttpService],
-  imports: [NzButtonModule, NzIconModule, NzSelectModule, NzInputNumberModule],
+  imports: [
+    NzButtonModule,
+    NzIconModule,
+    NzSelectModule,
+    NzInputNumberModule,
+    NzSwitchModule,
+  ],
 })
 export default class AngularMaptalksGLModule {}
