@@ -1,5 +1,7 @@
 /*HEX код цвета*/
 export type HexColor = `#${string}`;
+/*Размер в пикселях*/
+export type PixelSize = `${number}px`;
 /*UUID*/
 export type UUIDType = { $uuid: string };
 /*Тип для дат*/
