@@ -10,6 +10,7 @@ import { NzButtonModule } from "ng-zorro-antd/button";
 import CloseButtonComponent from "./Components/UIKitComponents/CloseButtonComponent/CloseButtonComponent";
 import ClearButtonComponent from "./Components/UIKitComponents/ClearButtonComponent/ClearButtonComponent";
 import TitlePanelComponent from "./Components/UIKitComponents/TitlePanelComponent/TitlePanelComponent";
+import RoadStateMapToolComponent from "./MapToolComponents/RoadStateMapToolComponent/RoadStateMapToolComponent";
 
 @NgModule({
   declarations: [
@@ -21,8 +22,10 @@ import TitlePanelComponent from "./Components/UIKitComponents/TitlePanelComponen
     CloseButtonComponent,
     ClearButtonComponent,
     TitlePanelComponent,
+    RoadStateMapToolComponent,
   ],
   exports: [
+    RoadStateMapToolComponent,
     MapComponent,
     TransportMapToolComponent,
     PanelComponent,

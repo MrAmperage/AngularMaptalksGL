@@ -5,6 +5,7 @@ import MapComponent from "../../Components/MapComponent/MapComponent";
 import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
 import { CloseCircleFill } from "@ant-design/icons-angular/icons";
 import { NzIconService } from "ng-zorro-antd/icon";
+import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 
 @Component({
   selector: "EdgeMapToolComponent",
@@ -44,11 +45,10 @@ export default class EdgeMapToolComponent extends MapTool implements OnInit {
   }
 
   InitMapTool() {
-    this.VectorLayer = new VectorLayer("EdgeMapToolVectorLayer", {
-      forceRenderOnMoving: true,
-      forceRenderOnRotating: true,
-      forceRenderOnZooming: true,
-    });
+    this.VectorLayer = new VectorLayer(
+      "EdgeMapToolVectorLayer",
+      VectorLayerConfig,
+    );
     this.MapComponent.Map.addLayer(this.VectorLayer);
   }
   AddMapTool() {

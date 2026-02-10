@@ -10,5 +10,6 @@ export { default as BaseMapToolDirective } from "./Modules/AngularMaptalksGLModu
 export { default as TransportMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/TransportMapToolComponent/TransportMapToolComponent";
 export { default as ToolbarMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/ToolbarMapToolComponent/ToolbarMapToolComponent";
 export { default as EdgeMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/EdgeMapToolComponent/EdgeMapToolComponent";
+export { default as RoadStateMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/RoadStateMapToolComponent/RoadStateMapToolComponent";
 /*Модули*/
 export { default as AngularMaptalksGLModule } from "./Modules/AngularMaptalksGLModule/AngularMaptalksGLModule";
