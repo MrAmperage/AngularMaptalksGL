@@ -3,5 +3,12 @@
   "dest": "./dist/angular-maptalks-gl",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [
+    {
+      "glob": "**/*",
+      "input": "./src/Assets",
+      "output": "/Assets/"
+    }
+  ]
 }

@@ -1,0 +1,8 @@
+:root {
+  --BackgroundColor: #002140;
+  --TextColor: #ffffff;
+  --ErrorColor: #ff0000;
+  --BorderRadius: 3px;
+  --PanelPadding: 5px;
+  --MinimalGap: 10px;
+}

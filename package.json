@@ -2,9 +2,11 @@
   "name": "angular-maptalks-gl",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^21.1.0",
-    "@angular/core": "^21.1.0",
-    "maptalks-gl": "^0.123.0"
+    "@angular/common": "^19.2.14",
+    "@angular/core": "^19.2.14",
+    "maptalks-gl": "^0.124.1",
+    "ng-zorro-antd": "^19.3.1",
+    "rxjs": "~7.8.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"
@@ -14,6 +16,10 @@
     "ng-packagr": "^21.1.0"
   },
   "scripts": {
-    "build": "ng-packagr -p ng-package.json"
+    "build": "ng-packagr -p ng-package.json",
+    "pack": "npm run build && cd dist/angular-maptalks-gl && npm pack"
+  },
+  "exports": {
+    "./Assets/Styles/Styles.css": "./Assets/Styles/Styles.css"
   }
 }

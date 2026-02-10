@@ -1,0 +1,17 @@
+@import "Variables.css";
+
+.Panel {
+  padding: var(--PanelPadding);
+  background-color: var(--BackgroundColor);
+  border-radius: var(--BorderRadius);
+  color: var(--TextColor);
+  width: fit-content;
+  height: fit-content;
+}
+
+.PanelRow {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--PanelPadding);
+  gap: var(--MinimalGap);
+}
