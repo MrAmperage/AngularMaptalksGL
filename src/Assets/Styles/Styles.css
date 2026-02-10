@@ -15,3 +15,7 @@
   padding-bottom: var(--PanelPadding);
   gap: var(--MinimalGap);
 }
+.MinimalGap {
+  display: flex;
+  gap: var(--MinimalGap);
+}

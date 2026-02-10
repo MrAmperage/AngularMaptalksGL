@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import BaseIconComponent from "../BaseIconComponent/BaseIconComponent";
 
 @Component({
-  selector: "TruckIconComponent",
-  templateUrl: "TruckIconComponent.svg",
+  selector: "TripIconComponent",
+  templateUrl: "TripIconComponent.svg",
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
-export default class TruckIconComponent extends BaseIconComponent {}
+export default class TripIconComponent extends BaseIconComponent {}
