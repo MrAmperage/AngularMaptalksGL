@@ -19,6 +19,7 @@ import { NzSwitchModule } from "ng-zorro-antd/switch";
 import TimeIntervalSelectorComponent from "./Components/UIKitComponents/TimeIntervalSelectorComponent/TimeIntervalSelectorComponent";
 import ToolbarMapToolComponent from "./MapToolComponents/ToolbarMapToolComponent/ToolbarMapToolComponent";
 import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
     NzInputNumberModule,
     NzSwitchModule,
     NzDatePickerModule,
+    FormsModule,
   ],
 })
 export default class AngularMaptalksGLModule {}

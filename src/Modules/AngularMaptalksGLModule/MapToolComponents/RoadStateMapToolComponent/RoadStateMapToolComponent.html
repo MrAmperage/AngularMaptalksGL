@@ -6,6 +6,8 @@
       class="Input"
       [nzSize]="'small'"
       [nzPlaceHolder]="'Выберите вариант'"
+      [nzMode]="'multiple'"
+      [(ngModel)]="this.Options.ModelCategoryIds"
     />
   </div>
   <div class="MinimalGap">
@@ -14,6 +16,8 @@
       class="Input"
       [nzSize]="'small'"
       [nzPlaceHolder]="'Выберите вариант'"
+      [nzMode]="'multiple'"
+      [(ngModel)]="this.Options.TruckIds"
     />
   </div>
 </div>
@@ -24,25 +28,38 @@
       class="Input"
       [nzSize]="'small'"
       [nzPlaceHolder]="'Выберите вариант'"
+      [nzMode]="'multiple'"
+      [(ngModel)]="this.Options.ModelsIds"
     />
   </div>
   <div class="MinimalGap">
     <TripIconComponent title="Количество проездов" />
-    <nz-input-number class="Input" [nzSize]="'small'" />
+    <nz-input-number
+      class="Input"
+      [nzSize]="'small'"
+      [(ngModel)]="this.Options.PassesCount"
+    />
   </div>
 </div>
 <div class="PanelRow">
   <div class="MinimalGap">
     <nz-switch [nzSize]="'small'" /> <span>Груженый</span> <span>%</span
-    ><nz-input-number class="SmallInput" [nzSize]="'small'" />
+    ><nz-input-number
+      class="SmallInput"
+      [nzSize]="'small'"
+      [(ngModel)]="this.Options.LoadingProcent"
+    />
   </div>
   <div class="MinimalGap">
-    <span>X</span> <nz-input-number [nzSize]="'small'" />
+    <span title="Разрешение">X</span>
+    <nz-input-number [nzSize]="'small'" [(ngModel)]="this.Options.Resolution" />
   </div>
 </div>
 <TimeIntervalSelectorComponent>
   <div class="MinimalGap">
     <ClearButtonComponent />
-    <button nz-button [nzSize]="'small'">Показать</button>
+    <button nz-button [nzSize]="'small'" (click)="this.RequestRoadState()">
+      Показать
+    </button>
   </div>
 </TimeIntervalSelectorComponent>

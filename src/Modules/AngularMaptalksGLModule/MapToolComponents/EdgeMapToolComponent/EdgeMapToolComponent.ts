@@ -7,6 +7,7 @@ import { CloseCircleFill } from "@ant-design/icons-angular/icons";
 import { NzIconService } from "ng-zorro-antd/icon";
 import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
+import MapService from "../../Services/MapService/MapService";
 
 @Component({
   selector: "EdgeMapToolComponent",
@@ -14,16 +15,20 @@ import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
-export default class EdgeMapToolComponent extends BaseMapToolDirective {
+export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined> {
   constructor(
     @Inject(MapComponent)
     private MapComponentInstance: MapComponent,
+    @Inject(MapService)
+    private MapServiceInstance: MapService,
     private HttpService: HttpService,
     private NzIconService: NzIconService,
   ) {
-    super(MapComponentInstance);
+    super(MapComponentInstance, MapServiceInstance);
     this.NzIconService.addIcon(CloseCircleFill);
   }
+  Id: string = "EdgeMapTool";
+  Options: undefined;
   VectorLayer!: VectorLayer;
   EdgeGeometries: EdgeGeometry[] = [];
   override onAdd(): void {
