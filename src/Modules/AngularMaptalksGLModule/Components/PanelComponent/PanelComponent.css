@@ -1,0 +1,8 @@
+.Panel {
+  padding: var(--PanelPadding);
+  background-color: var(--BackgroundColor);
+  border-radius: var(--BorderRadius);
+  color: var(--TextColor);
+  width: fit-content;
+  height: fit-content;
+}
