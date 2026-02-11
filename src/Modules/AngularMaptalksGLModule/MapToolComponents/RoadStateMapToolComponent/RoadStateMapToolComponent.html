@@ -1,7 +1,7 @@
 <TitlePanelComponent>Состояние дорог</TitlePanelComponent>
 <div class="PanelRow">
   <div class="MinimalGap">
-    <TruckIconComponent />
+    <TruckIconComponent title="Категория модели" />
     <nz-select
       class="Input"
       [nzSize]="'small'"
@@ -9,7 +9,7 @@
     />
   </div>
   <div class="MinimalGap">
-    <TruckIconComponent />
+    <TruckIconComponent title="Самосвал" />
     <nz-select
       class="Input"
       [nzSize]="'small'"
@@ -19,7 +19,7 @@
 </div>
 <div class="PanelRow">
   <div class="MinimalGap">
-    <TruckIconComponent />
+    <TruckIconComponent title="Модель" />
     <nz-select
       class="Input"
       [nzSize]="'small'"
@@ -27,7 +27,8 @@
     />
   </div>
   <div class="MinimalGap">
-    <TripIconComponent /> <nz-input-number class="Input" [nzSize]="'small'" />
+    <TripIconComponent title="Количество проездов" />
+    <nz-input-number class="Input" [nzSize]="'small'" />
   </div>
 </div>
 <div class="PanelRow">

@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
-import { MapTool, VectorLayer } from "maptalks-gl";
+import { ChangeDetectionStrategy, Component, Inject } from "@angular/core";
+import { VectorLayer } from "maptalks-gl";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
+import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 
 @Component({
   selector: "RoadStateMapToolComponent",
@@ -9,26 +10,19 @@ import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
-export default class RoadStateMapToolComponent
-  extends MapTool
-  implements OnInit
-{
-  constructor(private MapComponent: MapComponent) {
-    super();
+export default class RoadStateMapToolComponent extends BaseMapToolDirective {
+  constructor(
+    @Inject(MapComponent)
+    private MapComponentInstance: MapComponent,
+  ) {
+    super(MapComponentInstance);
   }
   VectorLayer!: VectorLayer;
-  InitMapTool() {
+  override InitMapTool() {
     this.VectorLayer = new VectorLayer(
       "RoadStateMapToolVectorLayer",
       VectorLayerConfig,
     );
     this.MapComponent.Map.addLayer(this.VectorLayer);
-  }
-
-  AddMapTool() {
-    this.addTo(this.MapComponent.Map);
-  }
-  ngOnInit(): void {
-    this.AddMapTool();
   }
 }

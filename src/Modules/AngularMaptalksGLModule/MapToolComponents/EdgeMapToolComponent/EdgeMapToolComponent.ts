@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
-import { MapTool, VectorLayer } from "maptalks-gl";
+import { ChangeDetectionStrategy, Component, Inject } from "@angular/core";
+import { VectorLayer } from "maptalks-gl";
 import HttpService from "../../Services/HttpService/HttpService";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
 import { CloseCircleFill } from "@ant-design/icons-angular/icons";
 import { NzIconService } from "ng-zorro-antd/icon";
 import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
+import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 
 @Component({
   selector: "EdgeMapToolComponent",
@@ -13,13 +14,14 @@ import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
-export default class EdgeMapToolComponent extends MapTool implements OnInit {
+export default class EdgeMapToolComponent extends BaseMapToolDirective {
   constructor(
+    @Inject(MapComponent)
+    private MapComponentInstance: MapComponent,
     private HttpService: HttpService,
-    private MapComponent: MapComponent,
     private NzIconService: NzIconService,
   ) {
-    super();
+    super(MapComponentInstance);
     this.NzIconService.addIcon(CloseCircleFill);
   }
   VectorLayer!: VectorLayer;
@@ -27,7 +29,6 @@ export default class EdgeMapToolComponent extends MapTool implements OnInit {
   override onAdd(): void {
     this.InitMapTool();
   }
-  getEvents(): void {}
   /*Отображение ребер*/
   ShowEdges() {
     this.ClearEdges();
@@ -44,17 +45,11 @@ export default class EdgeMapToolComponent extends MapTool implements OnInit {
     this.EdgeGeometries = [];
   }
 
-  InitMapTool() {
+  override InitMapTool() {
     this.VectorLayer = new VectorLayer(
       "EdgeMapToolVectorLayer",
       VectorLayerConfig,
     );
     this.MapComponent.Map.addLayer(this.VectorLayer);
-  }
-  AddMapTool() {
-    this.addTo(this.MapComponent.Map);
-  }
-  ngOnInit(): void {
-    this.AddMapTool();
   }
 }
