@@ -31,9 +31,7 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined
   Options: undefined;
   VectorLayer!: VectorLayer;
   EdgeGeometries: EdgeGeometry[] = [];
-  override onAdd(): void {
-    this.InitMapTool();
-  }
+
   /*Отображение ребер*/
   ShowEdges() {
     this.ClearEdges();

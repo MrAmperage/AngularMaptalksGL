@@ -40,5 +40,5 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     );
     this.MapComponent.Map.addLayer(this.VectorLayer);
   }
-  RequestRoadState() {}
+  RequestRoadStates() {}
 }
