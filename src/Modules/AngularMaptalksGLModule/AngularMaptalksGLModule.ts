@@ -18,6 +18,7 @@ import TripIconComponent from "./Components/UIKitComponents/IconsComponents/Trip
 import { NzSwitchModule } from "ng-zorro-antd/switch";
 import TimeIntervalSelectorComponent from "./Components/UIKitComponents/TimeIntervalSelectorComponent/TimeIntervalSelectorComponent";
 import ToolbarMapToolComponent from "./MapToolComponents/ToolbarMapToolComponent/ToolbarMapToolComponent";
+import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import ToolbarMapToolComponent from "./MapToolComponents/ToolbarMapToolComponent
     NzSelectModule,
     NzInputNumberModule,
     NzSwitchModule,
+    NzDatePickerModule,
   ],
 })
 export default class AngularMaptalksGLModule {}

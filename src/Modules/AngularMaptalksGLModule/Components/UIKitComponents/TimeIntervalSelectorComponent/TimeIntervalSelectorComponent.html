@@ -1,13 +1,33 @@
 <div class="PanelRow">
   <div class="MinimalGap">
-    <nz-icon nzType="step-backward" nzTheme="fill" />
+    <nz-icon class="NzIcon" nzType="step-backward" nzTheme="fill" />
+    <nz-date-picker
+      class="Input"
+      nzAllowClear
+      [nzFormat]="'dd.MM.YY HH:mm:ss'"
+      [nzSize]="'small'"
+      [nzShowTime]="true"
+    />
   </div>
   <div class="MinimalGap">
-    <nz-icon nzType="step-forward" nzTheme="fill" />
+    <nz-icon class="NzIcon" nzType="step-forward" nzTheme="fill" />
+    <nz-date-picker
+      class="Input"
+      nzAllowClear
+      [nzFormat]="'dd.MM.YY HH:mm:ss'"
+      [nzSize]="'small'"
+      [nzShowTime]="true"
+    />
   </div>
 </div>
 <div class="PanelRow">
   <div class="MinimalGap">
-    <nz-icon nzType="clock-circle" nzTheme="outline" />
+    <nz-icon class="NzIcon" nzType="clock-circle" nzTheme="outline" />
+    <nz-select
+      class="Input"
+      [nzSize]="'small'"
+      [nzPlaceHolder]="'Выберите вариант'"
+    />
   </div>
+  <ng-content></ng-content>
 </div>
