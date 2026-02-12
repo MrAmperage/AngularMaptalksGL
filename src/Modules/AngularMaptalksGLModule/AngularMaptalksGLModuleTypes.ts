@@ -46,3 +46,6 @@ export type PostResponse<Data> = {
   ok: boolean;
   isArray: boolean;
 };
+
+/*Временной отступ*/
+export type TimeOffset = { $timedelta: number };
