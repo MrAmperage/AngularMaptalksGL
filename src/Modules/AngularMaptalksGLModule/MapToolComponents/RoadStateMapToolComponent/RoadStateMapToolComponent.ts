@@ -5,6 +5,7 @@ import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import { RoadStateMapToolOptions } from "./RoadStateMapToolComponentTypes";
 import MapService from "../../Services/MapService/MapService";
+import MapObjectDataStoreService from "../../Services/MapObjectDataStoreService/MapObjectDataStoreService";
 
 @Component({
   selector: "RoadStateMapToolComponent",
@@ -18,6 +19,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     private MapComponentInstance: MapComponent,
     @Inject(MapService)
     private MapServiceInstance: MapService,
+    private MapObjectDataStoreService: MapObjectDataStoreService,
   ) {
     super(MapComponentInstance, MapServiceInstance);
   }
@@ -39,6 +41,9 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
       VectorLayerConfig,
     );
     this.MapComponent.Map.addLayer(this.VectorLayer);
+    this.MapObjectDataStoreService.Request().then((Data) => {
+      console.log(Data);
+    });
   }
   RequestRoadStates() {}
 }

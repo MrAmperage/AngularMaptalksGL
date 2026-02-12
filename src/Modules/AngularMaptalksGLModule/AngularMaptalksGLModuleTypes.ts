@@ -6,12 +6,6 @@ export type PixelSize = `${number}px`;
 export type UUIDType = { $uuid: string };
 /*Тип для дат*/
 export type DateType = { $date: number };
-/*Широта*/
-export type Latitude = number;
-/*Долгота */
-export type Longitude = number;
-/*Высота*/
-export type Height = number;
 
 /*Позиционирование через объект*/
 export type PositionObject = {

@@ -20,6 +20,7 @@ import TimeIntervalSelectorComponent from "./Components/UIKitComponents/TimeInte
 import ToolbarMapToolComponent from "./MapToolComponents/ToolbarMapToolComponent/ToolbarMapToolComponent";
 import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 import { FormsModule } from "@angular/forms";
+import MapObjectDataStoreService from "./Services/MapObjectDataStoreService/MapObjectDataStoreService";
 
 @NgModule({
   declarations: [

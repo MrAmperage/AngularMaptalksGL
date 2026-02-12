@@ -13,3 +13,6 @@ export { default as EdgeMapToolComponent } from "./Modules/AngularMaptalksGLModu
 export { default as RoadStateMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/RoadStateMapToolComponent/RoadStateMapToolComponent";
 /*Модули*/
 export { default as AngularMaptalksGLModule } from "./Modules/AngularMaptalksGLModule/AngularMaptalksGLModule";
+
+/*Сервисы*/
+export { default as MapObjectDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/MapObjectDataStoreService/MapObjectDataStoreService";
