@@ -15,5 +15,6 @@ export { default as RoadStateMapToolComponent } from "./Modules/AngularMaptalksG
 export { default as AngularMaptalksGLModule } from "./Modules/AngularMaptalksGLModule/AngularMaptalksGLModule";
 
 /*Сервисы*/
-export { default as MapObjectDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/MapObjectDataStoreService/MapObjectDataStoreService";
-export { default as ModelCategoryDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/ModelCategoryDataStoreService/ModelCategoryDataStoreService";
+export { default as MapObjectsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/MapObjectsDataStoreService/MapObjectsDataStoreService";
+export { default as ModelCategoriesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/ModelCategoriesDataStoreService/ModelCategoriesDataStoreService";
+export { default as ModelsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/ModelsDataStoreService/ModelsDataStoreService";

@@ -35,3 +35,8 @@ export type ModelCategory = {
   name: string;
   id: UUIDType;
 };
+/*Модель*/
+export type Model = {
+  name: string;
+  id: UUIDType;
+};

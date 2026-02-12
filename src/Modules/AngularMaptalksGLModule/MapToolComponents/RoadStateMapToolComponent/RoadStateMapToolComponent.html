@@ -32,6 +32,7 @@
       [nzPlaceHolder]="'Выберите вариант'"
       [nzMode]="'multiple'"
       [(ngModel)]="this.Options.ModelsIds"
+      [nzOptions]="this.Models|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
     />
   </div>
   <div class="MinimalGap">

@@ -5,10 +5,11 @@ import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import { RoadStateMapToolOptions } from "./RoadStateMapToolComponentTypes";
 import MapService from "../../Services/MapService/MapService";
-import MapObjectDataStoreService from "../../Services/DataStoreServices/MapObjectDataStoreService/MapObjectDataStoreService";
+import MapObjectDataStoreService from "../../Services/DataStoreServices/MapObjectsDataStoreService/MapObjectsDataStoreService";
 import { Transport } from "../TransportMapToolComponent/TransportMapToolComponentTypes";
-import ModelCategoryDataStoreService from "../../Services/DataStoreServices/ModelCategoryDataStoreService/ModelCategoryDataStoreService";
-import { ModelCategory } from "../../AngularMaptalksGLModuleTypes";
+import ModelCategoryDataStoreService from "../../Services/DataStoreServices/ModelCategoriesDataStoreService/ModelCategoriesDataStoreService";
+import { Model, ModelCategory } from "../../AngularMaptalksGLModuleTypes";
+import { ModelsDataStoreService } from "../../../../public-api";
 
 @Component({
   selector: "RoadStateMapToolComponent",
@@ -24,11 +25,13 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     private MapServiceInstance: MapService,
     private MapObjectDataStoreService: MapObjectDataStoreService,
     private ModelCategoryDataStoreService: ModelCategoryDataStoreService,
+    private ModelsDataStoreService: ModelsDataStoreService,
   ) {
     super(MapComponentInstance, MapServiceInstance);
   }
   Transports: Transport[] = [];
   ModelCaegories: ModelCategory[] = [];
+  Models: Model[] = [];
   Id: string = "RoadStateMapTool";
   Options: RoadStateMapToolOptions = {
     TruckIds: [],
@@ -52,6 +55,9 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     });
     this.ModelCategoryDataStoreService.Request().then((Response) => {
       this.ModelCaegories = Response;
+    });
+    this.ModelsDataStoreService.Request().then((Response) => {
+      this.Models = Response;
     });
   }
   RequestRoadStates() {}
