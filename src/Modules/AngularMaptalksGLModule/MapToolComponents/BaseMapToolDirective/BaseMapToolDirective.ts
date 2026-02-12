@@ -36,6 +36,22 @@ export default abstract class BaseMapToolDirective<OptionsType>
       return CurrentNumber;
     }
   }
+  //TODO Дописать установку значения в объекте по адресу
+  static SetValueByAdress<ObjectType>(
+    Object: ObjectType,
+    Adress: keyof ObjectType,
+    Value: any,
+  ): ObjectType {
+    Object[Adress] = Value;
+    return Object;
+  }
+  ChangeOptions(Adress: keyof OptionsType, Value: any) {
+    this.Options = BaseMapToolDirective.SetValueByAdress<OptionsType>(
+      this.Options,
+      Adress,
+      Value,
+    );
+  }
   static GetObjectValueByAdress<ObjectType, ReturnType>(
     Object: ObjectType,
     Address: Paths<ObjectType>,

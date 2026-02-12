@@ -52,6 +52,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     OpacityProcent: 50,
     IsLoaded: true,
   };
+
   VectorLayer!: VectorLayer;
   override InitMapTool() {
     this.VectorLayer = new VectorLayer(
@@ -74,6 +75,10 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   }
 
   ShowRoadStates() {
+    console.log(
+      this.Options,
+      this.MapServiceInstance.PluginsConfigsMap.get("RoadStateMapTool"),
+    );
     this.HttpService.RequestRoadState(this.Options).then((Response) => {
       console.log(Response);
     });
