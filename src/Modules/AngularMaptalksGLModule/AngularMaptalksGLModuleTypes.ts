@@ -29,3 +29,9 @@ export type GeoJson = {
   type: string;
   coordinates: Array<number[]>;
 };
+
+/*Категория модели*/
+export type ModelCategory = {
+  name: string;
+  id: UUIDType;
+};

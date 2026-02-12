@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Transport } from "../../MapToolComponents/TransportMapToolComponent/TransportMapToolComponentTypes";
+import { Transport } from "../../../MapToolComponents/TransportMapToolComponent/TransportMapToolComponentTypes";
 import BaseDataStoreService from "../BaseDataStoreService/BaseDataStoreService";
 
 @Injectable({ providedIn: "root" })

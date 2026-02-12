@@ -5,8 +5,10 @@ import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import { RoadStateMapToolOptions } from "./RoadStateMapToolComponentTypes";
 import MapService from "../../Services/MapService/MapService";
-import MapObjectDataStoreService from "../../Services/MapObjectDataStoreService/MapObjectDataStoreService";
+import MapObjectDataStoreService from "../../Services/DataStoreServices/MapObjectDataStoreService/MapObjectDataStoreService";
 import { Transport } from "../TransportMapToolComponent/TransportMapToolComponentTypes";
+import ModelCategoryDataStoreService from "../../Services/DataStoreServices/ModelCategoryDataStoreService/ModelCategoryDataStoreService";
+import { ModelCategory } from "../../AngularMaptalksGLModuleTypes";
 
 @Component({
   selector: "RoadStateMapToolComponent",
@@ -21,10 +23,12 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     @Inject(MapService)
     private MapServiceInstance: MapService,
     private MapObjectDataStoreService: MapObjectDataStoreService,
+    private ModelCategoryDataStoreService: ModelCategoryDataStoreService,
   ) {
     super(MapComponentInstance, MapServiceInstance);
   }
   Transports: Transport[] = [];
+  ModelCaegories: ModelCategory[] = [];
   Id: string = "RoadStateMapTool";
   Options: RoadStateMapToolOptions = {
     TruckIds: [],
@@ -45,6 +49,9 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     this.MapComponent.Map.addLayer(this.VectorLayer);
     this.MapObjectDataStoreService.Request().then((Response) => {
       this.Transports = Response;
+    });
+    this.ModelCategoryDataStoreService.Request().then((Response) => {
+      this.ModelCaegories = Response;
     });
   }
   RequestRoadStates() {}
