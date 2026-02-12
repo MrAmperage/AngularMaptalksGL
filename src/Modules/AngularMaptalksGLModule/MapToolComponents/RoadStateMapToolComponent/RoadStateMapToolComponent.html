@@ -47,11 +47,12 @@
 </div>
 <div class="PanelRow">
   <div class="MinimalGap">
-    <span>Груженый</span> <span>%</span
+    <nz-switch [nzSize]="'small'" [(ngModel)]="this.Options.IsLoaded" />
+    <span>Груженый</span> <span title="Процент видимости">%</span
     ><nz-input-number
       class="SmallInput"
       [nzSize]="'small'"
-      [(ngModel)]="this.Options.LoadingProcent"
+      [(ngModel)]="this.Options.OpacityProcent"
       [nzParser]="this.NzNumberParser"
     />
   </div>
@@ -63,7 +64,7 @@
 <TimeIntervalSelectorComponent>
   <div class="MinimalGap">
     <ClearButtonComponent />
-    <button nz-button [nzSize]="'small'" (click)="this.RequestRoadStates()">
+    <button nz-button [nzSize]="'small'" (click)="this.ShowRoadStates()">
       Показать
     </button>
   </div>

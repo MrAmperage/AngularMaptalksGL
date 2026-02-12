@@ -10,6 +10,7 @@ import { Transport } from "../TransportMapToolComponent/TransportMapToolComponen
 import ModelCategoryDataStoreService from "../../Services/DataStoreServices/ModelCategoriesDataStoreService/ModelCategoriesDataStoreService";
 import { Model, ModelCategory } from "../../AngularMaptalksGLModuleTypes";
 import { ModelsDataStoreService } from "../../../../public-api";
+import HttpService from "../../Services/HttpService/HttpService";
 
 @Component({
   selector: "RoadStateMapToolComponent",
@@ -26,6 +27,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     private MapObjectDataStoreService: MapObjectDataStoreService,
     private ModelCategoryDataStoreService: ModelCategoryDataStoreService,
     private ModelsDataStoreService: ModelsDataStoreService,
+    private HttpService: HttpService,
   ) {
     super(MapComponentInstance, MapServiceInstance);
   }
@@ -41,7 +43,8 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     ModelsIds: [],
     BeginDate: null,
     EndDate: null,
-    LoadingProcent: null,
+    OpacityProcent: 50,
+    IsLoaded: true,
   };
   VectorLayer!: VectorLayer;
   override InitMapTool() {
@@ -61,7 +64,9 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     });
   }
 
-  RequestRoadStates() {
-    console.log(this.Options);
+  ShowRoadStates() {
+    this.HttpService.RequestRoadState(this.Options).then((Response) => {
+      console.log(Response);
+    });
   }
 }

@@ -40,3 +40,9 @@ export type Model = {
   name: string;
   id: UUIDType;
 };
+/*Контейнер для ответа POST запроса*/
+export type PostResponse<Data> = {
+  result: Data;
+  ok: boolean;
+  isArray: boolean;
+};
