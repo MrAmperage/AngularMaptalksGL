@@ -6,7 +6,6 @@ export { default as BaseLayerDirective } from "./Modules/AngularMaptalksGLModule
 export { default as VectorLayerDirective } from "./Modules/AngularMaptalksGLModule/Directives/LayerDirectives/VectorLayerDirective/VectorLayerDirective";
 export { default as TileLayerDirective } from "./Modules/AngularMaptalksGLModule/Directives/LayerDirectives/TileLayerDirective/TileLayerDirective";
 /*Инструменты карты*/
-export { default as BaseMapToolDirective } from "./Modules/AngularMaptalksGLModule/Directives/MapToolDirectives/BaseMapToolDirective/BaseMapToolDirective";
 export { default as TransportMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/TransportMapToolComponent/TransportMapToolComponent";
 export { default as ToolbarMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/ToolbarMapToolComponent/ToolbarMapToolComponent";
 export { default as EdgeMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/EdgeMapToolComponent/EdgeMapToolComponent";
@@ -18,3 +17,4 @@ export { default as AngularMaptalksGLModule } from "./Modules/AngularMaptalksGLM
 export { default as MapObjectsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/MapObjectsDataStoreService/MapObjectsDataStoreService";
 export { default as ModelCategoriesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/ModelCategoriesDataStoreService/ModelCategoriesDataStoreService";
 export { default as ModelsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/ModelsDataStoreService/ModelsDataStoreService";
+export { default as WorkModesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/WorkModesDataStoreService/WorkModesDataStoreService";

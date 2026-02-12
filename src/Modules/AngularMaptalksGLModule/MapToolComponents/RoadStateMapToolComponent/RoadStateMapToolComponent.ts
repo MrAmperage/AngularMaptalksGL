@@ -9,8 +9,12 @@ import MapObjectDataStoreService from "../../Services/DataStoreServices/MapObjec
 import { Transport } from "../TransportMapToolComponent/TransportMapToolComponentTypes";
 import ModelCategoryDataStoreService from "../../Services/DataStoreServices/ModelCategoriesDataStoreService/ModelCategoriesDataStoreService";
 import { Model, ModelCategory } from "../../AngularMaptalksGLModuleTypes";
-import { ModelsDataStoreService } from "../../../../public-api";
+import {
+  ModelsDataStoreService,
+  WorkModesDataStoreService,
+} from "../../../../public-api";
 import HttpService from "../../Services/HttpService/HttpService";
+import { WorkMode } from "../../Components/UIKitComponents/TimeIntervalSelectorComponent/TimeIntervalSelectorComponentTypes";
 
 @Component({
   selector: "RoadStateMapToolComponent",
@@ -27,10 +31,12 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     private MapObjectDataStoreService: MapObjectDataStoreService,
     private ModelCategoryDataStoreService: ModelCategoryDataStoreService,
     private ModelsDataStoreService: ModelsDataStoreService,
+    private WorkModesDataStoreService: WorkModesDataStoreService,
     private HttpService: HttpService,
   ) {
     super(MapComponentInstance, MapServiceInstance);
   }
+  WorkModes: WorkMode[] = [];
   Transports: Transport[] = [];
   ModelCaegories: ModelCategory[] = [];
   Models: Model[] = [];
@@ -61,6 +67,9 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     });
     this.ModelsDataStoreService.Request().then((Response) => {
       this.Models = Response;
+    });
+    this.WorkModesDataStoreService.Request().then((Response) => {
+      this.WorkModes = Response;
     });
   }
 

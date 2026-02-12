@@ -2,6 +2,8 @@
   <div class="MinimalGap">
     <nz-icon class="NzIcon" nzType="step-backward" nzTheme="fill" />
     <nz-date-picker
+      (ngModelChange)="this.ChangeBeginDate($event)"
+      [ngModel]="this.BeginDate"
       class="Input"
       nzAllowClear
       [nzFormat]="'dd.MM.YY HH:mm:ss'"
@@ -12,6 +14,8 @@
   <div class="MinimalGap">
     <nz-icon class="NzIcon" nzType="step-forward" nzTheme="fill" />
     <nz-date-picker
+      (ngModelChange)="this.ChangeEndDate($event)"
+      [ngModel]="this.EndDate"
       class="Input"
       nzAllowClear
       [nzFormat]="'dd.MM.YY HH:mm:ss'"

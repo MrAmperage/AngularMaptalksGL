@@ -2,6 +2,7 @@ import { Directive, OnInit } from "@angular/core";
 import { MapTool } from "maptalks-gl";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import MapService from "../../Services/MapService/MapService";
+import { Paths } from "../../AngularMaptalksGLModuleTypes";
 
 @Directive({ selector: "BaseMapToolDirective" })
 export default abstract class BaseMapToolDirective<OptionsType>
@@ -35,7 +36,26 @@ export default abstract class BaseMapToolDirective<OptionsType>
       return CurrentNumber;
     }
   }
-
+  static GetObjectValueByAdress<ObjectType, ReturnType>(
+    Object: ObjectType,
+    Address: Paths<ObjectType>,
+  ): ReturnType {
+    const NewObject = { ...Object };
+    return Address.split(".").reduce(
+      (PrevValue, CurrentValue, Index, Array): any => {
+        if (Index !== Array.length) {
+          if (PrevValue === null) {
+            return NewObject[CurrentValue];
+          } else {
+            return PrevValue[CurrentValue];
+          }
+        } else {
+          return Object[CurrentValue];
+        }
+      },
+      null,
+    );
+  }
   /*Инициализация инструмента*/
   abstract InitMapTool(): void;
   ngOnInit(): void {
