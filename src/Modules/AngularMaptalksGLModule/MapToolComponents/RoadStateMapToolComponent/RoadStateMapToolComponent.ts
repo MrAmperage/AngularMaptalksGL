@@ -60,5 +60,8 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
       this.Models = Response;
     });
   }
-  RequestRoadStates() {}
+
+  RequestRoadStates() {
+    console.log(this.Options);
+  }
 }

@@ -41,16 +41,18 @@
       class="Input"
       [nzSize]="'small'"
       [(ngModel)]="this.Options.PassesCount"
+      [nzParser]="this.NzNumberParser"
     />
   </div>
 </div>
 <div class="PanelRow">
   <div class="MinimalGap">
-    <nz-switch [nzSize]="'small'" /> <span>Груженый</span> <span>%</span
+    <span>Груженый</span> <span>%</span
     ><nz-input-number
       class="SmallInput"
       [nzSize]="'small'"
       [(ngModel)]="this.Options.LoadingProcent"
+      [nzParser]="this.NzNumberParser"
     />
   </div>
   <div class="MinimalGap">

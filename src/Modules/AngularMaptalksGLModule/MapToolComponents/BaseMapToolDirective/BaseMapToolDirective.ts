@@ -26,6 +26,16 @@ export default abstract class BaseMapToolDirective<OptionsType>
   AddMapTool() {
     this.addTo(this.MapComponent.Map);
   }
+  /*Парсер числовых инпутов*/
+  NzNumberParser(Value: string): number | null {
+    const CurrentNumber: number = new Number(Value).valueOf();
+    if (Number.isNaN(CurrentNumber)) {
+      return null;
+    } else {
+      return CurrentNumber;
+    }
+  }
+
   /*Инициализация инструмента*/
   abstract InitMapTool(): void;
   ngOnInit(): void {
