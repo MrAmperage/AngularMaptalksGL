@@ -21,6 +21,7 @@ import ToolbarMapToolComponent from "./MapToolComponents/ToolbarMapToolComponent
 import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 import { FormsModule } from "@angular/forms";
 import MapObjectDataStoreService from "./Services/MapObjectDataStoreService/MapObjectDataStoreService";
+import ArrayToSelectOptionPipe from "./Pipe/ArrayToSelectOptionPipe/ArrayToSelectOptionPipe";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import MapObjectDataStoreService from "./Services/MapObjectDataStoreService/MapO
     TripIconComponent,
     TimeIntervalSelectorComponent,
     ToolbarMapToolComponent,
+    ArrayToSelectOptionPipe,
   ],
   exports: [
     RoadStateMapToolComponent,

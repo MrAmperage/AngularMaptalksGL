@@ -18,6 +18,7 @@
       [nzPlaceHolder]="'Выберите вариант'"
       [nzMode]="'multiple'"
       [(ngModel)]="this.Options.TruckIds"
+      [nzOptions]="this.Transports|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
     />
   </div>
 </div>

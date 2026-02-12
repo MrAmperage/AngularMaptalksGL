@@ -7,6 +7,13 @@ export type UUIDType = { $uuid: string };
 /*Тип для дат*/
 export type DateType = { $date: number };
 
+/*Пути объекта*/
+export type Paths<T> = T extends object
+  ? {
+      [K in keyof T]: `${K & string}` | `${K & string}.${Paths<T[K]> & string}`;
+    }[keyof T]
+  : never;
+
 /*Позиционирование через объект*/
 export type PositionObject = {
   right?: number;
