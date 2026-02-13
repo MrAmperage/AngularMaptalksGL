@@ -18,3 +18,9 @@ export { default as MapObjectsDataStoreService } from "./Modules/AngularMaptalks
 export { default as ModelCategoriesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/ModelCategoriesDataStoreService/ModelCategoriesDataStoreService";
 export { default as ModelsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/ModelsDataStoreService/ModelsDataStoreService";
 export { default as WorkModesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/WorkModesDataStoreService/WorkModesDataStoreService";
+
+/*Конфигурации*/
+export {
+  GlobalNgZorroConfig,
+  GlobalNzZorroDateProvider,
+} from "./Modules/AngularMaptalksGLModule/Configs/GlobalNgZorroConfigs/GlobalNgZorroConfigs";
