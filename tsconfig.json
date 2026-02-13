@@ -10,6 +10,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
+    "experimentalDecorators": true,
     "moduleResolution": "node",
     "paths": {
       "angular-maptalks-gl": ["dist/angular-maptalks-gl"]
