@@ -69,9 +69,7 @@ export default class TimeIntervalSelectorComponent {
               milliseconds: CurrentShift.begin_offset.$timedelta,
             });
 
-            EndDate = CurrentDate.startOf("day").plus({
-              milliseconds: CurrentShift.end_offset.$timedelta,
-            });
+            EndDate = null;
 
             break;
           case "PreviousShift":
