@@ -65,6 +65,8 @@
   [WorkModes]="this.WorkModes"
   (OnChangeBeginDate)="this.ChangeOptions(`BeginDate`, $event)"
   (OnChnageEndDate)="this.ChangeOptions(`EndDate`, $event)"
+  [BeginDate]="this.Options.BeginDate"
+  [EndDate]="this.Options.EndDate"
 >
   <div class="MinimalGap">
     <ClearButtonComponent />

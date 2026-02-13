@@ -97,6 +97,21 @@ export default class TimeIntervalSelectorComponent {
             EndDate = null;
             break;
           case "PreviousDay":
+            BeginDate = CurrentDate.startOf("day")
+              .plus({
+                milliseconds:
+                  this.WorkModes[0].shifts[0].begin_offset.$timedelta,
+              })
+              .minus({ days: 1 });
+
+            EndDate = CurrentDate.startOf("day")
+              .plus({
+                milliseconds:
+                  this.WorkModes[0].shifts[this.WorkModes[0].shifts.length - 1]
+                    .end_offset.$timedelta,
+              })
+              .minus({ days: 1 });
+
             break;
           case "In2Days":
             break;
