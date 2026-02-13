@@ -91,6 +91,10 @@ export default class TimeIntervalSelectorComponent {
 
             break;
           case "CurrentDay":
+            BeginDate = CurrentDate.startOf("day").plus({
+              milliseconds: this.WorkModes[0].shifts[0].begin_offset.$timedelta,
+            });
+            EndDate = null;
             break;
           case "PreviousDay":
             break;
@@ -99,8 +103,8 @@ export default class TimeIntervalSelectorComponent {
           case "In3Days":
             break;
         }
-        this.BeginDate = BeginDate !== null ? BeginDate.toJSDate() : null;
-        this.EndDate = EndDate != null ? EndDate.toJSDate() : null;
+        this.ChangeBeginDate(BeginDate !== null ? BeginDate.toJSDate() : null);
+        this.ChangeEndDate(EndDate != null ? EndDate.toJSDate() : null);
       }
     }
 
