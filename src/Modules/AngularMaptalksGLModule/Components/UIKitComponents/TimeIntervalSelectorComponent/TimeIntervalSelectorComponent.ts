@@ -60,19 +60,31 @@ export default class TimeIntervalSelectorComponent {
           CurrentDate,
         );
       });
-      switch (TimeInterval) {
-        case "CurrentShift":
-          break;
-        case "PreviousShift":
-          break;
-        case "CurrentDay":
-          break;
-        case "PreviousDay":
-          break;
-        case "In2Days":
-          break;
-        case "In3Days":
-          break;
+      if (CurrentShift !== undefined) {
+        switch (TimeInterval) {
+          case "CurrentShift":
+            this.BeginDate = CurrentDate.startOf("day")
+              .plus({
+                milliseconds: CurrentShift.begin_offset.$timedelta,
+              })
+              .toJSDate();
+            this.EndDate = CurrentDate.startOf("day")
+              .plus({
+                milliseconds: CurrentShift.end_offset.$timedelta,
+              })
+              .toJSDate();
+            break;
+          case "PreviousShift":
+            break;
+          case "CurrentDay":
+            break;
+          case "PreviousDay":
+            break;
+          case "In2Days":
+            break;
+          case "In3Days":
+            break;
+        }
       }
     }
 
