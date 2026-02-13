@@ -61,20 +61,36 @@ export default class TimeIntervalSelectorComponent {
         );
       });
       if (CurrentShift !== undefined) {
+        let BeginDate: DateTime | null = null;
+        let EndDate: DateTime | null = null;
         switch (TimeInterval) {
           case "CurrentShift":
-            this.BeginDate = CurrentDate.startOf("day")
-              .plus({
-                milliseconds: CurrentShift.begin_offset.$timedelta,
-              })
-              .toJSDate();
-            this.EndDate = CurrentDate.startOf("day")
-              .plus({
-                milliseconds: CurrentShift.end_offset.$timedelta,
-              })
-              .toJSDate();
+            BeginDate = CurrentDate.startOf("day").plus({
+              milliseconds: CurrentShift.begin_offset.$timedelta,
+            });
+
+            EndDate = CurrentDate.startOf("day").plus({
+              milliseconds: CurrentShift.end_offset.$timedelta,
+            });
+
             break;
           case "PreviousShift":
+            const PreviousShift =
+              CurrentShift.number > 1
+                ? this.WorkModes[0].shifts[CurrentShift.number - 1]
+                : this.WorkModes[0].shifts[this.WorkModes[0].shifts.length - 1];
+            BeginDate = CurrentDate.startOf("day").plus({
+              milliseconds: PreviousShift.begin_offset.$timedelta,
+            });
+
+            EndDate = CurrentDate.startOf("day").plus({
+              milliseconds: PreviousShift.end_offset.$timedelta,
+            });
+            if (CurrentShift.number === 1) {
+              BeginDate = BeginDate.minus({ days: 1 });
+              EndDate = EndDate.minus({ days: 1 });
+            }
+
             break;
           case "CurrentDay":
             break;
@@ -85,6 +101,8 @@ export default class TimeIntervalSelectorComponent {
           case "In3Days":
             break;
         }
+        this.BeginDate = BeginDate !== null ? BeginDate.toJSDate() : null;
+        this.EndDate = EndDate != null ? EndDate.toJSDate() : null;
       }
     }
 
