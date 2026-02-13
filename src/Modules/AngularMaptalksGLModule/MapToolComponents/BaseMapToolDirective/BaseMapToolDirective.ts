@@ -20,10 +20,10 @@ export default abstract class BaseMapToolDirective<OptionsType>
   Register() {
     this.MapService.RegisterPlugin<OptionsType>(this.Id, this.Options);
   }
-  onAdd(): void {
+  override onAdd(): void {
     this.InitMapTool();
   }
-  getEvents() {}
+  override getEvents() {}
   AddMapTool() {
     this.addTo(this.MapComponent.Map);
   }
