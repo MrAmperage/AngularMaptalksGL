@@ -11,7 +11,8 @@ import {
   StepForwardFill,
   ClockCircleOutline,
 } from "@ant-design/icons-angular/icons";
-import { WorkMode } from "./TimeIntervalSelectorComponentTypes";
+import { TimeInterval, WorkMode } from "./TimeIntervalSelectorComponentTypes";
+import { DateTime, Interval } from "luxon";
 
 @Component({
   selector: "TimeIntervalSelectorComponent",
@@ -27,6 +28,7 @@ export default class TimeIntervalSelectorComponent {
       ClockCircleOutline,
     );
   }
+  SelectTimeInterval: TimeInterval | null = null;
   @Input()
   WorkModes: WorkMode[] = [];
   @Input()
@@ -42,5 +44,38 @@ export default class TimeIntervalSelectorComponent {
   OnChnageEndDate = new EventEmitter<Date | null>();
   ChangeEndDate(Date: Date | null) {
     this.OnChnageEndDate.emit(Date);
+  }
+
+  ChangeSelectInterval(TimeInterval: TimeInterval) {
+    if (this.WorkModes.length > 0) {
+      const CurrentDate = DateTime.now().toUTC();
+      const CurrentShift = this.WorkModes[0].shifts.find((Shift) => {
+        const StartShift = CurrentDate.startOf("day").plus({
+          milliseconds: Shift.begin_offset.$timedelta,
+        });
+        const EndShift = CurrentDate.startOf("day").plus({
+          milliseconds: Shift.end_offset.$timedelta,
+        });
+        return Interval.fromDateTimes(StartShift, EndShift).contains(
+          CurrentDate,
+        );
+      });
+      switch (TimeInterval) {
+        case "CurrentShift":
+          break;
+        case "PreviousShift":
+          break;
+        case "CurrentDay":
+          break;
+        case "PreviousDay":
+          break;
+        case "In2Days":
+          break;
+        case "In3Days":
+          break;
+      }
+    }
+
+    this.SelectTimeInterval = TimeInterval;
   }
 }

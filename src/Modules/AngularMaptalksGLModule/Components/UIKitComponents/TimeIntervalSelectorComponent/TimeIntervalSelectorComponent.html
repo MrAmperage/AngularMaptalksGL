@@ -31,6 +31,8 @@
       class="Input"
       [nzSize]="'small'"
       [nzPlaceHolder]="'Выберите вариант'"
+      [ngModel]="this.SelectTimeInterval"
+      (ngModelChange)="this.ChangeSelectInterval($event)"
     >
       <nz-option nzValue="CurrentShift" nzLabel="Текущая смена" />
       <nz-option nzValue="PreviousShift" nzLabel="Предыдущая смена" />

@@ -17,3 +17,11 @@ export type Shift = {
   name: string;
   number: number;
 };
+
+export type TimeInterval =
+  | "CurrentShift"
+  | "PreviousShift"
+  | "CurrentDay"
+  | "PreviousDay"
+  | "In2Days"
+  | "In3Days";
