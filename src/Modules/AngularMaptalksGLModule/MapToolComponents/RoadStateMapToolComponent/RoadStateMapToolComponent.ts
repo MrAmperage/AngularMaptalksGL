@@ -20,7 +20,6 @@ import RoadStateGeometryCollection from "./Geometries/RoadStateGeometry/RoadStat
 @Component({
   selector: "RoadStateMapToolComponent",
   templateUrl: "RoadStateMapToolComponent.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
 export default class RoadStateMapToolComponent extends BaseMapToolDirective<RoadStateMapToolOptions> {
@@ -53,7 +52,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     VisabilityProcent: 50,
     IsLoaded: true,
   };
-  RoadStateGeometryCollection: RoadStateGeometryCollection[] = [];
+  RoadStateGeometryCollections: RoadStateGeometryCollection[] = [];
   VectorLayer!: VectorLayer;
   override InitMapTool() {
     this.VectorLayer = new VectorLayer(
@@ -75,12 +74,12 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     });
   }
   ClearRoadStates() {
-    this.VectorLayer.removeGeometry(this.RoadStateGeometryCollection);
-    this.RoadStateGeometryCollection = [];
+    this.VectorLayer.removeGeometry(this.RoadStateGeometryCollections);
+    this.RoadStateGeometryCollections = [];
   }
   ShowRoadStates() {
     this.HttpService.RequestRoadState(this.Options).then((Response) => {
-      this.RoadStateGeometryCollection.push(
+      this.RoadStateGeometryCollections.push(
         new RoadStateGeometryCollection(
           Response.result,
           this.Options.VisabilityProcent !== null
@@ -89,8 +88,8 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
         ),
       );
       this.VectorLayer.addGeometry(
-        this.RoadStateGeometryCollection[
-          this.RoadStateGeometryCollection.length - 1
+        this.RoadStateGeometryCollections[
+          this.RoadStateGeometryCollections.length - 1
         ],
       );
     });

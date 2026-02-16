@@ -12,7 +12,6 @@ import MapService from "../../Services/MapService/MapService";
 @Component({
   selector: "EdgeMapToolComponent",
   templateUrl: "EdgeMapToolComponent.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
 export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined> {
