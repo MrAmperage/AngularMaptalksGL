@@ -17,7 +17,12 @@ export default class RoadStateGeometry extends GeozoneGeometry {
   VisabilityProcent: number = 100;
   RoadState: RoadState;
   constructor(RoadState: RoadState, VisabilityProcent: number) {
-    super({ type: "Polygon", coordinates: cellToBoundary(RoadState.gh) });
+    super({
+      type: "Polygon",
+      coordinates: cellToBoundary(RoadState.gh).map((Coordinate) => {
+        return [Coordinate[1], Coordinate[0]];
+      }),
+    });
     this.RoadState = RoadState;
     this.VisabilityProcent = VisabilityProcent;
   }

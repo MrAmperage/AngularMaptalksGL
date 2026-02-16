@@ -7,7 +7,12 @@ export default class RoadStateGeometryCollection extends GeometryCollection {
   constructor(RoadStates: RoadState[], VisabilityProcent: number) {
     super(
       RoadStates.map((RoadState) => {
-        return new RoadStateGeometry(RoadState, VisabilityProcent);
+        const RoadStateObject = new RoadStateGeometry(
+          RoadState,
+          VisabilityProcent,
+        );
+        RoadStateObject.setSymbol(RoadStateObject.GenerateSymbol());
+        return RoadStateObject;
       }),
     );
   }
