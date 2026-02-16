@@ -58,7 +58,12 @@
   </div>
   <div class="MinimalGap">
     <span title="Разрешение">X</span>
-    <nz-input-number [nzSize]="'small'" [(ngModel)]="this.Options.Resolution" />
+    <nz-input-number
+      [nzSize]="'small'"
+      [(ngModel)]="this.Options.Resolution"
+      [nzMin]="12"
+      [nzMax]="13"
+    />
   </div>
 </div>
 <TimeIntervalSelectorComponent
