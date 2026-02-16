@@ -7,7 +7,7 @@ export type RoadStateMapToolOptions = {
   ModelsIds: string[];
   TruckIds: string[];
   PassesCount: number | null;
-  OpacityProcent: number | null;
+  VisabilityProcent: number | null;
   IsLoaded: boolean;
   Resolution: number | null;
   BeginDate: Date | null;

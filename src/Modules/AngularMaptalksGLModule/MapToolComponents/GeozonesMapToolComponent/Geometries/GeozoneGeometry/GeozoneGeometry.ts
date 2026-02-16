@@ -1,5 +1,5 @@
 import { Polygon } from "maptalks-gl";
-import { GeoJson } from "src/Modules/AngularMaptalksGLModule/AngularMaptalksGLModuleTypes";
+import { GeoJson } from "../../../../AngularMaptalksGLModuleTypes";
 
 export default class GeozoneGeometry extends Polygon {
   constructor(GeoJson: GeoJson) {

@@ -4,6 +4,16 @@ import GeozoneGeometry from "../../../GeozonesMapToolComponent/Geometries/Geozon
 
 /*Еденичный полигон для отображения состояния дороги*/
 export default class RoadStateGeometry extends GeozoneGeometry {
+  /*Дефолтный стиль для геометрии */
+  static readonly Symbol = {
+    lineColor: "black",
+    lineWidth: 0,
+    textSize: 10,
+    textFaceName: "Arial",
+    textDy: 10,
+    textHaloFill: "#fff",
+    textHaloRadius: 3,
+  };
   VisabilityProcent: number = 100;
   RoadState: RoadState;
   constructor(RoadState: RoadState, VisabilityProcent: number) {
@@ -14,12 +24,17 @@ export default class RoadStateGeometry extends GeozoneGeometry {
   /*Установка процента видимости*/
   SetVisabilityProcent(VisabilityProcent: number) {
     this.VisabilityProcent = VisabilityProcent;
-    this.GenerateSymbol();
+    this.setSymbol(this.GenerateSymbol());
     return this;
   }
   override getJSONType(): string {
     return "RoadStateGeometry";
   }
 
-  override GenerateSymbol() {}
+  override GenerateSymbol() {
+    return Object.assign(RoadStateGeometry.Symbol, {
+      polygonFill: this.RoadState.color,
+      polygonOpacity: this.VisabilityProcent / 100,
+    });
+  }
 }

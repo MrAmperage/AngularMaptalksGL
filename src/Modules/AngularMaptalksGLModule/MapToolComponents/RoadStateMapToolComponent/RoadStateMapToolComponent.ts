@@ -50,7 +50,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     ModelsIds: [],
     BeginDate: null,
     EndDate: null,
-    OpacityProcent: 50,
+    VisabilityProcent: 50,
     IsLoaded: true,
   };
   RoadStateGeometryCollection: RoadStateGeometryCollection[] = [];
@@ -81,7 +81,12 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   ShowRoadStates() {
     this.HttpService.RequestRoadState(this.Options).then((Response) => {
       this.RoadStateGeometryCollection.push(
-        new RoadStateGeometryCollection(Response.result),
+        new RoadStateGeometryCollection(
+          Response.result,
+          this.Options.VisabilityProcent !== null
+            ? this.Options.VisabilityProcent
+            : 0,
+        ),
       );
       this.VectorLayer.addGeometry(
         this.RoadStateGeometryCollection[
