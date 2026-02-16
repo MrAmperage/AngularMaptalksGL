@@ -8,7 +8,7 @@ export default class EdgeGeometry extends LineString {
     this.Edge = Edge;
   }
 
-  getJSONType(): string {
+  override getJSONType(): string {
     return "EdgeGeometry";
   }
 }
