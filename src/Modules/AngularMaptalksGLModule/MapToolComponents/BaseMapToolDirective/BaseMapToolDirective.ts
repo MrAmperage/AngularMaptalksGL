@@ -1,5 +1,5 @@
 import { Directive, OnInit } from "@angular/core";
-import { MapTool } from "maptalks-gl";
+import { MapTool, VectorLayer } from "maptalks-gl";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import MapService from "../../Services/MapService/MapService";
 import { Paths } from "../../AngularMaptalksGLModuleTypes";
@@ -71,6 +71,13 @@ export default abstract class BaseMapToolDirective<OptionsType>
       },
       null,
     );
+  }
+  /*Отцентрироваться на геометрию */
+  FitExtentByGeometryId(Id: string, VectorLayer: VectorLayer) {
+    const Geometry = VectorLayer.getGeometryById(Id);
+    if (Geometry !== null) {
+      this.getMap().fitExtent(Geometry.getExtent());
+    }
   }
   /*Инициализация инструмента*/
   abstract InitMapTool(): void;
