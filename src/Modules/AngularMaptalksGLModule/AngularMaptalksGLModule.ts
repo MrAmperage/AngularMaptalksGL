@@ -21,6 +21,7 @@ import ToolbarMapToolComponent from "./MapToolComponents/ToolbarMapToolComponent
 import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 import { FormsModule } from "@angular/forms";
 import ArrayToSelectOptionPipe from "./Pipe/ArrayToSelectOptionPipe/ArrayToSelectOptionPipe";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import ArrayToSelectOptionPipe from "./Pipe/ArrayToSelectOptionPipe/ArrayToSelec
     NzSwitchModule,
     NzDatePickerModule,
     FormsModule,
+    CommonModule,
   ],
 })
 export default class AngularMaptalksGLModule {}
