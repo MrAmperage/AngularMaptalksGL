@@ -15,6 +15,7 @@ import {
 } from "../../../../public-api";
 import HttpService from "../../Services/HttpService/HttpService";
 import { WorkMode } from "../../Components/UIKitComponents/TimeIntervalSelectorComponent/TimeIntervalSelectorComponentTypes";
+import RoadStateGeometryCollection from "./Geometries/RoadStateGeometry/RoadStateGeometryCollection/RoadStateGeometryCollection";
 
 @Component({
   selector: "RoadStateMapToolComponent",
@@ -44,15 +45,15 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   Options: RoadStateMapToolOptions = {
     TruckIds: [],
     ModelCategoryIds: [],
-    Resolution: null,
-    PassesCount: null,
+    Resolution: 12,
+    PassesCount: 0,
     ModelsIds: [],
     BeginDate: null,
     EndDate: null,
     OpacityProcent: 50,
     IsLoaded: true,
   };
-
+  RoadStateGeometryCollection: RoadStateGeometryCollection[] = [];
   VectorLayer!: VectorLayer;
   override InitMapTool() {
     this.VectorLayer = new VectorLayer(
@@ -73,14 +74,20 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
       this.WorkModes = Response;
     });
   }
-
+  ClearRoadStates() {
+    this.VectorLayer.removeGeometry(this.RoadStateGeometryCollection);
+    this.RoadStateGeometryCollection = [];
+  }
   ShowRoadStates() {
-    console.log(
-      this.Options,
-      this.MapServiceInstance.PluginsConfigsMap.get("RoadStateMapTool"),
-    );
     this.HttpService.RequestRoadState(this.Options).then((Response) => {
-      console.log(Response);
+      this.RoadStateGeometryCollection.push(
+        new RoadStateGeometryCollection(Response.result),
+      );
+      this.VectorLayer.addGeometry(
+        this.RoadStateGeometryCollection[
+          this.RoadStateGeometryCollection.length - 1
+        ],
+      );
     });
   }
 }

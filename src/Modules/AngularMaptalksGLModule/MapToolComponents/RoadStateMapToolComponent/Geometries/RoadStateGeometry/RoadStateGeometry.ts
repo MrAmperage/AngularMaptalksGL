@@ -9,7 +9,7 @@ export default class RoadStateGeometry extends Polygon {
     super(cellToBoundary(RoadState.gh));
     this.RoadState = RoadState;
   }
-  getJSONType(): string {
+  override getJSONType(): string {
     return "RoadStateGeometry";
   }
 }

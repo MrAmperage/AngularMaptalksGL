@@ -24,7 +24,11 @@ export default class HttpService {
       this.HttpClient.post<PostResponse<RoadState[]>>(
         "api/opm/query/truck_speed_stat",
         {
-          interval: null,
+          interval: {
+            begin:
+              Options.BeginDate !== null ? Options.BeginDate.getTime() : null,
+            end: Options.EndDate !== null ? Options.EndDate.getTime() : null,
+          },
           is_loaded: Options.IsLoaded,
           count_gte: Options.PassesCount,
           model_ids: Options.ModelsIds,
