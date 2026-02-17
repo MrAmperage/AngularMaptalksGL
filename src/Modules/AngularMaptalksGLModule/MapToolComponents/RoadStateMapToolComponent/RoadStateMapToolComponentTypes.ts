@@ -1,5 +1,6 @@
 import { H3Index } from "h3-js";
 import { HexColor } from "../../AngularMaptalksGLModuleTypes";
+import RoadStateGeometryCollection from "./Geometries/RoadStateGeometry/RoadStateGeometryCollection/RoadStateGeometryCollection";
 
 /*Опции инструмента*/
 export type RoadStateMapToolOptions = {
@@ -13,6 +14,7 @@ export type RoadStateMapToolOptions = {
   BeginDate: Date | null;
   EndDate: Date | null;
   SelectIndex: number | null;
+  RoadStateGeometryCollections: RoadStateGeometryCollection[];
 };
 /*Состояние дорог*/
 

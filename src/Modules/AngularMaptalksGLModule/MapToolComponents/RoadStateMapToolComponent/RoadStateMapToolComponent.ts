@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { VectorLayer } from "maptalks-gl";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
@@ -52,8 +52,9 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     VisabilityProcent: 50,
     IsLoaded: true,
     SelectIndex: null,
+    RoadStateGeometryCollections: [],
   };
-  RoadStateGeometryCollections: RoadStateGeometryCollection[] = [];
+
   VectorLayer!: VectorLayer;
   override InitMapTool() {
     this.VectorLayer = new VectorLayer(
@@ -78,17 +79,17 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     this.ChangeOptions("SelectIndex", Index);
     if (this.Options.SelectIndex !== null) {
       const CurrentGeometry =
-        this.RoadStateGeometryCollections[this.Options.SelectIndex];
+        this.Options.RoadStateGeometryCollections[this.Options.SelectIndex];
       this.FitExtentByGeometryId(CurrentGeometry.getId(), this.VectorLayer);
     }
   }
   ClearRoadStates() {
-    this.VectorLayer.removeGeometry(this.RoadStateGeometryCollections);
-    this.RoadStateGeometryCollections = [];
+    this.VectorLayer.removeGeometry(this.Options.RoadStateGeometryCollections);
+    this.Options.RoadStateGeometryCollections = [];
     this.ChangeOptions("SelectIndex", null);
   }
   ChangeVisibleRoadStateGeometry(Index: number) {
-    const CurrentGeometry = this.RoadStateGeometryCollections[Index];
+    const CurrentGeometry = this.Options.RoadStateGeometryCollections[Index];
     if (CurrentGeometry.isVisible()) {
       CurrentGeometry.hide();
     } else {
@@ -96,15 +97,17 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     }
   }
   RemoveItem(Index: number) {
-    this.VectorLayer.removeGeometry(this.RoadStateGeometryCollections[Index]);
-    this.RoadStateGeometryCollections.splice(Index, 1);
+    this.VectorLayer.removeGeometry(
+      this.Options.RoadStateGeometryCollections[Index],
+    );
+    this.Options.RoadStateGeometryCollections.splice(Index, 1);
     if (this.Options.SelectIndex === Index) {
       this.ChangeOptions("SelectIndex", null);
     }
   }
   ShowRoadStates() {
     this.HttpService.RequestRoadState(this.Options).then((Response) => {
-      this.RoadStateGeometryCollections.push(
+      this.Options.RoadStateGeometryCollections.push(
         new RoadStateGeometryCollection(
           Response.result,
           this.Options.BeginDate,
@@ -115,8 +118,8 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
         ),
       );
       this.VectorLayer.addGeometry(
-        this.RoadStateGeometryCollections[
-          this.RoadStateGeometryCollections.length - 1
+        this.Options.RoadStateGeometryCollections[
+          this.Options.RoadStateGeometryCollections.length - 1
         ],
       );
     });

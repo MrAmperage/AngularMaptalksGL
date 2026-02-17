@@ -80,7 +80,7 @@
     </button>
   </div>
 </TimeIntervalSelectorComponent>
-<ItemListComponent [Items]="this.RoadStateGeometryCollections">
+<ItemListComponent [Items]="this.Options.RoadStateGeometryCollections">
   <ng-template #ItemTemplate let-Item let-Index="index">
     <DefaultItemComponent
       [IsSelect]="this.Options.SelectIndex===Index"
