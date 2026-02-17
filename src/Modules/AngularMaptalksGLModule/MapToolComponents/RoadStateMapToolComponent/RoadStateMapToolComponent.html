@@ -82,6 +82,9 @@
 </TimeIntervalSelectorComponent>
 <ItemListComponent [Items]="this.RoadStateGeometryCollections">
   <ng-template #ItemTemplate let-Item>
-    <DefaultItemComponent> 123</DefaultItemComponent>
+    <DefaultItemComponent
+      >{{Item.BeginDate|date:'dd.MM.YY HH:mm:ss'}} -
+      {{Item.EndDate|date:'dd.MM.YY HH:mm:ss'}}
+    </DefaultItemComponent>
   </ng-template>
 </ItemListComponent>
