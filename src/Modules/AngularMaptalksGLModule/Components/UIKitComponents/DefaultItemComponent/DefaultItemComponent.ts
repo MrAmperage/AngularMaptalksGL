@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "DefaultItemComponent",
@@ -6,4 +6,7 @@ import { Component } from "@angular/core";
   styleUrl: "DefaultItemComponent.css",
   standalone: false,
 })
-export default class DefaultItemComponent {}
+export default class DefaultItemComponent {
+  @Input()
+  IsChecked: boolean = false;
+}
