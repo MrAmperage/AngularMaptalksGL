@@ -82,6 +82,8 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
       this.RoadStateGeometryCollections.push(
         new RoadStateGeometryCollection(
           Response.result,
+          this.Options.BeginDate,
+          this.Options.EndDate,
           this.Options.VisabilityProcent !== null
             ? this.Options.VisabilityProcent
             : 0,
