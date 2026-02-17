@@ -22,6 +22,7 @@ import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 import { FormsModule } from "@angular/forms";
 import ArrayToSelectOptionPipe from "./Pipe/ArrayToSelectOptionPipe/ArrayToSelectOptionPipe";
 import { CommonModule } from "@angular/common";
+import ItemListComponent from "./Components/UIKitComponents/ItemListComponent/ItemListComponent";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CommonModule } from "@angular/common";
     TimeIntervalSelectorComponent,
     ToolbarMapToolComponent,
     ArrayToSelectOptionPipe,
+    ItemListComponent,
   ],
   exports: [
     RoadStateMapToolComponent,
