@@ -106,22 +106,27 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     }
   }
   ShowRoadStates() {
-    this.HttpService.RequestRoadState(this.Options).then((Response) => {
-      this.Options.RoadStateGeometryCollections.push(
-        new RoadStateGeometryCollection(
-          Response.result,
-          this.Options.BeginDate,
-          this.Options.EndDate,
-          this.Options.VisabilityProcent !== null
-            ? this.Options.VisabilityProcent
-            : 0,
-        ),
-      );
-      this.VectorLayer.addGeometry(
-        this.Options.RoadStateGeometryCollections[
-          this.Options.RoadStateGeometryCollections.length - 1
-        ],
-      );
-    });
+    this.IsLoading = true;
+    this.HttpService.RequestRoadState(this.Options)
+      .then((Response) => {
+        this.Options.RoadStateGeometryCollections.push(
+          new RoadStateGeometryCollection(
+            Response.result,
+            this.Options.BeginDate,
+            this.Options.EndDate,
+            this.Options.VisabilityProcent !== null
+              ? this.Options.VisabilityProcent
+              : 0,
+          ),
+        );
+        this.VectorLayer.addGeometry(
+          this.Options.RoadStateGeometryCollections[
+            this.Options.RoadStateGeometryCollections.length - 1
+          ],
+        );
+      })
+      .finally(() => {
+        this.IsLoading = false;
+      });
   }
 }

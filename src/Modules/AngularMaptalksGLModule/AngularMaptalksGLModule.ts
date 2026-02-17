@@ -25,6 +25,7 @@ import ArrayToSelectOptionPipe from "./Pipe/ArrayToSelectOptionPipe/ArrayToSelec
 import { CommonModule } from "@angular/common";
 import ItemListComponent from "./Components/UIKitComponents/ItemListComponent/ItemListComponent";
 import DefaultItemComponent from "./Components/UIKitComponents/DefaultItemComponent/DefaultItemComponent";
+import { NzSpinModule } from "ng-zorro-antd/spin";
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import DefaultItemComponent from "./Components/UIKitComponents/DefaultItemCompon
     FormsModule,
     CommonModule,
     NzCheckboxModule,
+    NzSpinModule,
   ],
 })
 export default class AngularMaptalksGLModule {}

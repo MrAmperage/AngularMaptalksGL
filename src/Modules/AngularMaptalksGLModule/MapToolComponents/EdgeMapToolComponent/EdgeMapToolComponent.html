@@ -3,5 +3,6 @@
   <button nz-button [nzSize]="'small'" (click)="this.ShowEdges()">
     Показать
   </button>
+  <nz-spin nzSimple [nzSize]="'small'" [nzSpinning]="this.IsLoading" />
   <ClearButtonComponent (click)="this.ClearEdges()" />
 </div>

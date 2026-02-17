@@ -33,13 +33,18 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined
 
   /*Отображение ребер*/
   ShowEdges() {
+    this.IsLoading = true;
     this.ClearEdges();
-    this.HttpService.RequestEdges().then((Response) => {
-      this.EdgeGeometries = Response.map((Edge) => {
-        return new EdgeGeometry(Edge);
+    this.HttpService.RequestEdges()
+      .then((Response) => {
+        this.EdgeGeometries = Response.map((Edge) => {
+          return new EdgeGeometry(Edge);
+        });
+        this.VectorLayer.addGeometry(this.EdgeGeometries);
+      })
+      .finally(() => {
+        this.IsLoading = false;
       });
-      this.VectorLayer.addGeometry(this.EdgeGeometries);
-    });
   }
 
   ClearEdges() {

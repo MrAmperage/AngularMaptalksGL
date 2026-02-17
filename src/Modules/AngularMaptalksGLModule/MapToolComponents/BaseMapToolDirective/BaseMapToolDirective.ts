@@ -23,6 +23,7 @@ export default abstract class BaseMapToolDirective<OptionsType>
   override onAdd(): void {
     this.InitMapTool();
   }
+  IsLoading: boolean = false;
   override getEvents() {}
   AddMapTool() {
     this.addTo(this.MapComponent.Map);

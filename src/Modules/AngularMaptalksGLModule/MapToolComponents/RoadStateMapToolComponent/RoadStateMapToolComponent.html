@@ -73,8 +73,10 @@
   [BeginDate]="this.Options.BeginDate"
   [EndDate]="this.Options.EndDate"
 >
+  <nz-spin nzSimple [nzSize]="'small'" [nzSpinning]="this.IsLoading" />
   <div class="MinimalGap">
     <ClearButtonComponent (click)="this.ClearRoadStates()" />
+
     <button nz-button [nzSize]="'small'" (click)="this.ShowRoadStates()">
       Показать
     </button>
