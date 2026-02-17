@@ -51,6 +51,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     EndDate: null,
     VisabilityProcent: 50,
     IsLoaded: true,
+    SelectIndex: null,
   };
   RoadStateGeometryCollections: RoadStateGeometryCollection[] = [];
   VectorLayer!: VectorLayer;
@@ -72,6 +73,14 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     this.WorkModesDataStoreService.Request().then((Response) => {
       this.WorkModes = Response;
     });
+  }
+  ChangeSelectIndex(Index: number | null) {
+    this.ChangeOptions("SelectIndex", Index);
+    if (this.Options.SelectIndex !== null) {
+      const CurrentGeometry =
+        this.RoadStateGeometryCollections[this.Options.SelectIndex];
+      this.FitExtentByGeometryId(CurrentGeometry.getId(), this.VectorLayer);
+    }
   }
   ClearRoadStates() {
     this.VectorLayer.removeGeometry(this.RoadStateGeometryCollections);

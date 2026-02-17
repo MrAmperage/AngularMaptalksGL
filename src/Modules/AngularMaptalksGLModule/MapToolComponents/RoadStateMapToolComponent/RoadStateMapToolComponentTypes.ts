@@ -12,6 +12,7 @@ export type RoadStateMapToolOptions = {
   Resolution: number | null;
   BeginDate: Date | null;
   EndDate: Date | null;
+  SelectIndex: number | null;
 };
 /*Состояние дорог*/
 
