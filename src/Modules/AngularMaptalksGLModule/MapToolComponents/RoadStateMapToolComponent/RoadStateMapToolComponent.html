@@ -87,6 +87,7 @@
       [IsChecked]="Item.isVisible()"
       (OnChangeChecked)="this.ChangeVisibleRoadStateGeometry(Index)"
       (OnChangeSelect)="this.ChangeSelectIndex(Index)"
+      (OnRemoveItem)="this.RemoveItem(Index)"
       >{{Item.BeginDate|date:'dd.MM.YY HH:mm:ss'}} -
       {{Item.EndDate|date:'dd.MM.YY HH:mm:ss'}}
     </DefaultItemComponent>

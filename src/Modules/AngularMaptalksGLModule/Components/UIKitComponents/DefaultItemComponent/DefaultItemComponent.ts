@@ -21,4 +21,9 @@ export default class DefaultItemComponent {
   ChangeSelect() {
     this.OnChangeSelect.emit();
   }
+  @Output()
+  OnRemoveItem = new EventEmitter();
+  RemoveItem() {
+    this.OnRemoveItem.emit();
+  }
 }
