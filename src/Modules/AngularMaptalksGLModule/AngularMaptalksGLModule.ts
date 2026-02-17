@@ -7,6 +7,7 @@ import TileLayerDirective from "../../Modules/AngularMaptalksGLModule/Directives
 import HttpService from "./Services/HttpService/HttpService";
 import { NzIconModule } from "ng-zorro-antd/icon";
 import { NzButtonModule } from "ng-zorro-antd/button";
+import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
 import CloseButtonComponent from "./Components/UIKitComponents/CloseButtonComponent/CloseButtonComponent";
 import ClearButtonComponent from "./Components/UIKitComponents/ClearButtonComponent/ClearButtonComponent";
 import TitlePanelComponent from "./Components/UIKitComponents/TitlePanelComponent/TitlePanelComponent";
@@ -23,6 +24,7 @@ import { FormsModule } from "@angular/forms";
 import ArrayToSelectOptionPipe from "./Pipe/ArrayToSelectOptionPipe/ArrayToSelectOptionPipe";
 import { CommonModule } from "@angular/common";
 import ItemListComponent from "./Components/UIKitComponents/ItemListComponent/ItemListComponent";
+import DefaultItemComponent from "./Components/UIKitComponents/DefaultItemComponent/DefaultItemComponent";
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import ItemListComponent from "./Components/UIKitComponents/ItemListComponent/It
     ToolbarMapToolComponent,
     ArrayToSelectOptionPipe,
     ItemListComponent,
+    DefaultItemComponent,
   ],
   exports: [
     RoadStateMapToolComponent,
@@ -61,6 +64,7 @@ import ItemListComponent from "./Components/UIKitComponents/ItemListComponent/It
     NzDatePickerModule,
     FormsModule,
     CommonModule,
+    NzCheckboxModule,
   ],
 })
 export default class AngularMaptalksGLModule {}

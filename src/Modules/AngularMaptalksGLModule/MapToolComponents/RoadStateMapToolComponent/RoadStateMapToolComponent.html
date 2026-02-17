@@ -81,5 +81,7 @@
   </div>
 </TimeIntervalSelectorComponent>
 <ItemListComponent [Items]="this.RoadStateGeometryCollections">
-  <ng-template #ItemTemplate let-Item> 123 </ng-template>
+  <ng-template #ItemTemplate let-Item>
+    <DefaultItemComponent>123</DefaultItemComponent>
+  </ng-template>
 </ItemListComponent>
