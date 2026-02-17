@@ -77,6 +77,14 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     this.VectorLayer.removeGeometry(this.RoadStateGeometryCollections);
     this.RoadStateGeometryCollections = [];
   }
+  ChangeVisibleRoadStateGeometry(Index: number) {
+    const CurrentGeometry = this.RoadStateGeometryCollections[Index];
+    if (CurrentGeometry.isVisible()) {
+      CurrentGeometry.hide();
+    } else {
+      CurrentGeometry.show();
+    }
+  }
   ShowRoadStates() {
     this.HttpService.RequestRoadState(this.Options).then((Response) => {
       this.RoadStateGeometryCollections.push(

@@ -81,8 +81,10 @@
   </div>
 </TimeIntervalSelectorComponent>
 <ItemListComponent [Items]="this.RoadStateGeometryCollections">
-  <ng-template #ItemTemplate let-Item>
-    <DefaultItemComponent [IsChecked]="Item.isVisible()"
+  <ng-template #ItemTemplate let-Item let-Index="index">
+    <DefaultItemComponent
+      [IsChecked]="Item.isVisible()"
+      (OnChangeChecked)="this.ChangeVisibleRoadStateGeometry(Index)"
       >{{Item.BeginDate|date:'dd.MM.YY HH:mm:ss'}} -
       {{Item.EndDate|date:'dd.MM.YY HH:mm:ss'}}
     </DefaultItemComponent>

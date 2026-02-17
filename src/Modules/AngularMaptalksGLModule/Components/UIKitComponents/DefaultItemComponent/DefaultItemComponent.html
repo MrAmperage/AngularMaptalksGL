@@ -1,6 +1,10 @@
 <div class="Item">
   <div class="ItemContainer">
-    <label nz-checkbox [nzChecked]="this.IsChecked"></label>
+    <label
+      nz-checkbox
+      [nzChecked]="this.IsChecked"
+      (nzCheckedChange)="this.ChangeChecked()"
+    ></label>
     <div>
       <ng-content></ng-content>
     </div>
