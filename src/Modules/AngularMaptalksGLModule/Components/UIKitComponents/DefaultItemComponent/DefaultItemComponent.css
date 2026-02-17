@@ -2,5 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: var(--MinimalGap);
+}
+
+.ItemContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--MinimalGap);
 }
