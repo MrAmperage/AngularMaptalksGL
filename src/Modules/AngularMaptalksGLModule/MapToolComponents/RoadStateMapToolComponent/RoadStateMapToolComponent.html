@@ -50,6 +50,7 @@
       [nzSize]="'small'"
       [(ngModel)]="this.Options.PassesCount"
       [nzParser]="this.NzNumberParser"
+      [nzMin]="0"
     />
   </div>
 </div>
@@ -62,6 +63,8 @@
       [nzSize]="'small'"
       [(ngModel)]="this.Options.VisabilityProcent"
       [nzParser]="this.NzNumberParser"
+      [nzMin]="0"
+      [nzMax]="100"
     />
   </div>
   <div class="MinimalGap">
@@ -85,7 +88,12 @@
   <div class="MinimalGap">
     <ClearButtonComponent (click)="this.ClearRoadStates()" />
 
-    <button nz-button [nzSize]="'small'" (click)="this.ShowRoadStates()">
+    <button
+      nz-button
+      [nzSize]="'small'"
+      (click)="this.ShowRoadStates()"
+      [disabled]="this.IsLoading"
+    >
       Показать
     </button>
   </div>
