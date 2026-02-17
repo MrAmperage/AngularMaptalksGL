@@ -26,6 +26,7 @@ import { CommonModule } from "@angular/common";
 import ItemListComponent from "./Components/UIKitComponents/ItemListComponent/ItemListComponent";
 import DefaultItemComponent from "./Components/UIKitComponents/DefaultItemComponent/DefaultItemComponent";
 import { NzSpinModule } from "ng-zorro-antd/spin";
+import GeozoneMapToolComponent from "./MapToolComponents/GeozoneMapToolComponent/GeozoneMapToolComponent";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NzSpinModule } from "ng-zorro-antd/spin";
     ArrayToSelectOptionPipe,
     ItemListComponent,
     DefaultItemComponent,
+    GeozoneMapToolComponent,
   ],
   exports: [
     RoadStateMapToolComponent,
