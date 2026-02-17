@@ -7,11 +7,13 @@ import {
   ViewChild,
 } from "@angular/core";
 import { Coordinate, Map } from "maptalks-gl";
+import MapService from "../../Services/MapService/MapService";
 
 @Component({
   selector: "MapComponent",
   templateUrl: "MapComponent.html",
   styleUrls: ["./MapComponent.css"],
+  providers: [MapService],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })

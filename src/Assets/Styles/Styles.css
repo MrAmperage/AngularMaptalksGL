@@ -1,14 +1,5 @@
 @import "Variables.css";
 
-.Panel {
-  padding: var(--PanelPadding);
-  background-color: var(--BackgroundColor);
-  border-radius: var(--BorderRadius);
-  color: var(--TextColor);
-  width: fit-content;
-  height: fit-content;
-}
-
 .PanelRow {
   display: flex;
   justify-content: space-between;
@@ -18,4 +9,18 @@
 .MinimalGap {
   display: flex;
   gap: var(--MinimalGap);
+}
+
+.Input {
+  width: 150px !important;
+  height: fit-content;
+}
+
+.SmallInput {
+  width: 55px !important;
+  height: fit-content;
+}
+
+.NzIcon {
+  font-size: 20px;
 }

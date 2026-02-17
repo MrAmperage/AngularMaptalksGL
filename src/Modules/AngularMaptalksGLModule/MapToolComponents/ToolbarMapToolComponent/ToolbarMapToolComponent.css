@@ -1,0 +1,9 @@
+.Toolbar {
+  display: flex;
+  gap: 10px;
+}
+.ToolbarColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

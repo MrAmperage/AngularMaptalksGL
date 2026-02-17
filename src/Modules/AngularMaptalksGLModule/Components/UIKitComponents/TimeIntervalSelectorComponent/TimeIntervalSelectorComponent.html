@@ -1,0 +1,46 @@
+<div class="PanelRow">
+  <div class="MinimalGap">
+    <nz-icon class="NzIcon" nzType="step-backward" nzTheme="fill" />
+    <nz-date-picker
+      (ngModelChange)="this.ChangeBeginDate($event)"
+      [ngModel]="this.BeginDate"
+      class="Input"
+      nzAllowClear
+      [nzFormat]="'dd.MM.YY HH:mm:ss'"
+      [nzSize]="'small'"
+      [nzShowTime]="true"
+    />
+  </div>
+  <div class="MinimalGap">
+    <nz-icon class="NzIcon" nzType="step-forward" nzTheme="fill" />
+    <nz-date-picker
+      (ngModelChange)="this.ChangeEndDate($event)"
+      [ngModel]="this.EndDate"
+      class="Input"
+      nzAllowClear
+      [nzFormat]="'dd.MM.YY HH:mm:ss'"
+      [nzSize]="'small'"
+      [nzShowTime]="true"
+    />
+  </div>
+</div>
+<div class="PanelRow">
+  <div class="MinimalGap">
+    <nz-icon class="NzIcon" nzType="clock-circle" nzTheme="outline" />
+    <nz-select
+      class="Input"
+      [nzSize]="'small'"
+      [nzPlaceHolder]="'Выберите вариант'"
+      [ngModel]="this.SelectTimeInterval"
+      (ngModelChange)="this.ChangeSelectInterval($event)"
+    >
+      <nz-option nzValue="CurrentShift" nzLabel="Текущая смена" />
+      <nz-option nzValue="PreviousShift" nzLabel="Предыдущая смена" />
+      <nz-option nzValue="CurrentDay" nzLabel="Текущие сутки" />
+      <nz-option nzValue="PreviousDay" nzLabel="Предыдущие сутки" />
+      <nz-option nzValue="In2Days" nzLabel="За 2е суток" />
+      <nz-option nzValue="In3Days" nzLabel="За 3е суток" />
+    </nz-select>
+  </div>
+  <ng-content></ng-content>
+</div>

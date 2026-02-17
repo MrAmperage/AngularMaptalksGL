@@ -7,6 +7,7 @@ import TileLayerDirective from "../../Modules/AngularMaptalksGLModule/Directives
 import HttpService from "./Services/HttpService/HttpService";
 import { NzIconModule } from "ng-zorro-antd/icon";
 import { NzButtonModule } from "ng-zorro-antd/button";
+import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
 import CloseButtonComponent from "./Components/UIKitComponents/CloseButtonComponent/CloseButtonComponent";
 import ClearButtonComponent from "./Components/UIKitComponents/ClearButtonComponent/ClearButtonComponent";
 import TitlePanelComponent from "./Components/UIKitComponents/TitlePanelComponent/TitlePanelComponent";
@@ -15,6 +16,16 @@ import { NzSelectModule } from "ng-zorro-antd/select";
 import TruckIconComponent from "./Components/UIKitComponents/IconsComponents/TruckIconComponent/TruckIconComponent";
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import TripIconComponent from "./Components/UIKitComponents/IconsComponents/TripIconComponent/TripIconComponent";
+import { NzSwitchModule } from "ng-zorro-antd/switch";
+import TimeIntervalSelectorComponent from "./Components/UIKitComponents/TimeIntervalSelectorComponent/TimeIntervalSelectorComponent";
+import ToolbarMapToolComponent from "./MapToolComponents/ToolbarMapToolComponent/ToolbarMapToolComponent";
+import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
+import { FormsModule } from "@angular/forms";
+import ArrayToSelectOptionPipe from "./Pipe/ArrayToSelectOptionPipe/ArrayToSelectOptionPipe";
+import { CommonModule } from "@angular/common";
+import ItemListComponent from "./Components/UIKitComponents/ItemListComponent/ItemListComponent";
+import DefaultItemComponent from "./Components/UIKitComponents/DefaultItemComponent/DefaultItemComponent";
+import { NzSpinModule } from "ng-zorro-antd/spin";
 
 @NgModule({
   declarations: [
@@ -29,6 +40,11 @@ import TripIconComponent from "./Components/UIKitComponents/IconsComponents/Trip
     RoadStateMapToolComponent,
     TruckIconComponent,
     TripIconComponent,
+    TimeIntervalSelectorComponent,
+    ToolbarMapToolComponent,
+    ArrayToSelectOptionPipe,
+    ItemListComponent,
+    DefaultItemComponent,
   ],
   exports: [
     RoadStateMapToolComponent,
@@ -37,8 +53,20 @@ import TripIconComponent from "./Components/UIKitComponents/IconsComponents/Trip
     PanelComponent,
     EdgeMapToolComponent,
     TileLayerDirective,
+    ToolbarMapToolComponent,
   ],
   providers: [HttpService],
-  imports: [NzButtonModule, NzIconModule, NzSelectModule, NzInputNumberModule],
+  imports: [
+    NzButtonModule,
+    NzIconModule,
+    NzSelectModule,
+    NzInputNumberModule,
+    NzSwitchModule,
+    NzDatePickerModule,
+    FormsModule,
+    CommonModule,
+    NzCheckboxModule,
+    NzSpinModule,
+  ],
 })
 export default class AngularMaptalksGLModule {}

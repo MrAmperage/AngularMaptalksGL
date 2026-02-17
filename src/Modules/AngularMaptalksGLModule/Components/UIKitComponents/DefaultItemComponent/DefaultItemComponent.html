@@ -1,0 +1,16 @@
+<div
+  [ngClass]="{Item:!this.IsSelect,SelectItem:this.IsSelect}"
+  (click)="this.ChangeSelect()"
+>
+  <div class="ItemContainer">
+    <label
+      nz-checkbox
+      [nzChecked]="this.IsChecked"
+      (nzCheckedChange)="this.ChangeChecked()"
+    ></label>
+    <div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <CloseButtonComponent (click)="this.RemoveItem()" />
+</div>

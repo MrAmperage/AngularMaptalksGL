@@ -1,9 +1,13 @@
-<PanelComponent>
-  <TitlePanelComponent>Ребра</TitlePanelComponent>
-  <div class="PanelRow">
-    <button nz-button [nzSize]="'small'" (click)="this.ShowEdges()">
-      Показать
-    </button>
-    <ClearButtonComponent (click)="this.ClearEdges()" />
-  </div>
-</PanelComponent>
+<TitlePanelComponent>Ребра</TitlePanelComponent>
+<div class="PanelRow">
+  <button
+    nz-button
+    [nzSize]="'small'"
+    (click)="this.ShowEdges()"
+    [disabled]="this.IsLoading"
+  >
+    Показать
+  </button>
+  <nz-spin nzSimple [nzSize]="'small'" [nzSpinning]="this.IsLoading" />
+  <ClearButtonComponent (click)="this.ClearEdges()" />
+</div>

@@ -1,7 +1,113 @@
-<PanelComponent>
-  <TitlePanelComponent>Состояние дорог</TitlePanelComponent>
-  <div class="PanelRow">
-    <TruckIconComponent /> <nz-select [nzSize]="'small'" />
-    <TruckIconComponent /> <nz-select [nzSize]="'small'" />
+<TitlePanelComponent>Состояние дорог</TitlePanelComponent>
+<div class="PanelRow">
+  <div class="MinimalGap">
+    <TruckIconComponent title="Категория модели" />
+    <nz-select
+      class="Input"
+      [nzSize]="'small'"
+      [nzPlaceHolder]="'Выберите вариант'"
+      [nzMode]="'multiple'"
+      [nzAllowClear]="true"
+      [nzShowSearch]="true"
+      [(ngModel)]="this.Options.ModelCategoryIds"
+      (ngModelChange)="this.ChangeModelCategories($event)"
+      [nzOptions]="this.ModelCaegories|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
+    />
   </div>
-</PanelComponent>
+  <div class="MinimalGap">
+    <TruckIconComponent title="Самосвал" />
+    <nz-select
+      class="Input"
+      [nzAllowClear]="true"
+      [nzShowSearch]="true"
+      [nzSize]="'small'"
+      [nzPlaceHolder]="'Выберите вариант'"
+      [nzMode]="'multiple'"
+      [(ngModel)]="this.Options.TruckIds"
+      [nzOptions]="this.Transports|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
+    />
+  </div>
+</div>
+<div class="PanelRow">
+  <div class="MinimalGap">
+    <TruckIconComponent title="Модель" />
+    <nz-select
+      class="Input"
+      [nzSize]="'small'"
+      [nzAllowClear]="true"
+      [nzShowSearch]="true"
+      [nzPlaceHolder]="'Выберите вариант'"
+      [nzMode]="'multiple'"
+      [(ngModel)]="this.Options.ModelsIds"
+      (ngModelChange)="this.ChangeModel($event)"
+      [nzOptions]="this.Models|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
+    />
+  </div>
+  <div class="MinimalGap">
+    <TripIconComponent title="Количество проездов" />
+    <nz-input-number
+      class="Input"
+      [nzSize]="'small'"
+      [(ngModel)]="this.Options.PassesCount"
+      [nzParser]="this.NzNumberParser"
+      [nzMin]="0"
+    />
+  </div>
+</div>
+<div class="PanelRow">
+  <div class="MinimalGap">
+    <nz-switch [nzSize]="'small'" [(ngModel)]="this.Options.IsLoaded" />
+    <span>Груженый</span> <span title="Процент видимости">%</span
+    ><nz-input-number
+      class="SmallInput"
+      [nzSize]="'small'"
+      [(ngModel)]="this.Options.VisabilityProcent"
+      [nzParser]="this.NzNumberParser"
+      [nzMin]="0"
+      [nzMax]="100"
+    />
+  </div>
+  <div class="MinimalGap">
+    <span title="Разрешение">X</span>
+    <nz-input-number
+      [nzSize]="'small'"
+      [(ngModel)]="this.Options.Resolution"
+      [nzMin]="12"
+      [nzMax]="13"
+    />
+  </div>
+</div>
+<TimeIntervalSelectorComponent
+  [WorkModes]="this.WorkModes"
+  (OnChangeBeginDate)="this.ChangeOptions(`BeginDate`, $event)"
+  (OnChnageEndDate)="this.ChangeOptions(`EndDate`, $event)"
+  [BeginDate]="this.Options.BeginDate"
+  [EndDate]="this.Options.EndDate"
+>
+  <nz-spin nzSimple [nzSize]="'small'" [nzSpinning]="this.IsLoading" />
+  <div class="MinimalGap">
+    <ClearButtonComponent (click)="this.ClearRoadStates()" />
+
+    <button
+      nz-button
+      [nzSize]="'small'"
+      (click)="this.ShowRoadStates()"
+      [disabled]="this.IsLoading"
+    >
+      Показать
+    </button>
+  </div>
+</TimeIntervalSelectorComponent>
+<ItemListComponent [Items]="this.Options.RoadStateGeometryCollections">
+  <ng-template #ItemTemplate let-Item let-Index="index">
+    <DefaultItemComponent
+      [IsSelect]="this.Options.SelectIndex===Index"
+      [IsChecked]="Item.isVisible()"
+      (OnChangeChecked)="this.ChangeVisibleRoadStateGeometry(Index)"
+      (OnChangeSelect)="this.ChangeSelectIndex(Index)"
+      (OnRemoveItem)="this.RemoveItem(Index)"
+      >{{Item.BeginDate|date:'dd.MM.YY HH:mm:ss'}} -
+      {{Item.EndDate|date:'dd.MM.YY HH:mm:ss'}}
+    </DefaultItemComponent>
+  </ng-template>
+</ItemListComponent>

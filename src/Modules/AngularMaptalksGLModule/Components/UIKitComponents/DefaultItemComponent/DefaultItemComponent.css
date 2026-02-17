@@ -1,0 +1,21 @@
+.Item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--MinimalGap);
+  padding: var(--MinimalPadding);
+}
+
+.SelectItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--MinimalGap);
+  background-color: var(--PrimaryColor);
+  padding: var(--MinimalPadding);
+}
+.ItemContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--MinimalGap);
+}
