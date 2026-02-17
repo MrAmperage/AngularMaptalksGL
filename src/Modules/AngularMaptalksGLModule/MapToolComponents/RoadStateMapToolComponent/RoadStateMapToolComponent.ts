@@ -41,7 +41,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   ModelCaegories: ModelCategory[] = [];
   Models: Model[] = [];
   Id: string = "RoadStateMapTool";
-  Options: RoadStateMapToolOptions = {
+  readonly Options: RoadStateMapToolOptions = {
     TruckIds: [],
     ModelCategoryIds: [],
     Resolution: 12,
@@ -85,6 +85,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   ClearRoadStates() {
     this.VectorLayer.removeGeometry(this.RoadStateGeometryCollections);
     this.RoadStateGeometryCollections = [];
+    this.ChangeOptions("SelectIndex", null);
   }
   ChangeVisibleRoadStateGeometry(Index: number) {
     const CurrentGeometry = this.RoadStateGeometryCollections[Index];

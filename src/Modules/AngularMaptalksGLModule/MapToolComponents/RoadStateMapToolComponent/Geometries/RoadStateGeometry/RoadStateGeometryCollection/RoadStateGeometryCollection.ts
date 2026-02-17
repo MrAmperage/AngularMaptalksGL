@@ -1,6 +1,7 @@
 import { GeometryCollection } from "maptalks-gl";
 import { RoadState } from "../../../RoadStateMapToolComponentTypes";
 import RoadStateGeometry from "../RoadStateGeometry";
+import { v7 } from "uuid";
 
 /*Коллекция для геометрий состояния дорог*/
 export default class RoadStateGeometryCollection extends GeometryCollection {
@@ -21,6 +22,7 @@ export default class RoadStateGeometryCollection extends GeometryCollection {
         RoadStateObject.setSymbol(RoadStateObject.GenerateSymbol());
         return RoadStateObject;
       }),
+      { id: v7() },
     );
 
     this.BeginDate = BeginDate !== null ? BeginDate : new Date();

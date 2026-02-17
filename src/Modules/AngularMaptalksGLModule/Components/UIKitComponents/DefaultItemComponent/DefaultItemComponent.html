@@ -1,4 +1,7 @@
-<div class="Item">
+<div
+  [ngClass]="{Item:!this.IsSelect,SelectItem:this.IsSelect}"
+  (click)="this.ChangeSelect()"
+>
   <div class="ItemContainer">
     <label
       nz-checkbox

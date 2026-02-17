@@ -9,9 +9,16 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 export default class DefaultItemComponent {
   @Input()
   IsChecked: boolean = false;
+  @Input()
+  IsSelect: boolean = false;
   @Output()
   OnChangeChecked = new EventEmitter();
   ChangeChecked() {
     this.OnChangeChecked.emit();
+  }
+  @Output()
+  OnChangeSelect = new EventEmitter();
+  ChangeSelect() {
+    this.OnChangeSelect.emit();
   }
 }
