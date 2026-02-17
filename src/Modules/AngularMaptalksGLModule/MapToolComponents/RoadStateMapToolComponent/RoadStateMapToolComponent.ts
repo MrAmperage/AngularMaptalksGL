@@ -96,6 +96,28 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
       CurrentGeometry.show();
     }
   }
+  ChangeModelCategories(ModelCategoryIds: string[]) {
+    const CurrentModels = ModelCategoryIds.reduce((ModelIds: string[], Id) => {
+      const Models = this.Models.filter((Model) => {
+        return Model.group_id.$uuid === Id;
+      });
+      if (Models.length > 0) {
+        ModelIds = ModelIds.concat(
+          Models.map((Model) => {
+            return Model.id.$uuid;
+          }),
+        );
+      }
+      return ModelIds;
+    }, []);
+    this.ChangeOptions("ModelsIds", CurrentModels);
+  }
+  ChangeModel(ModelIds: string[]) {
+    if (this.Options.ModelCategoryIds.length > 0) {
+      this.ChangeOptions("ModelCategoryIds", []);
+    }
+  }
+
   RemoveItem(Index: number) {
     this.VectorLayer.removeGeometry(
       this.Options.RoadStateGeometryCollections[Index],

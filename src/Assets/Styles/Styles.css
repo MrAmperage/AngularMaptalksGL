@@ -13,10 +13,12 @@
 
 .Input {
   width: 150px !important;
+  height: fit-content;
 }
 
 .SmallInput {
   width: 45px !important;
+  height: fit-content;
 }
 
 .NzIcon {

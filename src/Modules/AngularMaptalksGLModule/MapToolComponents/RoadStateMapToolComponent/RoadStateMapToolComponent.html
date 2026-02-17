@@ -7,7 +7,10 @@
       [nzSize]="'small'"
       [nzPlaceHolder]="'Выберите вариант'"
       [nzMode]="'multiple'"
+      [nzAllowClear]="true"
+      [nzShowSearch]="true"
       [(ngModel)]="this.Options.ModelCategoryIds"
+      (ngModelChange)="this.ChangeModelCategories($event)"
       [nzOptions]="this.ModelCaegories|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
     />
   </div>
@@ -15,6 +18,8 @@
     <TruckIconComponent title="Самосвал" />
     <nz-select
       class="Input"
+      [nzAllowClear]="true"
+      [nzShowSearch]="true"
       [nzSize]="'small'"
       [nzPlaceHolder]="'Выберите вариант'"
       [nzMode]="'multiple'"
@@ -29,9 +34,12 @@
     <nz-select
       class="Input"
       [nzSize]="'small'"
+      [nzAllowClear]="true"
+      [nzShowSearch]="true"
       [nzPlaceHolder]="'Выберите вариант'"
       [nzMode]="'multiple'"
       [(ngModel)]="this.Options.ModelsIds"
+      (ngModelChange)="this.ChangeModel($event)"
       [nzOptions]="this.Models|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
     />
   </div>

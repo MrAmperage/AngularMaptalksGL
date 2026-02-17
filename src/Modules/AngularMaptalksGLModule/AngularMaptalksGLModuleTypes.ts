@@ -39,6 +39,7 @@ export type ModelCategory = {
 export type Model = {
   name: string;
   id: UUIDType;
+  group_id: UUIDType;
 };
 /*Контейнер для ответа POST запроса*/
 export type PostResponse<Data> = {
