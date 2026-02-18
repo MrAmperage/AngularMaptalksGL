@@ -15,6 +15,7 @@ export type GeozoneMapToolOptions = {
   GeozoneGeometries: GeozoneGeometry[];
   GeozonesInfo: GeozoneInfo[];
   TreeGeozones: NzTreeNodeOptions[];
+  CheckedKeys: string[];
 };
 
 export type Geozone = {

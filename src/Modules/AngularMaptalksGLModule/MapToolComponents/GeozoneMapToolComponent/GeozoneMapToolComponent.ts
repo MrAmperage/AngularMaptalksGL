@@ -39,6 +39,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
     IsShowOnlyActive: true,
     GeozoneGeometries: [],
     GeozonesInfo: [],
+    CheckedKeys: [],
     TreeGeozones: [
       {
         title: "Проекты бурения",
@@ -57,10 +58,14 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
     this.MapComponent.Map.addLayer(this.VectorLayer);
     if (this.IsLoadingPreloadGeozones) {
       this.PreloadGeozonesDataStoreService.Request().then((Response) => {
-        const PreloadGeozones = Response.map((Geozone) => {
-          return new GeozoneGeometry(Geozone);
+        const CheckedKeys: string[] = [];
+        const PreloadGeozones: GeozoneGeometry[] = [];
+        Response.forEach((Geozone) => {
+          PreloadGeozones.push(new GeozoneGeometry(Geozone));
+          CheckedKeys.push(Geozone.id.$uuid);
         });
         this.ChangeOptions("GeozoneGeometries", PreloadGeozones);
+        this.ChangeOptions("CheckedKeys", CheckedKeys);
         this.VectorLayer.addGeometry(this.Options.GeozoneGeometries);
       });
     }
