@@ -13,6 +13,7 @@ import ClearButtonComponent from "./Components/UIKitComponents/ClearButtonCompon
 import TitlePanelComponent from "./Components/UIKitComponents/TitlePanelComponent/TitlePanelComponent";
 import RoadStateMapToolComponent from "./MapToolComponents/RoadStateMapToolComponent/RoadStateMapToolComponent";
 import { NzSelectModule } from "ng-zorro-antd/select";
+import { NzTreeModule } from "ng-zorro-antd/tree";
 import TruckIconComponent from "./Components/UIKitComponents/IconsComponents/TruckIconComponent/TruckIconComponent";
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import TripIconComponent from "./Components/UIKitComponents/IconsComponents/TripIconComponent/TripIconComponent";
@@ -70,6 +71,7 @@ import GeozoneMapToolComponent from "./MapToolComponents/GeozoneMapToolComponent
     CommonModule,
     NzCheckboxModule,
     NzSpinModule,
+    NzTreeModule,
   ],
 })
 export default class AngularMaptalksGLModule {}

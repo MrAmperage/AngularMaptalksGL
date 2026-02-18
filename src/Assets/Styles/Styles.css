@@ -1,4 +1,5 @@
 @import "Variables.css";
+@import "ReStylesNgZorro.css";
 
 .PanelRow {
   display: flex;
