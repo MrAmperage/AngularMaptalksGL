@@ -28,6 +28,7 @@ import ItemListComponent from "./Components/UIKitComponents/ItemListComponent/It
 import DefaultItemComponent from "./Components/UIKitComponents/DefaultItemComponent/DefaultItemComponent";
 import { NzSpinModule } from "ng-zorro-antd/spin";
 import GeozoneMapToolComponent from "./MapToolComponents/GeozoneMapToolComponent/GeozoneMapToolComponent";
+import TreeConstructorPipe from "./Pipe/TreeConstructorPipe/TreeConstructorPipe";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import GeozoneMapToolComponent from "./MapToolComponents/GeozoneMapToolComponent
     TimeIntervalSelectorComponent,
     ToolbarMapToolComponent,
     ArrayToSelectOptionPipe,
+    TreeConstructorPipe,
     ItemListComponent,
     DefaultItemComponent,
     GeozoneMapToolComponent,

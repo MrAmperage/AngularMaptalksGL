@@ -39,6 +39,14 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
     IsShowActive: true,
     GeozoneGeometries: [],
     GeozonesInfo: [],
+    TreeGeozones: [
+      {
+        title: "Проекты бурения",
+        key: "DrillingBlock",
+        selectable: false,
+        children: [],
+      },
+    ],
   };
 
   override InitMapTool(): void {

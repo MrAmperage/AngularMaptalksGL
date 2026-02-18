@@ -5,6 +5,7 @@ import {
   UUIDType,
 } from "../../AngularMaptalksGLModuleTypes";
 import GeozoneGeometry from "../../Abstractions/PolygonGeometry/PolygonGeometry";
+import { NzTreeNodeOptions } from "ng-zorro-antd/tree";
 
 export type GeozoneMapToolOptions = {
   IsShowName: boolean;
@@ -13,6 +14,7 @@ export type GeozoneMapToolOptions = {
   IsShowActive: boolean;
   GeozoneGeometries: GeozoneGeometry[];
   GeozonesInfo: GeozoneInfo[];
+  TreeGeozones: NzTreeNodeOptions[];
 };
 
 export type Geozone = {
