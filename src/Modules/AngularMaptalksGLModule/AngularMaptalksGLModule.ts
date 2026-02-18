@@ -56,6 +56,7 @@ import GeozoneMapToolComponent from "./MapToolComponents/GeozoneMapToolComponent
     EdgeMapToolComponent,
     TileLayerDirective,
     ToolbarMapToolComponent,
+    GeozoneMapToolComponent,
   ],
   providers: [HttpService],
   imports: [

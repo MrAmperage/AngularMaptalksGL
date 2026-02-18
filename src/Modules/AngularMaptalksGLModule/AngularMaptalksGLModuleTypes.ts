@@ -50,3 +50,12 @@ export type PostResponse<Data> = {
 
 /*Временной отступ*/
 export type TimeOffset = { $timedelta: number };
+
+/*Meta информация*/
+export type Meta = {
+  created_at: DateType;
+  created_user_id: UUIDType | null;
+  deleted_at: DateType | null;
+  modified_at: DateType | null;
+  modified_user_id: UUIDType | null;
+};

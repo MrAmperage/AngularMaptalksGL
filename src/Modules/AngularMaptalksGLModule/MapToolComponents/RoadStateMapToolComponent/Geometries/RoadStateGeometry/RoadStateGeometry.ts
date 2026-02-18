@@ -1,6 +1,6 @@
+import GeozoneGeometry from "../../../GeozoneMapToolComponent/Geometries/GeozoneGeometry/GeozoneGeometry";
 import { RoadState } from "../../RoadStateMapToolComponentTypes";
 import { cellToBoundary } from "h3-js";
-import GeozoneGeometry from "../../../GeozonesMapToolComponent/Geometries/GeozoneGeometry/GeozoneGeometry";
 
 /*Еденичный полигон для отображения состояния дороги*/
 export default class RoadStateGeometry extends GeozoneGeometry {
