@@ -1,12 +1,13 @@
 import { VectorLayer } from "maptalks-gl";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
-import { Geozone, GeozoneMapToolOptions } from "./GeozoneMapToolComponentTypes";
+import { GeozoneMapToolOptions } from "./GeozoneMapToolComponentTypes";
 import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import { Component, Inject } from "@angular/core";
 import MapService from "../../Services/MapService/MapService";
 import HttpService from "../../Services/HttpService/HttpService";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import PreloadGeozoneDataStoreService from "../../Services/DataStoreServices/PreloadGeozoneDataStoreService/PreloadGeozoneDataStoreService";
+import GeozoneGeometry from "./Geometries/GeozoneGeometry/GeozoneGeometry";
 
 @Component({
   selector: "GeozoneMapToolComponent",
@@ -32,18 +33,21 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
     IsShowCaption: false,
     IsShowDefault: true,
     IsShowActive: true,
-    GeozoneGeometry: [],
+    GeozoneGeometries: [],
   };
-  PreloadGeozones: Geozone[] = [];
 
   override InitMapTool(): void {
     this.VectorLayer = new VectorLayer(
       "GeozoneMapToolVectorLayer",
       VectorLayerConfig,
     );
+    this.MapComponent.Map.addLayer(this.VectorLayer);
     this.PreloadGeozoneDataStoreService.Request().then((Response) => {
-      this.PreloadGeozones = Response;
-      console.log(this.PreloadGeozones);
+      const PreloadGeozones = Response.map((Geozone) => {
+        return new GeozoneGeometry(Geozone);
+      });
+      this.ChangeOptions("GeozoneGeometries", PreloadGeozones);
+      this.VectorLayer.addGeometry(this.Options.GeozoneGeometries);
     });
   }
 }

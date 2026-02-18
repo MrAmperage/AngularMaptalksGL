@@ -4,14 +4,14 @@ import {
   Meta,
   UUIDType,
 } from "../../AngularMaptalksGLModuleTypes";
-import GeozoneGeometry from "./Geometries/GeozoneGeometry/GeozoneGeometry";
+import GeozoneGeometry from "../../Abstractions/PolygonGeometry/PolygonGeometry";
 
 export type GeozoneMapToolOptions = {
   IsShowName: boolean;
   IsShowCaption: boolean;
   IsShowDefault: boolean;
   IsShowActive: boolean;
-  GeozoneGeometry: GeozoneGeometry[];
+  GeozoneGeometries: GeozoneGeometry[];
 };
 
 export type Geozone = {
@@ -20,6 +20,10 @@ export type Geozone = {
   meta: Meta;
   organization_id: UUIDType;
   properties: GeozoneProperties;
+  style: GeozoneStyle | null;
+  title_properties: GeozoneTitleProperties | null;
+  type: GeozoneType;
+  work_place_ids: UUIDType;
 };
 
 export type GeozoneProperties = {
@@ -32,7 +36,6 @@ export type GeozoneProperties = {
   name: string;
   order_num: number;
   show: boolean;
-  style: GeozoneStyle;
 };
 
 export type GeozoneStyle = {
@@ -40,9 +43,6 @@ export type GeozoneStyle = {
   lineDasharray: [number, number];
   lineWidth: number;
   polygonFill: HexColor;
-  title_properties: GeozoneTitleProperties;
-  type: GeozoneType;
-  work_place_ids: UUIDType;
 };
 
 export type GeozoneTitleProperties = {

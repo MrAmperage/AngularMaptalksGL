@@ -1,9 +1,9 @@
-import GeozoneGeometry from "../../../GeozoneMapToolComponent/Geometries/GeozoneGeometry/GeozoneGeometry";
+import PolygonGeometry from "../../../../Abstractions/PolygonGeometry/PolygonGeometry";
 import { RoadState } from "../../RoadStateMapToolComponentTypes";
 import { cellToBoundary } from "h3-js";
 
 /*Еденичный полигон для отображения состояния дороги*/
-export default class RoadStateGeometry extends GeozoneGeometry {
+export default class RoadStateGeometry extends PolygonGeometry {
   /*Дефолтный стиль для геометрии */
   static readonly Symbol = {
     lineColor: "black",
