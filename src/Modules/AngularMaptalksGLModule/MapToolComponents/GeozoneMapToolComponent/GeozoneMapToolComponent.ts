@@ -6,8 +6,9 @@ import { Component, Inject, Input } from "@angular/core";
 import MapService from "../../Services/MapService/MapService";
 import HttpService from "../../Services/HttpService/HttpService";
 import MapComponent from "../../Components/MapComponent/MapComponent";
-import PreloadGeozoneDataStoreService from "../../Services/DataStoreServices/PreloadGeozoneDataStoreService/PreloadGeozoneDataStoreService";
+import PreloadGeozonesDataStoreService from "../../Services/DataStoreServices/PreloadGeozonesDataStoreService/PreloadGeozonesDataStoreService";
 import GeozoneGeometry from "./Geometries/GeozoneGeometry/GeozoneGeometry";
+import TruncatedGeozonesDataStoreService from "../../Services/DataStoreServices/TruncatedGeozonesDataStoreService/TruncatedGeozonesDataStoreService";
 
 @Component({
   selector: "GeozoneMapToolComponent",
@@ -22,7 +23,8 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
     @Inject(MapService)
     private MapServiceInstance: MapService,
     private HttpService: HttpService,
-    private PreloadGeozoneDataStoreService: PreloadGeozoneDataStoreService,
+    private PreloadGeozonesDataStoreService: PreloadGeozonesDataStoreService,
+    private TruncatedGeozonesDataStoreService: TruncatedGeozonesDataStoreService,
   ) {
     super(MapComponentInstance, MapServiceInstance);
   }
@@ -36,6 +38,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
     IsShowDefault: true,
     IsShowActive: true,
     GeozoneGeometries: [],
+    GeozonesInfo: [],
   };
 
   override InitMapTool(): void {
@@ -45,7 +48,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
     );
     this.MapComponent.Map.addLayer(this.VectorLayer);
     if (this.IsLoadingPreloadGeozones) {
-      this.PreloadGeozoneDataStoreService.Request().then((Response) => {
+      this.PreloadGeozonesDataStoreService.Request().then((Response) => {
         const PreloadGeozones = Response.map((Geozone) => {
           return new GeozoneGeometry(Geozone);
         });
@@ -53,5 +56,8 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
         this.VectorLayer.addGeometry(this.Options.GeozoneGeometries);
       });
     }
+    this.TruncatedGeozonesDataStoreService.Request().then((Response) => {
+      this.ChangeOptions("GeozonesInfo", Response);
+    });
   }
 }

@@ -12,6 +12,7 @@ export type GeozoneMapToolOptions = {
   IsShowDefault: boolean;
   IsShowActive: boolean;
   GeozoneGeometries: GeozoneGeometry[];
+  GeozonesInfo: GeozoneInfo[];
 };
 
 export type Geozone = {
@@ -72,3 +73,14 @@ export type GeozoneType =
   | "BlastGrid"
   | "BlastUserContour"
   | "DrillingRockContour";
+
+export type GeozoneInfo = {
+  altitude: number;
+  holder_id: UUIDType | null;
+  id: UUIDType;
+  is_active: boolean;
+  is_show: boolean;
+  name: string;
+  organization_id: UUIDType;
+  type: GeozoneType;
+};
