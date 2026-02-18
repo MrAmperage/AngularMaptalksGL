@@ -11,7 +11,7 @@ export type GeozoneMapToolOptions = {
   IsShowName: boolean;
   IsShowCaption: boolean;
   IsShowDefault: boolean;
-  IsShowActive: boolean;
+  IsShowOnlyActive: boolean;
   GeozoneGeometries: GeozoneGeometry[];
   GeozonesInfo: GeozoneInfo[];
   TreeGeozones: NzTreeNodeOptions[];

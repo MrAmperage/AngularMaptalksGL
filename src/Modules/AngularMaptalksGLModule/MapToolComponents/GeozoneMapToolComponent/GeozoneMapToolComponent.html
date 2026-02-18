@@ -1,4 +1,5 @@
 <TitlePanelComponent>Полигоны</TitlePanelComponent>
 <nz-tree
-  [nzData]="this.Options.GeozonesInfo|TreeConstructorPipe:{ParrentAdress:'type',TitleAdress:'name',IsActiveAdress:'is_active',KeyAdress:'id.$uuid'}:this.Options.TreeGeozones:false"
+  [nzData]="this.Options.GeozonesInfo|TreeConstructorPipe:{ParrentAdress:'type',TitleAdress:'name',IsActiveAdress:'is_active',KeyAdress:'id.$uuid'}:this.Options.TreeGeozones:this.Options.IsShowOnlyActive"
+  nzCheckable
 />

@@ -36,7 +36,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
     IsShowName: false,
     IsShowCaption: false,
     IsShowDefault: true,
-    IsShowActive: true,
+    IsShowOnlyActive: true,
     GeozoneGeometries: [],
     GeozonesInfo: [],
     TreeGeozones: [
