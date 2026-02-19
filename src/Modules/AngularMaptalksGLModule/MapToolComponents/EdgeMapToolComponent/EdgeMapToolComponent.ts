@@ -1,5 +1,5 @@
 import { Component, Inject } from "@angular/core";
-import { VectorLayer } from "maptalks-gl";
+import { LineStringLayer } from "maptalks-gl";
 import HttpService from "../../Services/HttpService/HttpService";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
@@ -24,7 +24,7 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined
   }
   Id: string = "EdgeMapTool";
   Options: undefined;
-  VectorLayer!: VectorLayer;
+  LineStringLayer!: LineStringLayer;
   EdgeGeometries: EdgeGeometry[] = [];
 
   /*Отображение ребер*/
@@ -36,7 +36,7 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined
         this.EdgeGeometries = Response.map((Edge) => {
           return new EdgeGeometry(Edge);
         });
-        this.VectorLayer.addGeometry(this.EdgeGeometries);
+        this.LineStringLayer.addGeometry(this.EdgeGeometries);
       })
       .finally(() => {
         this.IsLoading = false;
@@ -44,12 +44,15 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined
   }
 
   ClearEdges() {
-    this.VectorLayer.removeGeometry(this.EdgeGeometries);
+    this.LineStringLayer.removeGeometry(this.EdgeGeometries);
     this.EdgeGeometries = [];
   }
 
   override InitMapTool() {
-    this.VectorLayer = new VectorLayer("EdgeMapToolVectorLayer", LayerConfig);
-    this.MapComponent.Map.addLayer(this.VectorLayer);
+    this.LineStringLayer = new LineStringLayer(
+      "EdgeMapToolLineStringLayer",
+      LayerConfig,
+    );
+    this.MapComponent.Map.addLayer(this.LineStringLayer);
   }
 }
