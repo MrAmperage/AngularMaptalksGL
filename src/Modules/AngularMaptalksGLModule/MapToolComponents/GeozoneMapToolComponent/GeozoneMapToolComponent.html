@@ -1,4 +1,22 @@
 <TitlePanelComponent>Полигоны</TitlePanelComponent>
+<div class="PanelRow">
+  <div>
+    <div class="MinimalGap">
+      <nz-switch [nzSize]="'small'" /><span>Все названия</span>
+    </div>
+    <div class="MinimalGap">
+      <nz-switch [nzSize]="'small'" /><span> По умолчанию</span>
+    </div>
+  </div>
+  <div>
+    <div class="MinimalGap">
+      <nz-switch [nzSize]="'small'" /><span>Все описания</span>
+    </div>
+    <div class="MinimalGap">
+      <nz-switch [nzSize]="'small'" /> <span>Активные</span>
+    </div>
+  </div>
+</div>
 <nz-tree
   [nzData]="this.Options.GeozonesInfo|TreeConstructorPipe:{ParrentAdress:'type',TitleAdress:'name',IsActiveAdress:'is_active',KeyAdress:'id.$uuid'}:this.Options.TreeGeozones:this.Options.IsShowOnlyActive"
   [nzCheckable]="true"
