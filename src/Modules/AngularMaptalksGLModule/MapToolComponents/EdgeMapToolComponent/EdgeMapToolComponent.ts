@@ -3,7 +3,7 @@ import { VectorLayer } from "maptalks-gl";
 import HttpService from "../../Services/HttpService/HttpService";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
-import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
+import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import MapService from "../../Services/MapService/MapService";
 
@@ -49,10 +49,7 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined
   }
 
   override InitMapTool() {
-    this.VectorLayer = new VectorLayer(
-      "EdgeMapToolVectorLayer",
-      VectorLayerConfig,
-    );
+    this.VectorLayer = new VectorLayer("EdgeMapToolVectorLayer", LayerConfig);
     this.MapComponent.Map.addLayer(this.VectorLayer);
   }
 }

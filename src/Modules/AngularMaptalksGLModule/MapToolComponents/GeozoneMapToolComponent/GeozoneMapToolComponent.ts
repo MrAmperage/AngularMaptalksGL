@@ -1,7 +1,7 @@
-import { VectorLayer } from "maptalks-gl";
+import { PolygonLayer } from "maptalks-gl";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import { GeozoneMapToolOptions } from "./GeozoneMapToolComponentTypes";
-import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
+import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import { Component, Inject, Input } from "@angular/core";
 import MapService from "../../Services/MapService/MapService";
 import HttpService from "../../Services/HttpService/HttpService";
@@ -31,7 +31,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
   @Input()
   IsLoadingPreloadGeozones: boolean = false;
   override Id: string = "GeozoneMapTool";
-  VectorLayer!: VectorLayer;
+  PolygonLayer!: PolygonLayer;
   override Options: GeozoneMapToolOptions = {
     IsShowName: false,
     IsShowCaption: false,
@@ -51,11 +51,11 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
   };
 
   override InitMapTool(): void {
-    this.VectorLayer = new VectorLayer(
-      "GeozoneMapToolVectorLayer",
-      VectorLayerConfig,
+    this.PolygonLayer = new PolygonLayer(
+      "GeozoneMapToolPolygonLayer",
+      LayerConfig,
     );
-    this.MapComponent.Map.addLayer(this.VectorLayer);
+    this.MapComponent.Map.addLayer(this.PolygonLayer);
     if (this.IsLoadingPreloadGeozones) {
       this.PreloadGeozonesDataStoreService.Request().then((Response) => {
         const CheckedKeys: string[] = [];
@@ -66,7 +66,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
         });
         this.ChangeOptions("GeozoneGeometries", PreloadGeozones);
         this.ChangeOptions("CheckedKeys", CheckedKeys);
-        this.VectorLayer.addGeometry(this.Options.GeozoneGeometries);
+        this.PolygonLayer.addGeometry(this.Options.GeozoneGeometries);
       });
     }
     this.TruncatedGeozonesDataStoreService.Request().then((Response) => {

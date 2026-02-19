@@ -1,7 +1,7 @@
-import { VectorLayerOptionsType } from "maptalks/dist/layer/VectorLayer";
+import { LayerOptionsType } from "maptalks/dist/layer/Layer";
 
-/*Общая конфигурация для всех векторных слоев*/
-export const VectorLayerConfig: VectorLayerOptionsType = {
+/*Общая конфигурация для всех слоев*/
+export const LayerConfig: LayerOptionsType = {
   forceRenderOnMoving: true,
   forceRenderOnRotating: true,
   forceRenderOnZooming: true,

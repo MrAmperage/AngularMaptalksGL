@@ -1,7 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { VectorLayer } from "maptalks-gl";
 import MapComponent from "../../Components/MapComponent/MapComponent";
-import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
+import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import { RoadStateMapToolOptions } from "./RoadStateMapToolComponentTypes";
 import MapService from "../../Services/MapService/MapService";
@@ -59,7 +59,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   override InitMapTool() {
     this.VectorLayer = new VectorLayer(
       "RoadStateMapToolVectorLayer",
-      VectorLayerConfig,
+      LayerConfig,
     );
     this.MapComponent.Map.addLayer(this.VectorLayer);
     this.MapObjectDataStoreService.Request().then((Response) => {
