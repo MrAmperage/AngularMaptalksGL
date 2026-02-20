@@ -21,6 +21,7 @@
   [nzData]="this.Options.GeozonesInfo|TreeConstructorPipe:{ParrentAdress:'type',TitleAdress:'name',IsActiveAdress:'is_active',KeyAdress:'id.$uuid'}:this.Options.TreeGeozones:this.Options.IsShowOnlyActive"
   [nzCheckable]="true"
   [nzHideUnMatched]="true"
+  [nzCheckedKeys]="this.Options.CheckedKeys"
   [nzVirtualItemSize]="0"
   [nzVirtualHeight]="'300px'"
 />

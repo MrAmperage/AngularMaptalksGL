@@ -47,6 +47,45 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
         selectable: false,
         children: [],
       },
+      {
+        title: "Контуры проектов бурения",
+        key: "DrillingBlockContour",
+        selectable: false,
+      },
+      { title: "Облака точек", key: "PointClouds", selectable: false },
+      { title: "Линии", key: "Line", selectable: false },
+      { title: "Проекты заряжания", key: "BlastBlock", selectable: false },
+      {
+        title: "Контуры проектов заряжания",
+        key: "BlastBlockContour",
+        selectable: false,
+      },
+      { title: "Сетки скважин", key: "DrillGrid", selectable: false },
+      { title: "Сетки зарядов", key: "BlastGrid", selectable: false },
+      {
+        title: "Пользовательские контуры проектов заряжания",
+        key: "BlastUserContour",
+        selectable: false,
+      },
+      { title: "Зоны разгрузки", key: "Unload", selectable: false },
+      {
+        title: "Статические объекты",
+        key: "TypedStaticObject",
+        selectable: false,
+      },
+      {
+        title: "Статические геометрии",
+        key: "StaticGeometry",
+        selectable: false,
+      },
+      { title: "Опасные зоны", key: "RestrictedGeometry", selectable: false },
+      { title: "Точки", key: "Points", selectable: false },
+      { title: "Отрезки", key: "Segments", selectable: false },
+      {
+        title: "Контуры ВГМ проекта бурения",
+        key: "DrillingRockContour",
+        selectable: false,
+      },
     ],
   };
 

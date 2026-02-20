@@ -35,6 +35,7 @@ export default class TreeConstructorPipe implements PipeTransform {
       if (ChildrenObjects !== undefined) {
         Group.children = ChildrenObjects.map((Object) => {
           return {
+            isLeaf: true,
             selectable: false,
             title: BaseMapToolDirective.GetObjectValueByAdress(
               Object,
