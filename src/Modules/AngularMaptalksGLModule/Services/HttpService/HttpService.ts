@@ -7,6 +7,10 @@ import {
   RoadStateMapToolOptions,
 } from "../../MapToolComponents/RoadStateMapToolComponent/RoadStateMapToolComponentTypes";
 import { PostResponse } from "../../AngularMaptalksGLModuleTypes";
+import {
+  Geozone,
+  GeozoneType,
+} from "../../MapToolComponents/GeozoneMapToolComponent/GeozoneMapToolComponentTypes";
 
 /*Класс с запросами для карты и инструментов*/
 @Injectable({ providedIn: "root" })
@@ -36,6 +40,25 @@ export default class HttpService {
           resolution: Options.Resolution,
         },
       ),
+    );
+  }
+  RequestGeozonesByOptions(
+    GeometryIDs?: string[],
+    GeometryType?: GeozoneType[],
+    HolderId?: string,
+    IsShow?: boolean,
+    IsActive?: boolean,
+    OrganizationId?: string,
+  ) {
+    return lastValueFrom(
+      this.HttpClient.post<PostResponse<Geozone[]>>("api/geo/query/geometry", {
+        active: IsActive,
+        geometry_id: GeometryIDs,
+        geometry_type: GeometryType,
+        holder_id: HolderId,
+        organization_id: OrganizationId,
+        show: IsShow,
+      }),
     );
   }
 }

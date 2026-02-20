@@ -9,6 +9,7 @@ import MapComponent from "../../Components/MapComponent/MapComponent";
 import PreloadGeozonesDataStoreService from "../../Services/DataStoreServices/PreloadGeozonesDataStoreService/PreloadGeozonesDataStoreService";
 import GeozoneGeometry from "./Geometries/GeozoneGeometry/GeozoneGeometry";
 import TruncatedGeozonesDataStoreService from "../../Services/DataStoreServices/TruncatedGeozonesDataStoreService/TruncatedGeozonesDataStoreService";
+import { NzFormatEmitEvent } from "ng-zorro-antd/tree";
 
 @Component({
   selector: "GeozoneMapToolComponent",
@@ -88,7 +89,15 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
       },
     ],
   };
-
+  CheckedTreeNode(Event: NzFormatEmitEvent) {
+    this.HttpService.RequestGeozonesByOptions(Event.keys).then((Response) => {
+      if (Response.result.length > 0) {
+        const Geozone = new GeozoneGeometry(Response.result[0]);
+        this.Options.GeozoneGeometries.push(Geozone);
+        this.PolygonLayer.addGeometry(Geozone);
+      }
+    });
+  }
   override InitMapTool(): void {
     this.PolygonLayer = new PolygonLayer(
       "GeozoneMapToolPolygonLayer",
