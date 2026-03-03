@@ -8,7 +8,10 @@ import BaseMapToolDirective from "../../MapToolComponents/BaseMapToolDirective/B
   standalone: false,
 })
 export default class ArrayToSelectOptionPipe implements PipeTransform {
-  transform(Array: any[], Options: SelectPipeOptions) {
+  transform<ObjectType>(
+    Array: Array<ObjectType>,
+    Options: SelectPipeOptions<ObjectType>,
+  ) {
     return Array.map((Object): NzSelectOptionInterface => {
       return {
         value: BaseMapToolDirective.GetObjectValueByAdress(

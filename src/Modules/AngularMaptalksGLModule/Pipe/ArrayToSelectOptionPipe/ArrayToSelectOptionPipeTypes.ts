@@ -1,4 +1,6 @@
-export type SelectPipeOptions = {
-  LabelAdress: string;
-  ValueAdress: string;
+import { Paths } from "../../AngularMaptalksGLModuleTypes";
+
+export type SelectPipeOptions<ObjectType> = {
+  LabelAdress: Paths<ObjectType>;
+  ValueAdress: Paths<ObjectType>;
 };
