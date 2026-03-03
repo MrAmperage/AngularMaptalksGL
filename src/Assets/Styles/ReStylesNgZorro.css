@@ -1,0 +1,23 @@
+.ant-switch {
+  background-color: var(--GrayColor) !important;
+}
+
+.ant-switch-checked {
+  background-color: var(--PrimaryColor) !important;
+}
+
+.ant-tree {
+  background-color: var(--BackgroundColor) !important;
+}
+.ant-tree-node-content-wrapper {
+  color: #ffffff !important;
+}
+.ant-tree-switcher {
+  color: #ffffff !important;
+}
+
+.ant-tree-node-content-wrapper {
+  &:hover {
+    background-color: var(--PrimaryColor) !important;
+  }
+}

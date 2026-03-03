@@ -10,15 +10,21 @@ export { default as TransportMapToolComponent } from "./Modules/AngularMaptalksG
 export { default as ToolbarMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/ToolbarMapToolComponent/ToolbarMapToolComponent";
 export { default as EdgeMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/EdgeMapToolComponent/EdgeMapToolComponent";
 export { default as RoadStateMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/RoadStateMapToolComponent/RoadStateMapToolComponent";
+export { default as GeozoneMapToolComponent } from "./Modules/AngularMaptalksGLModule/MapToolComponents/GeozoneMapToolComponent/GeozoneMapToolComponent";
 /*Модули*/
 export { default as AngularMaptalksGLModule } from "./Modules/AngularMaptalksGLModule/AngularMaptalksGLModule";
-
 /*Сервисы*/
 export { default as MapObjectsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/MapObjectsDataStoreService/MapObjectsDataStoreService";
 export { default as ModelCategoriesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/ModelCategoriesDataStoreService/ModelCategoriesDataStoreService";
 export { default as ModelsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/ModelsDataStoreService/ModelsDataStoreService";
 export { default as WorkModesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/WorkModesDataStoreService/WorkModesDataStoreService";
-
+export { default as PreloadGeozonesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/PreloadGeozonesDataStoreService/PreloadGeozonesDataStoreService";
+export { default as TruncatedGeozonesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/TruncatedGeozonesDataStoreService/TruncatedGeozonesDataStoreService";
+export { default as UserEnterprisesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/UserEnterprisesDataStoreService/UserEnterprisesDataStoreService";
+export { default as TruncatedGeoFeaturesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/TruncatedGeoFeaturesDataStoreService/TruncatedGeoFeaturesDataStoreService";
+export { default as PreloadLinesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/PreloadLinesDataStoreService/PreloadLinesDataStoreService";
+export { default as PreloadSegmentsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/PreloadSegmentsDataStoreService/PreloadSegmentsDataStoreService";
+export { default as PreloadCloudPointsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/PreloadCloudPointsDataStoreService/PreloadCloudPointsDataStoreService";
 /*Конфигурации*/
 export {
   GlobalNgZorroConfig,

@@ -2,15 +2,16 @@
   "name": "angular-maptalks-gl",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^19.2.14",
-    "@angular/core": "^19.2.14",
-    "@angular/forms": "^19.2.14",
+    "@angular/common": "^20.3.16",
+    "@angular/core": "^20.3.16",
+    "@angular/forms": "^20.3.16",
     "h3-js": "^4.3.0",
     "luxon": "^3.6.1",
     "maptalks-gl": "^0.124.3",
-    "ng-zorro-antd": "^19.3.1",
+    "ng-zorro-antd": "^20.4.4",
+    "@angular/animations": "^20.3.16",
     "rxjs": "~7.8.1",
-    "uuid": "^11.1.0"
+    "uuid": "^13.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
@@ -19,7 +20,8 @@
   "devDependencies": {
     "@types/luxon": "^3.7.1",
     "@types/uuid": "^10.0.0",
-    "ng-packagr": "^21.1.0"
+    "ng-packagr": "^20.3.2",
+    "@angular/compiler-cli": "20.3.17"
   },
   "scripts": {
     "build": "ng-packagr -p ng-package.json",

@@ -1,7 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { VectorLayer } from "maptalks-gl";
 import MapComponent from "../../Components/MapComponent/MapComponent";
-import { VectorLayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
+import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import { RoadStateMapToolOptions } from "./RoadStateMapToolComponentTypes";
 import MapService from "../../Services/MapService/MapService";
@@ -59,7 +59,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   override InitMapTool() {
     this.VectorLayer = new VectorLayer(
       "RoadStateMapToolVectorLayer",
-      VectorLayerConfig,
+      LayerConfig,
     );
     this.MapComponent.Map.addLayer(this.VectorLayer);
     this.MapObjectDataStoreService.Request().then((Response) => {
@@ -76,7 +76,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     });
   }
   ChangeSelectIndex(Index: number | null) {
-    this.ChangeOptions("SelectIndex", Index);
+    this.UpdateOption({ SelectIndex: Index });
     if (this.Options.SelectIndex !== null) {
       const CurrentGeometry =
         this.Options.RoadStateGeometryCollections[this.Options.SelectIndex];
@@ -85,8 +85,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   }
   ClearRoadStates() {
     this.VectorLayer.removeGeometry(this.Options.RoadStateGeometryCollections);
-    this.Options.RoadStateGeometryCollections = [];
-    this.ChangeOptions("SelectIndex", null);
+    this.UpdateOption({ SelectIndex: null, RoadStateGeometryCollections: [] });
   }
   ChangeVisibleRoadStateGeometry(Index: number) {
     const CurrentGeometry = this.Options.RoadStateGeometryCollections[Index];
@@ -110,11 +109,11 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
       }
       return ModelIds;
     }, []);
-    this.ChangeOptions("ModelsIds", CurrentModels);
+    this.UpdateOption({ ModelsIds: CurrentModels });
   }
   ChangeModel(ModelIds: string[]) {
     if (this.Options.ModelCategoryIds.length > 0) {
-      this.ChangeOptions("ModelCategoryIds", []);
+      this.UpdateOption({ ModelCategoryIds: [] });
     }
   }
 
@@ -122,25 +121,36 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     this.VectorLayer.removeGeometry(
       this.Options.RoadStateGeometryCollections[Index],
     );
-    this.Options.RoadStateGeometryCollections.splice(Index, 1);
+    const NewRoadStateGeometryCollections = [
+      ...this.Options.RoadStateGeometryCollections,
+    ];
+    NewRoadStateGeometryCollections.splice(Index, 1);
+    this.UpdateOption({
+      RoadStateGeometryCollections: NewRoadStateGeometryCollections,
+    });
+
     if (this.Options.SelectIndex === Index) {
-      this.ChangeOptions("SelectIndex", null);
+      this.UpdateOption({ SelectIndex: null });
     }
   }
   ShowRoadStates() {
     this.IsLoading = true;
     this.HttpService.RequestRoadState(this.Options)
       .then((Response) => {
-        this.Options.RoadStateGeometryCollections.push(
-          new RoadStateGeometryCollection(
-            Response.result,
-            this.Options.BeginDate,
-            this.Options.EndDate,
-            this.Options.VisabilityProcent !== null
-              ? this.Options.VisabilityProcent
-              : 0,
-          ),
-        );
+        this.UpdateOption({
+          RoadStateGeometryCollections:
+            this.Options.RoadStateGeometryCollections.concat(
+              new RoadStateGeometryCollection(
+                Response.result,
+                this.Options.BeginDate,
+                this.Options.EndDate,
+                this.Options.VisabilityProcent !== null
+                  ? this.Options.VisabilityProcent
+                  : 0,
+              ),
+            ),
+        });
+
         this.VectorLayer.addGeometry(
           this.Options.RoadStateGeometryCollections[
             this.Options.RoadStateGeometryCollections.length - 1

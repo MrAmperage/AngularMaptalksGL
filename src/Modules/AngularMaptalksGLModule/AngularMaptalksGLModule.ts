@@ -13,6 +13,7 @@ import ClearButtonComponent from "./Components/UIKitComponents/ClearButtonCompon
 import TitlePanelComponent from "./Components/UIKitComponents/TitlePanelComponent/TitlePanelComponent";
 import RoadStateMapToolComponent from "./MapToolComponents/RoadStateMapToolComponent/RoadStateMapToolComponent";
 import { NzSelectModule } from "ng-zorro-antd/select";
+import { NzTreeModule } from "ng-zorro-antd/tree";
 import TruckIconComponent from "./Components/UIKitComponents/IconsComponents/TruckIconComponent/TruckIconComponent";
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import TripIconComponent from "./Components/UIKitComponents/IconsComponents/TripIconComponent/TripIconComponent";
@@ -26,6 +27,11 @@ import { CommonModule } from "@angular/common";
 import ItemListComponent from "./Components/UIKitComponents/ItemListComponent/ItemListComponent";
 import DefaultItemComponent from "./Components/UIKitComponents/DefaultItemComponent/DefaultItemComponent";
 import { NzSpinModule } from "ng-zorro-antd/spin";
+import GeozoneMapToolComponent from "./MapToolComponents/GeozoneMapToolComponent/GeozoneMapToolComponent";
+import TreeConstructorPipe from "./Pipe/TreeGeozoneConstructorPipe/TreeGeozoneConstructorPipe";
+import { NzInputModule } from "ng-zorro-antd/input";
+import TreeTransportConstructorPipe from "./Pipe/TreeTransportConstructorPipe/TreeTransportConstructorPipe";
+import TransportTooltipComponent from "./MapToolComponents/TransportMapToolComponent/TooltipComponents/TransportTooltipComponent/TransportTooltipComponent";
 
 @NgModule({
   declarations: [
@@ -43,8 +49,12 @@ import { NzSpinModule } from "ng-zorro-antd/spin";
     TimeIntervalSelectorComponent,
     ToolbarMapToolComponent,
     ArrayToSelectOptionPipe,
+    TreeConstructorPipe,
+    TreeTransportConstructorPipe,
     ItemListComponent,
     DefaultItemComponent,
+    GeozoneMapToolComponent,
+    TransportTooltipComponent,
   ],
   exports: [
     RoadStateMapToolComponent,
@@ -54,9 +64,11 @@ import { NzSpinModule } from "ng-zorro-antd/spin";
     EdgeMapToolComponent,
     TileLayerDirective,
     ToolbarMapToolComponent,
+    GeozoneMapToolComponent,
   ],
   providers: [HttpService],
   imports: [
+    NzInputModule,
     NzButtonModule,
     NzIconModule,
     NzSelectModule,
@@ -67,6 +79,7 @@ import { NzSpinModule } from "ng-zorro-antd/spin";
     CommonModule,
     NzCheckboxModule,
     NzSpinModule,
+    NzTreeModule,
   ],
 })
 export default class AngularMaptalksGLModule {}

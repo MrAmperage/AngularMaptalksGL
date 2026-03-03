@@ -1,8 +1,10 @@
 import { Directive, OnInit } from "@angular/core";
-import { MapTool, VectorLayer } from "maptalks-gl";
+import { MapTool, PolygonLayer, VectorLayer } from "maptalks-gl";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import MapService from "../../Services/MapService/MapService";
 import { Paths } from "../../AngularMaptalksGLModuleTypes";
+import { NzTreeNode } from "ng-zorro-antd/tree";
+import { HandlerGetNodeKeyOperationType } from "./BaseMapToolDirectiveTypes";
 
 @Directive({ selector: "BaseMapToolDirective" })
 export default abstract class BaseMapToolDirective<OptionsType>
@@ -19,6 +21,13 @@ export default abstract class BaseMapToolDirective<OptionsType>
   abstract Options: OptionsType;
   Register() {
     this.MapService.RegisterPlugin<OptionsType>(this.Id, this.Options);
+    const CurrentOptions = this.MapService.PluginsConfigsMap.get(this.Id);
+    if (CurrentOptions !== undefined) {
+      CurrentOptions.subscribe((NewOptions) => {
+        console.log(NewOptions, 999);
+        this.Options = NewOptions;
+      });
+    }
   }
   override onAdd(): void {
     this.InitMapTool();
@@ -46,12 +55,8 @@ export default abstract class BaseMapToolDirective<OptionsType>
     Object[Adress] = Value;
     return Object;
   }
-  ChangeOptions(Adress: keyof OptionsType, Value: any) {
-    this.Options = BaseMapToolDirective.SetValueByAdress<OptionsType>(
-      this.Options,
-      Adress,
-      Value,
-    );
+  UpdateOption(Option: Partial<OptionsType>) {
+    this.MapService.UpdateOption(this.Id, Option);
   }
   static GetObjectValueByAdress<ObjectType, ReturnType>(
     Object: ObjectType,
@@ -74,11 +79,36 @@ export default abstract class BaseMapToolDirective<OptionsType>
     );
   }
   /*Отцентрироваться на геометрию */
-  FitExtentByGeometryId(Id: string, VectorLayer: VectorLayer) {
+  FitExtentByGeometryId(Id: string, VectorLayer: VectorLayer | PolygonLayer) {
     const Geometry = VectorLayer.getGeometryById(Id);
     if (Geometry !== null) {
       this.getMap().fitExtent(Geometry.getExtent());
     }
+  }
+
+  static HandlerGetNodeKey(
+    Node: NzTreeNode,
+    CurrentCheckedKeys: string[],
+    OperationType: HandlerGetNodeKeyOperationType,
+  ) {
+    return Node.children.length > 0
+      ? Node.children.reduce((KeyArray: string[], Node) => {
+          if (Node.children.length > 0) {
+            KeyArray = KeyArray.concat(
+              this.HandlerGetNodeKey(Node, CurrentCheckedKeys, OperationType),
+            );
+          } else {
+            if (
+              OperationType === "Add"
+                ? !CurrentCheckedKeys.includes(Node.key)
+                : true
+            ) {
+              KeyArray.push(Node.key);
+            }
+          }
+          return KeyArray;
+        }, [])
+      : [Node.key];
   }
   /*Инициализация инструмента*/
   abstract InitMapTool(): void;

@@ -38,11 +38,13 @@ export default class TimeIntervalSelectorComponent {
   @Output()
   OnChangeBeginDate = new EventEmitter<Date | null>();
   ChangeBeginDate(Date: Date | null) {
+    this.SelectTimeInterval = null;
     this.OnChangeBeginDate.emit(Date);
   }
   @Output()
   OnChnageEndDate = new EventEmitter<Date | null>();
   ChangeEndDate(Date: Date | null) {
+    this.SelectTimeInterval = null;
     this.OnChnageEndDate.emit(Date);
   }
 

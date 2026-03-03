@@ -25,11 +25,18 @@ export type PositionObject = {
 export type PositionString = "top-right";
 
 /*GeoJSON*/
-export type GeoJson = {
-  type: string;
-  coordinates: Array<number[]>;
+export type GeoJson<Type extends GeoJsonType> = {
+  type: Type;
+  coordinates: GeoJsonCoordinates<Type>;
 };
-
+export type GeoJsonCoordinates<Type> = Array<
+  Type extends "Polygon"
+    ? number[]
+    : Type extends "LineString"
+      ? number[]
+      : number
+>;
+export type GeoJsonType = "Polygon" | "Point" | "LineString";
 /*Категория модели*/
 export type ModelCategory = {
   name: string;
@@ -50,3 +57,19 @@ export type PostResponse<Data> = {
 
 /*Временной отступ*/
 export type TimeOffset = { $timedelta: number };
+
+/*Meta информация*/
+export type Meta = {
+  created_at: DateType;
+  created_user_id: UUIDType | null;
+  deleted_at: DateType | null;
+  modified_at: DateType | null;
+  modified_user_id: UUIDType | null;
+};
+/*Организация*/
+export type Organization = {
+  id: UUIDType;
+  default_regime_id: UUIDType | null;
+  default_work_place_id: UUIDType | null;
+  description: string;
+};

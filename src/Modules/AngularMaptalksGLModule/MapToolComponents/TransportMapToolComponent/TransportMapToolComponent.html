@@ -1,1 +1,38 @@
-<PanelComponent>123</PanelComponent>
+<TitlePanelComponent>Объекты</TitlePanelComponent>
+<nz-tree
+  [nzCheckable]="true"
+  [nzHideUnMatched]="true"
+  [nzVirtualItemSize]="0"
+  [nzData]="this.Options.TransportOptionsTree"
+  [nzCheckedKeys]="this.Options.TransportOptionsTreeCheckedKeys"
+  (nzCheckboxChange)="this.CheckOptionsTreeNode($event)"
+/>
+<div class="PanelRow">
+  <div>
+    <input
+      type="text"
+      nz-input
+      placeholder="Поиск по названию"
+      [nzSize]="'small'"
+      [ngModel]="this.Options.SearchInput"
+      (ngModelChange)="this.ChangeSearchInput($event)"
+    />
+  </div>
+  <span>Выбрано {{this.Options.TransportCheckedKeys.length}}</span>
+</div>
+<nz-select
+  [nzSize]="'small'"
+  [nzOptions]="this.Options.GroupsOptions"
+  [ngModel]="this.Options.TransportGroupType"
+/>
+<nz-tree
+  [nzCheckable]="true"
+  [nzHideUnMatched]="true"
+  [nzVirtualHeight]="'200px'"
+  [nzVirtualItemSize]="0"
+  [nzData]="this.Options.Transports|TreeTransportConstructorPipe"
+  (nzClick)="this.ClickTreeNode($event)"
+  [nzCheckedKeys]="this.Options.TransportCheckedKeys"
+  [nzSearchValue]="this.Options.SearchInput"
+  (nzCheckboxChange)="this.CheckTreeNode($event)"
+/>

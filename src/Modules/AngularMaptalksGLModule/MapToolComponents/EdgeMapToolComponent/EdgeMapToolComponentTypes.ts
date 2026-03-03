@@ -10,5 +10,5 @@ export type Edge = {
   from_beacon_id: UUIDType;
   organization_id: UUIDType;
   update_time: DateType;
-  path: GeoJson;
+  path: GeoJson<"LineString">;
 };

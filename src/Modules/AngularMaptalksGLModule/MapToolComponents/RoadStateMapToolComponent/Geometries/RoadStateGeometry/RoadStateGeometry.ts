@@ -1,11 +1,11 @@
+import BasePolygon from "../../../../Abstractions/BasePolygon/BasePolygon";
 import { RoadState } from "../../RoadStateMapToolComponentTypes";
 import { cellToBoundary } from "h3-js";
-import GeozoneGeometry from "../../../GeozonesMapToolComponent/Geometries/GeozoneGeometry/GeozoneGeometry";
 
 /*Еденичный полигон для отображения состояния дороги*/
-export default class RoadStateGeometry extends GeozoneGeometry {
+export default class RoadStateGeometry extends BasePolygon {
   /*Дефолтный стиль для геометрии */
-  static readonly Symbol = {
+  override readonly DefaultSymbol = {
     lineColor: "black",
     lineWidth: 0,
     textSize: 10,
@@ -37,9 +37,12 @@ export default class RoadStateGeometry extends GeozoneGeometry {
   }
 
   override GenerateSymbol() {
-    return Object.assign(RoadStateGeometry.Symbol, {
-      polygonFill: this.RoadState.color,
-      polygonOpacity: this.VisabilityProcent / 100,
-    });
+    return {
+      ...this.DefaultSymbol,
+      ...{
+        polygonFill: this.RoadState.color,
+        polygonOpacity: this.VisabilityProcent / 100,
+      },
+    };
   }
 }

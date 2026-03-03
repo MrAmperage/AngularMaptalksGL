@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "lib": ["es2024", "DOM"],
     "baseUrl": ".",
     "outDir": "./dist/out-tsc",

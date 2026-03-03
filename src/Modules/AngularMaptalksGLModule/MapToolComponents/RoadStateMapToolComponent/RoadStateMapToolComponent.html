@@ -79,8 +79,8 @@
 </div>
 <TimeIntervalSelectorComponent
   [WorkModes]="this.WorkModes"
-  (OnChangeBeginDate)="this.ChangeOptions(`BeginDate`, $event)"
-  (OnChnageEndDate)="this.ChangeOptions(`EndDate`, $event)"
+  (OnChangeBeginDate)="this.UpdateOption({BeginDate:$event})"
+  (OnChnageEndDate)="this.UpdateOption({EndDate:$event})"
   [BeginDate]="this.Options.BeginDate"
   [EndDate]="this.Options.EndDate"
 >
