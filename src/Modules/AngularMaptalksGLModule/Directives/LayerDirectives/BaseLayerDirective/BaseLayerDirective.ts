@@ -13,6 +13,18 @@ export default abstract class BaseLayerDirective<LayerClass extends Layer>
   /*Id слоя*/
   @Input({ required: true })
   Id!: string;
+  /*Минимальный уровень приближения */
+  @Input()
+  MinZoom: number = -1;
+  /*Отображать слой или нет*/
+  @Input()
+  Visible: boolean = true;
+  /*Прозрачность слоя*/
+  @Input()
+  Оpacity: number = 1;
+  /*Максимальный уровень приближения*/
+  @Input()
+  MaxZoom: number = -1;
   /*Объект слоя*/
   protected Layer!: LayerClass;
   /*Переопределить в каждом дочернем слое*/
