@@ -1,4 +1,4 @@
-import { Directive, Input, OnDestroy, OnInit } from "@angular/core";
+import { Directive, input, Input, OnDestroy, OnInit } from "@angular/core";
 import { Layer } from "maptalks-gl";
 import MapComponent from "../../../Components/MapComponent/MapComponent";
 
@@ -25,6 +25,15 @@ export default abstract class BaseLayerDirective<LayerClass extends Layer>
   /*Максимальный уровень приближения*/
   @Input()
   MaxZoom: number = -1;
+  /*Рендерить слой при меремещении?*/
+  @Input()
+  ForceRenderOnMoving: boolean = false;
+  /*Рендерить слой при приближении?*/
+  @Input()
+  ForceRenderOnZooming: boolean = false;
+  /*Рендерить слой при наклоне?*/
+  @Input()
+  ForceRenderOnRotating?: boolean;
   /*Объект слоя*/
   protected Layer!: LayerClass;
   /*Переопределить в каждом дочернем слое*/

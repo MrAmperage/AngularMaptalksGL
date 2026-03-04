@@ -10,6 +10,14 @@ export default class VectorLayerDirective extends BaseLayerDirective<VectorLayer
   @Input()
   Geometries: Geometry[] = [];
   InitLayer(): VectorLayer {
-    return new VectorLayer(this.Id, this.Geometries);
+    return new VectorLayer(this.Id, this.Geometries, {
+      minZoom: this.MinZoom,
+      maxZoom: this.MaxZoom,
+      visible: this.Visible,
+      opacity: this.Оpacity,
+      forceRenderOnMoving: this.ForceRenderOnMoving,
+      forceRenderOnRotating: this.ForceRenderOnRotating,
+      forceRenderOnZooming: this.ForceRenderOnZooming,
+    });
   }
 }
