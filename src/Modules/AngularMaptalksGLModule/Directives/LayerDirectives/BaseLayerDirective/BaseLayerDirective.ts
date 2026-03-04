@@ -34,6 +34,8 @@ export default abstract class BaseLayerDirective<LayerClass extends Layer>
   /*Рендерить слой при наклоне?*/
   @Input()
   ForceRenderOnRotating?: boolean;
+  @Input()
+  ZIndex: number | undefined = undefined;
   /*Объект слоя*/
   protected Layer!: LayerClass;
   /*Переопределить в каждом дочернем слое*/

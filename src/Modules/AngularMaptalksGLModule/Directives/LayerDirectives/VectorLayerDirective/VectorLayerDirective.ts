@@ -15,6 +15,7 @@ export default class VectorLayerDirective extends BaseLayerDirective<VectorLayer
       maxZoom: this.MaxZoom,
       visible: this.Visible,
       opacity: this.Оpacity,
+      zIndex: this.ZIndex,
       forceRenderOnMoving: this.ForceRenderOnMoving,
       forceRenderOnRotating: this.ForceRenderOnRotating,
       forceRenderOnZooming: this.ForceRenderOnZooming,
