@@ -15,7 +15,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "paths": {
-      "angular-maptalks-gl": ["dist/angular-maptalks-gl"]
+      "angular-maptalks-gl": ["dist/@mr.amperage/angular-maptalks-gl"]
     }
   }
 }
