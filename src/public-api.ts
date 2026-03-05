@@ -25,6 +25,7 @@ export { default as TruncatedGeoFeaturesDataStoreService } from "./Modules/Angul
 export { default as PreloadLinesDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/PreloadLinesDataStoreService/PreloadLinesDataStoreService";
 export { default as PreloadSegmentsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/PreloadSegmentsDataStoreService/PreloadSegmentsDataStoreService";
 export { default as PreloadCloudPointsDataStoreService } from "./Modules/AngularMaptalksGLModule/Services/DataStoreServices/PreloadCloudPointsDataStoreService/PreloadCloudPointsDataStoreService";
+export { default as MapService } from "./Modules/AngularMaptalksGLModule/Services/MapService/MapService";
 /*Конфигурации*/
 export {
   GlobalNgZorroConfig,
