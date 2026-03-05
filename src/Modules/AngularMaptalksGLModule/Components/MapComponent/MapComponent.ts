@@ -29,11 +29,17 @@ export default class MapComponent implements OnInit {
   /*Зум карты при инициализации*/
   @Input()
   Zoom: number = 0;
+  @Input()
+  Bearing: number | undefined = undefined;
+  @Input()
+  Pitch: number | undefined = undefined;
   /*Инициализация карты*/
   MapInit() {
     this.Map = new Map(this.Container.nativeElement, {
       center: this.Center,
       zoom: this.Zoom,
+      bearing: this.Bearing,
+      pitch: this.Pitch,
     });
   }
   ngOnInit(): void {
