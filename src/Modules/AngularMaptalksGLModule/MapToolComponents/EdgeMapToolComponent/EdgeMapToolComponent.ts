@@ -38,10 +38,11 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapTo
     this.ClearEdges();
     this.HttpService.RequestEdges()
       .then((Response) => {
+        const EdgeGeometries = Response.map((Edge) => {
+          return new EdgeGeometry(Edge);
+        });
         this.UpdateOption({
-          EdgeGeometries: Response.map((Edge) => {
-            return new EdgeGeometry(Edge);
-          }),
+          EdgeGeometries: EdgeGeometries,
         });
         this.Options.LineStringLayer.addGeometry(this.Options.EdgeGeometries);
       })
