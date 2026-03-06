@@ -33,8 +33,6 @@ import CloudPointsGeometry from "./Geometries/CloudPointsGeometry/CloudPointsGeo
 })
 export default class GeozoneMapToolComponent extends BaseMapToolDirective<GeozoneMapToolOptions> {
   constructor(
-    @Inject(MapComponent)
-    private MapComponentInstance: MapComponent,
     @Inject(MapService)
     private MapServiceInstance: MapService,
     private HttpService: HttpService,
@@ -47,7 +45,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
     private PreloadPointsDataStoreService: PreloadPointsDataStoreService,
     private PreloadCloudPointsDataStoreService: PreloadCloudPointsDataStoreService,
   ) {
-    super(MapComponentInstance, MapServiceInstance);
+    super(MapServiceInstance);
   }
   @Input()
   IsShowPreload: boolean = false;
@@ -480,7 +478,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
   }
 
   override InitMapTool(): void {
-    this.MapComponent.Map.addLayer([
+    this.MapServiceInstance.Map.addLayer([
       this.Options.PolygonLayer,
       this.Options.LineStringLayer,
       this.Options.PointLayer,

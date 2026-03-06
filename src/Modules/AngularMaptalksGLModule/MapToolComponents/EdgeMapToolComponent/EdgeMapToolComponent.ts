@@ -15,13 +15,11 @@ import { EdgeMapToolOptions } from "./EdgeMapToolComponentTypes";
 })
 export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapToolOptions> {
   constructor(
-    @Inject(MapComponent)
-    private MapComponentInstance: MapComponent,
     @Inject(MapService)
     private MapServiceInstance: MapService,
     private HttpService: HttpService,
   ) {
-    super(MapComponentInstance, MapServiceInstance);
+    super(MapServiceInstance);
   }
   Id: string = "EdgeMapTool";
   override Options: EdgeMapToolOptions = {
@@ -57,6 +55,6 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapTo
   }
 
   override InitMapTool() {
-    this.MapComponent.Map.addLayer(this.Options.LineStringLayer);
+    this.MapServiceInstance.Map.addLayer(this.Options.LineStringLayer);
   }
 }

@@ -18,6 +18,7 @@ import MapService from "../../Services/MapService/MapService";
   standalone: false,
 })
 export default class MapComponent implements OnInit {
+  constructor(private MapService: MapService) {}
   /*Контейнер для карты */
   @ViewChild("Container", { static: true })
   Container!: ElementRef<HTMLDivElement>;
@@ -41,6 +42,7 @@ export default class MapComponent implements OnInit {
       bearing: this.Bearing,
       pitch: this.Pitch,
     });
+    this.MapService.RegisterMap(this.Map);
   }
   ngOnInit(): void {
     this.MapInit();

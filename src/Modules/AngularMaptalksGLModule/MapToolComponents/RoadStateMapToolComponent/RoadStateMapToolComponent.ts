@@ -24,8 +24,6 @@ import RoadStateGeometryCollection from "./Geometries/RoadStateGeometry/RoadStat
 })
 export default class RoadStateMapToolComponent extends BaseMapToolDirective<RoadStateMapToolOptions> {
   constructor(
-    @Inject(MapComponent)
-    private MapComponentInstance: MapComponent,
     @Inject(MapService)
     private MapServiceInstance: MapService,
     private MapObjectDataStoreService: MapObjectDataStoreService,
@@ -34,7 +32,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     private WorkModesDataStoreService: WorkModesDataStoreService,
     private HttpService: HttpService,
   ) {
-    super(MapComponentInstance, MapServiceInstance);
+    super(MapServiceInstance);
   }
   WorkModes: WorkMode[] = [];
   Transports: Transport[] = [];
@@ -61,7 +59,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
       "RoadStateMapToolVectorLayer",
       LayerConfig,
     );
-    this.MapComponent.Map.addLayer(this.VectorLayer);
+    this.MapServiceInstance.Map.addLayer(this.VectorLayer);
     this.MapObjectDataStoreService.Request().then((Response) => {
       this.Transports = Response;
     });

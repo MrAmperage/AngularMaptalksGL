@@ -111,8 +111,8 @@
         (OnChangeChecked)="this.ChangeVisibleRoadStateGeometry(Index)"
         (OnChangeSelect)="this.ChangeSelectIndex(Index)"
         (OnRemoveItem)="this.RemoveItem(Index)"
-        >{{Item.BeginDate|date:'dd.MM.YY HH:mm:ss'}} -
-        {{Item.EndDate|date:'dd.MM.YY HH:mm:ss'}}
+        >{{Item.BeginDate|date:'dd.MM.yy HH:mm:ss'}} -
+        {{Item.EndDate|date:'dd.MM.yy HH:mm:ss'}}
       </DefaultItemComponent>
     </ng-template>
   </ItemListComponent>

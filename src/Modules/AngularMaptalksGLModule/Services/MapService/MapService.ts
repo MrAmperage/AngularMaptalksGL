@@ -1,8 +1,10 @@
 import { Injectable } from "@angular/core";
+import { Map as MapObject } from "maptalks-gl";
 import { BehaviorSubject } from "rxjs";
 /*Сервис с настройками для карты*/
 @Injectable()
 export default class MapService {
+  Map!: MapObject;
   PluginsConfigsMap: Map<string, BehaviorSubject<any>> = new Map();
 
   RegisterPlugin<OptionsType>(Id: string, Options: OptionsType) {
@@ -18,5 +20,8 @@ export default class MapService {
     if (OldOption !== undefined) {
       OldOption.next({ ...OldOption.getValue(), ...Option });
     }
+  }
+  RegisterMap(Map: MapObject) {
+    this.Map = Map;
   }
 }

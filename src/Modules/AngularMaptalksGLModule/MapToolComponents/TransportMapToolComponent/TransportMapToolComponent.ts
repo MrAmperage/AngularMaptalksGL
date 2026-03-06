@@ -23,14 +23,12 @@ import TransportGroupsOptions from "./Configs/TransportGroupsOptions.json";
 })
 export default class TransportMapToolComponent extends BaseMapToolDirective<TransportMapToolOptions> {
   constructor(
-    @Inject(MapComponent)
-    private MapComponentInstance: MapComponent,
     @Inject(MapService)
     private MapServiceInstance: MapService,
     private MapObjectDataStoreService: MapObjectDataStoreService,
     private HttpService: HttpService,
   ) {
-    super(MapComponentInstance, MapServiceInstance);
+    super(MapServiceInstance);
   }
 
   @Input()
@@ -59,7 +57,7 @@ export default class TransportMapToolComponent extends BaseMapToolDirective<Tran
   };
   CacheMapState = new Map<string, TransportState>();
   override InitMapTool(): void {
-    this.MapComponent.Map.addLayer(this.Options.PointLayer);
+    this.MapServiceInstance.Map.addLayer(this.Options.PointLayer);
     this.MapObjectDataStoreService.Request().then((Response) => {
       this.UpdateOption({
         Transports: Response,

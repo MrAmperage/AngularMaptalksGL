@@ -11,10 +11,7 @@ export default abstract class BaseMapToolDirective<OptionsType>
   extends MapTool
   implements OnInit
 {
-  constructor(
-    protected MapComponent: MapComponent,
-    private MapService: MapService,
-  ) {
+  constructor(private MapService: MapService) {
     super();
   }
   abstract Id: string;
@@ -35,7 +32,7 @@ export default abstract class BaseMapToolDirective<OptionsType>
   IsLoading: boolean = false;
   override getEvents() {}
   AddMapTool() {
-    this.addTo(this.MapComponent.Map);
+    this.addTo(this.MapService.Map);
   }
   /*Парсер числовых инпутов*/
   NzNumberParser(Value: string): number | null {
