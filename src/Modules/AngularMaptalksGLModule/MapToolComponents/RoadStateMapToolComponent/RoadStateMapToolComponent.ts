@@ -1,6 +1,5 @@
 import { Component, Inject } from "@angular/core";
 import { VectorLayer } from "maptalks-gl";
-import MapComponent from "../../Components/MapComponent/MapComponent";
 import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import { RoadStateMapToolOptions } from "./RoadStateMapToolComponentTypes";

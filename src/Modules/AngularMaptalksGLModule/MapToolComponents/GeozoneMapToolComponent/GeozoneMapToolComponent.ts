@@ -9,7 +9,6 @@ import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import { Component, Inject, Input } from "@angular/core";
 import MapService from "../../Services/MapService/MapService";
 import HttpService from "../../Services/HttpService/HttpService";
-import MapComponent from "../../Components/MapComponent/MapComponent";
 import PreloadGeozonesDataStoreService from "../../Services/DataStoreServices/PreloadGeozonesDataStoreService/PreloadGeozonesDataStoreService";
 import GeozoneGeometry from "./Geometries/GeozoneGeometry/GeozoneGeometry";
 import TruncatedGeozonesDataStoreService from "../../Services/DataStoreServices/TruncatedGeozonesDataStoreService/TruncatedGeozonesDataStoreService";

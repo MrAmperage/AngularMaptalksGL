@@ -1,7 +1,6 @@
 import { Component, Inject } from "@angular/core";
 import { LineStringLayer } from "maptalks-gl";
 import HttpService from "../../Services/HttpService/HttpService";
-import MapComponent from "../../Components/MapComponent/MapComponent";
 import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
 import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";

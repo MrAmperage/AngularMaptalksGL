@@ -7,7 +7,6 @@ import {
 } from "./TransportMapToolComponentTypes";
 import { PointLayer } from "maptalks-gl";
 import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
-import MapComponent from "../../Components/MapComponent/MapComponent";
 import MapService from "../../Services/MapService/MapService";
 import TransportOptionsTreeConfig from "./Configs/TransportOptionsTreeConfig.json";
 import MapObjectDataStoreService from "../../Services/DataStoreServices/MapObjectsDataStoreService/MapObjectsDataStoreService";
