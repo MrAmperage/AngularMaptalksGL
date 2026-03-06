@@ -6,13 +6,14 @@ import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
 import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import MapService from "../../Services/MapService/MapService";
+import { EdgeMapToolOptions } from "./EdgeMapToolComponentTypes";
 
 @Component({
   selector: "EdgeMapToolComponent",
   templateUrl: "EdgeMapToolComponent.html",
   standalone: false,
 })
-export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined> {
+export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapToolOptions> {
   constructor(
     @Inject(MapComponent)
     private MapComponentInstance: MapComponent,
@@ -23,9 +24,13 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined
     super(MapComponentInstance, MapServiceInstance);
   }
   Id: string = "EdgeMapTool";
-  Options: undefined;
-  LineStringLayer!: LineStringLayer;
-  EdgeGeometries: EdgeGeometry[] = [];
+  override Options: EdgeMapToolOptions = {
+    EdgeGeometries: [],
+    LineStringLayer: new LineStringLayer(
+      "EdgeMapToolLineStringLayer",
+      LayerConfig,
+    ),
+  };
 
   /*Отображение ребер*/
   ShowEdges() {
@@ -33,10 +38,12 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined
     this.ClearEdges();
     this.HttpService.RequestEdges()
       .then((Response) => {
-        this.EdgeGeometries = Response.map((Edge) => {
-          return new EdgeGeometry(Edge);
+        this.UpdateOption({
+          EdgeGeometries: Response.map((Edge) => {
+            return new EdgeGeometry(Edge);
+          }),
         });
-        this.LineStringLayer.addGeometry(this.EdgeGeometries);
+        this.Options.LineStringLayer.addGeometry(this.Options.EdgeGeometries);
       })
       .finally(() => {
         this.IsLoading = false;
@@ -44,15 +51,11 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<undefined
   }
 
   ClearEdges() {
-    this.LineStringLayer.removeGeometry(this.EdgeGeometries);
-    this.EdgeGeometries = [];
+    this.Options.LineStringLayer.removeGeometry(this.Options.EdgeGeometries);
+    this.UpdateOption({ EdgeGeometries: [] });
   }
 
   override InitMapTool() {
-    this.LineStringLayer = new LineStringLayer(
-      "EdgeMapToolLineStringLayer",
-      LayerConfig,
-    );
-    this.MapComponent.Map.addLayer(this.LineStringLayer);
+    this.MapComponent.Map.addLayer(this.Options.LineStringLayer);
   }
 }

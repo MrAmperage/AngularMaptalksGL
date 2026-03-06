@@ -1,8 +1,15 @@
+import { LineStringLayer } from "maptalks-gl";
 import {
   DateType,
   GeoJson,
   UUIDType,
 } from "../../AngularMaptalksGLModuleTypes";
+import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
+
+export type EdgeMapToolOptions = {
+  LineStringLayer: LineStringLayer;
+  EdgeGeometries: EdgeGeometry[];
+};
 
 /*Ребро*/
 export type Edge = {
