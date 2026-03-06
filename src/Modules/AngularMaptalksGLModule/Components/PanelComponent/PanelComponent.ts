@@ -17,7 +17,6 @@ import {
 @Component({
   selector: "PanelComponent",
   templateUrl: "PanelComponent.html",
-  styleUrl: "./PanelComponent.css",
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })

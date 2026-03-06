@@ -24,7 +24,7 @@ export default abstract class BaseMapToolDirective<OptionsType>
     const CurrentOptions = this.MapService.PluginsConfigsMap.get(this.Id);
     if (CurrentOptions !== undefined) {
       CurrentOptions.subscribe((NewOptions) => {
-        console.log(NewOptions, 999);
+        console.log("Новые опции", NewOptions);
         this.Options = NewOptions;
       });
     }

@@ -25,3 +25,12 @@
 .NzIcon {
   font-size: 20px;
 }
+
+.MapToolContainer {
+  padding: var(--PanelPadding);
+  background-color: var(--BackgroundColor);
+  border-radius: var(--BorderRadius);
+  color: var(--TextColor);
+  width: fit-content;
+  height: fit-content;
+}
