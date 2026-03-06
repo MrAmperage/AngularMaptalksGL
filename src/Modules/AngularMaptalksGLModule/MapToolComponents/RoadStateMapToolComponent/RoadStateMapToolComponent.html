@@ -10,7 +10,7 @@
         [nzMode]="'multiple'"
         [nzAllowClear]="true"
         [nzShowSearch]="true"
-        [(ngModel)]="this.Options.ModelCategoryIds"
+        [ngModel]="this.Options.ModelCategoryIds"
         (ngModelChange)="this.ChangeModelCategories($event)"
         [nzOptions]="this.ModelCaegories|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
       />
@@ -24,7 +24,8 @@
         [nzSize]="'small'"
         [nzPlaceHolder]="'Выберите вариант'"
         [nzMode]="'multiple'"
-        [(ngModel)]="this.Options.TruckIds"
+        [ngModel]="this.Options.TruckIds"
+        (ngModelChange)="this.UpdateOption({TruckIds:$event})"
         [nzOptions]="this.Transports|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
       />
     </div>
@@ -39,7 +40,7 @@
         [nzShowSearch]="true"
         [nzPlaceHolder]="'Выберите вариант'"
         [nzMode]="'multiple'"
-        [(ngModel)]="this.Options.ModelsIds"
+        [ngModel]="this.Options.ModelsIds"
         (ngModelChange)="this.ChangeModel($event)"
         [nzOptions]="this.Models|ArrayToSelectOptionPipe:{LabelAdress: 'name',ValueAdress: 'id.$uuid'}"
       />
@@ -49,7 +50,8 @@
       <nz-input-number
         class="Input"
         [nzSize]="'small'"
-        [(ngModel)]="this.Options.PassesCount"
+        [ngModel]="this.Options.PassesCount"
+        (ngModelChange)="this.UpdateOption({PassesCount:$event})"
         [nzParser]="this.NzNumberParser"
         [nzMin]="0"
       />
@@ -57,13 +59,14 @@
   </div>
   <div class="PanelRow">
     <div class="MinimalGap">
-      <nz-switch [nzSize]="'small'" [(ngModel)]="this.Options.IsLoaded" />
+      <nz-switch [nzSize]="'small'" [ngModel]="this.Options.IsLoaded" />
       <span>Груженый</span> <span title="Процент видимости">%</span
       ><nz-input-number
         class="SmallInput"
         [nzSize]="'small'"
-        [(ngModel)]="this.Options.VisabilityProcent"
+        [ngModel]="this.Options.VisabilityProcent"
         [nzParser]="this.NzNumberParser"
+        (ngModelChange)="this.UpdateOption({VisabilityProcent:$event})"
         [nzMin]="0"
         [nzMax]="100"
       />
@@ -72,7 +75,8 @@
       <span title="Разрешение">X</span>
       <nz-input-number
         [nzSize]="'small'"
-        [(ngModel)]="this.Options.Resolution"
+        [ngModel]="this.Options.Resolution"
+        (ngModelChange)="this.UpdateOption({Resolution:$event})"
         [nzMin]="12"
         [nzMax]="13"
       />
