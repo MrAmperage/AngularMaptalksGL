@@ -1,4 +1,4 @@
-import { Directive, OnInit } from "@angular/core";
+import { Directive, Input, OnInit } from "@angular/core";
 import { MapTool, PolygonLayer, VectorLayer } from "maptalks-gl";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import MapService from "../../Services/MapService/MapService";
@@ -14,6 +14,9 @@ export default abstract class BaseMapToolDirective<OptionsType>
   constructor(private MapService: MapService) {
     super();
   }
+  /*Z index для отображаемых слоев*/
+  @Input()
+  ZIndex: number | undefined = undefined;
   abstract Id: string;
   abstract Options: OptionsType;
   Register() {

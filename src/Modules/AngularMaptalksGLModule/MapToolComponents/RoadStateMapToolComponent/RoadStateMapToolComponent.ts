@@ -55,10 +55,10 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
 
   VectorLayer!: VectorLayer;
   override InitMapTool() {
-    this.VectorLayer = new VectorLayer(
-      "RoadStateMapToolVectorLayer",
-      LayerConfig,
-    );
+    this.VectorLayer = new VectorLayer("RoadStateMapToolVectorLayer", {
+      ...LayerConfig,
+      ...{ zIndex: this.ZIndex },
+    });
     this.MapServiceInstance.Map.addLayer(this.VectorLayer);
     this.MapObjectDataStoreService.Request().then((Response) => {
       this.Transports = Response;
