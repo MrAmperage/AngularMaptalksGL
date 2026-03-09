@@ -31,6 +31,7 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapTo
     LineStringLayer: new LineStringLayer(
       "EdgeMapToolLineStringLayer",
       LayerConfig,
+      { zIndex: this.ZIndex },
     ),
   };
 
