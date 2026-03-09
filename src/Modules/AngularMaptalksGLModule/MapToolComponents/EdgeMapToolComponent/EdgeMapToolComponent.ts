@@ -28,11 +28,11 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapTo
   override Options: EdgeMapToolOptions = {
     Id: "EdgeMapTool",
     EdgeGeometries: [],
-    LineStringLayer: new LineStringLayer(
-      "EdgeMapToolLineStringLayer",
-      LayerConfig,
-      { zIndex: this.ZIndex },
-    ),
+    LineStringLayer: new LineStringLayer("EdgeMapToolLineStringLayer", {
+      //TODO не работает усановка ZIndex
+      ...LayerConfig,
+      ...{ zIndex: this.ZIndex },
+    }),
   };
 
   /*Отображение ребер*/
@@ -61,5 +61,9 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapTo
 
   override InitMapTool() {
     this.MapServiceInstance.Map.addLayer(this.Options.LineStringLayer);
+
+    if (this.ZIndex !== undefined) {
+      this.Options.LineStringLayer.setZIndex(this.ZIndex);
+    }
   }
 }
