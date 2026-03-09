@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component, EventEmitter, Inject, Output } from "@angular/core";
 import { LineStringLayer } from "maptalks-gl";
 import HttpService from "../../Services/HttpService/HttpService";
 import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
@@ -20,7 +20,11 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapTo
   ) {
     super(MapServiceInstance);
   }
-
+  @Output()
+  OnClose = new EventEmitter();
+  Close() {
+    this.OnClose.emit();
+  }
   override Options: EdgeMapToolOptions = {
     Id: "EdgeMapTool",
     EdgeGeometries: [],
