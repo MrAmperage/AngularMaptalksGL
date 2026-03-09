@@ -15,6 +15,7 @@ import CloudPointsGeometry from "./Geometries/CloudPointsGeometry/CloudPointsGeo
 import { LineStringLayer, PointLayer, PolygonLayer } from "maptalks-gl";
 
 export type GeozoneMapToolOptions = {
+  Id: string;
   GeozoneGeometries: GeozoneGeometry[];
   CloudPointsGeometries: CloudPointsGeometry[];
   SegmentGeometries: SegmentGeometry[];

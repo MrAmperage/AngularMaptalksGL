@@ -15,6 +15,7 @@ import {
 import HttpService from "../../Services/HttpService/HttpService";
 import { WorkMode } from "../../Components/UIKitComponents/TimeIntervalSelectorComponent/TimeIntervalSelectorComponentTypes";
 import RoadStateGeometryCollection from "./Geometries/RoadStateGeometry/RoadStateGeometryCollection/RoadStateGeometryCollection";
+import ExportApi from "../../Decorators/ExportApiDecorator/ExportApiDecorator";
 
 @Component({
   selector: "RoadStateMapToolComponent",
@@ -37,8 +38,8 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   Transports: Transport[] = [];
   ModelCaegories: ModelCategory[] = [];
   Models: Model[] = [];
-  Id: string = "RoadStateMapTool";
   readonly Options: RoadStateMapToolOptions = {
+    Id: "RoadStateMapTool",
     TruckIds: [],
     ModelCategoryIds: [],
     Resolution: 12,
@@ -80,6 +81,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
       this.FitExtentByGeometryId(CurrentGeometry.getId(), this.VectorLayer);
     }
   }
+
   ClearRoadStates() {
     this.VectorLayer.removeGeometry(this.Options.RoadStateGeometryCollections);
     this.UpdateOption({ SelectIndex: null, RoadStateGeometryCollections: [] });
@@ -130,6 +132,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
       this.UpdateOption({ SelectIndex: null });
     }
   }
+  @ExportApi()
   ShowRoadStates() {
     this.IsLoading = true;
     this.HttpService.RequestRoadState(this.Options)

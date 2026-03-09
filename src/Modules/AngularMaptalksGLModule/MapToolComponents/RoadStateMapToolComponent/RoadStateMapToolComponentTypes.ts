@@ -15,9 +15,10 @@ export type RoadStateMapToolOptions = {
   EndDate: Date | null;
   SelectIndex: number | null;
   RoadStateGeometryCollections: RoadStateGeometryCollection[];
+  Id: string;
 };
+export type RoadStateMapToolOptionsApi = { ShowRoadStates: () => void };
 /*Состояние дорог*/
-
 export type RoadState = {
   color: HexColor;
   count: number;

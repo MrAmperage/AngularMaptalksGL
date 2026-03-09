@@ -20,8 +20,9 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapTo
   ) {
     super(MapServiceInstance);
   }
-  Id: string = "EdgeMapTool";
+
   override Options: EdgeMapToolOptions = {
+    Id: "EdgeMapTool",
     EdgeGeometries: [],
     LineStringLayer: new LineStringLayer(
       "EdgeMapToolLineStringLayer",

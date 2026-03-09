@@ -6,6 +6,7 @@ import { NzSelectOptionInterface } from "ng-zorro-antd/select";
 
 export type Transport = { id: UUIDType; name: string; icon: UUIDType | null };
 export type TransportMapToolOptions = {
+  Id: string;
   GroupsOptions: NzSelectOptionInterface[];
   TransportGroupType: TransportGroupType;
   SelectGeometry: TransportGeometry | null;

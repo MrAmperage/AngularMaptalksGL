@@ -7,6 +7,7 @@ import {
 import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
 
 export type EdgeMapToolOptions = {
+  Id: string;
   LineStringLayer: LineStringLayer;
   EdgeGeometries: EdgeGeometry[];
 };

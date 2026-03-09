@@ -48,8 +48,8 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
   }
   @Input()
   IsShowPreload: boolean = false;
-  override Id: string = "GeozoneMapTool";
   override Options: GeozoneMapToolOptions = {
+    Id: "GeozoneMapTool",
     IsShowName: false,
     IsShowCaption: false,
     IsShowDefault: true,

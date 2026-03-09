@@ -4,10 +4,15 @@ import MapComponent from "../../Components/MapComponent/MapComponent";
 import MapService from "../../Services/MapService/MapService";
 import { Paths } from "../../AngularMaptalksGLModuleTypes";
 import { NzTreeNode } from "ng-zorro-antd/tree";
-import { HandlerGetNodeKeyOperationType } from "./BaseMapToolDirectiveTypes";
+import {
+  BaseOptionsType,
+  HandlerGetNodeKeyOperationType,
+} from "./BaseMapToolDirectiveTypes";
 
 @Directive({ selector: "BaseMapToolDirective" })
-export default abstract class BaseMapToolDirective<OptionsType>
+export default abstract class BaseMapToolDirective<
+  OptionsType extends BaseOptionsType,
+>
   extends MapTool
   implements OnInit
 {
@@ -17,11 +22,12 @@ export default abstract class BaseMapToolDirective<OptionsType>
   /*Z index для отображаемых слоев*/
   @Input()
   ZIndex: number | undefined = undefined;
-  abstract Id: string;
   abstract Options: OptionsType;
   Register() {
-    this.MapService.RegisterPlugin<OptionsType>(this.Id, this.Options);
-    const CurrentOptions = this.MapService.PluginsConfigsMap.get(this.Id);
+    this.MapService.RegisterPlugin<OptionsType>(this.Options);
+    const CurrentOptions = this.MapService.PluginsConfigsMap.get(
+      this.Options.Id,
+    );
     if (CurrentOptions !== undefined) {
       CurrentOptions.subscribe((NewOptions) => {
         console.log("Новые опции", NewOptions);
@@ -31,6 +37,20 @@ export default abstract class BaseMapToolDirective<OptionsType>
   }
   override onAdd(): void {
     this.InitMapTool();
+  }
+
+  private BindApi<ApiType>() {
+    const Prototype = Object.getPrototypeOf(this);
+    const Methods: string[] =
+      Prototype["ApiExport"] !== undefined ? Prototype["ApiExport"] : [];
+
+    const Api: Partial<Record<keyof ApiType, any>> = {};
+
+    Methods.forEach((Method) => {
+      Api[Method as keyof ApiType] = (this as any)[Method].bind(this);
+    });
+
+    (this as any).Options.Api = Api;
   }
   IsLoading: boolean = false;
   override getEvents() {}
@@ -56,7 +76,7 @@ export default abstract class BaseMapToolDirective<OptionsType>
     return Object;
   }
   UpdateOption(Option: Partial<OptionsType>) {
-    this.MapService.UpdateOption(this.Id, Option);
+    this.MapService.UpdateOption(this.Options.Id, Option);
   }
   static GetObjectValueByAdress<ObjectType, ReturnType>(
     Object: ObjectType,
@@ -113,6 +133,7 @@ export default abstract class BaseMapToolDirective<OptionsType>
   /*Инициализация инструмента*/
   abstract InitMapTool(): void;
   ngOnInit(): void {
+    this.BindApi();
     this.Register();
     this.AddMapTool();
   }

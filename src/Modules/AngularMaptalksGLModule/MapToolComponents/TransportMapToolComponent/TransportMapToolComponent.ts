@@ -32,10 +32,10 @@ export default class TransportMapToolComponent extends BaseMapToolDirective<Tran
 
   @Input()
   AutoStart: boolean = false;
-  override Id: string = "TransportMapTool";
   //TODO Перенести EventSource в сервис
   EventSource: EventSource | null = null;
   override Options: TransportMapToolOptions = {
+    Id: "TransportMapTool",
     TransportGroupType: "All",
     GroupsOptions: TransportGroupsOptions,
     SelectGeometry: null,
