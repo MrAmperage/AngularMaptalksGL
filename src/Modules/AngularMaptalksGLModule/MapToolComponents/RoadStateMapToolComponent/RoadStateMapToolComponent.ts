@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component, EventEmitter, Inject, Output } from "@angular/core";
 import { VectorLayer } from "maptalks-gl";
 import { LayerConfig } from "../../Configs/LayersConfigs/LayersConfigs";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
@@ -33,6 +33,11 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     private HttpService: HttpService,
   ) {
     super(MapServiceInstance);
+  }
+  @Output()
+  OnClose = new EventEmitter();
+  Close() {
+    this.OnClose.emit();
   }
   WorkModes: WorkMode[] = [];
   Transports: Transport[] = [];
@@ -137,25 +142,27 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
     this.IsLoading = true;
     this.HttpService.RequestRoadState(this.Options)
       .then((Response) => {
-        this.UpdateOption({
-          RoadStateGeometryCollections:
-            this.Options.RoadStateGeometryCollections.concat(
-              new RoadStateGeometryCollection(
-                Response.result,
-                this.Options.BeginDate,
-                this.Options.EndDate,
-                this.Options.VisabilityProcent !== null
-                  ? this.Options.VisabilityProcent
-                  : 0,
+        if (Response.result.length > 0) {
+          this.UpdateOption({
+            RoadStateGeometryCollections:
+              this.Options.RoadStateGeometryCollections.concat(
+                new RoadStateGeometryCollection(
+                  Response.result,
+                  this.Options.BeginDate,
+                  this.Options.EndDate,
+                  this.Options.VisabilityProcent !== null
+                    ? this.Options.VisabilityProcent
+                    : 0,
+                ),
               ),
-            ),
-        });
+          });
 
-        this.VectorLayer.addGeometry(
-          this.Options.RoadStateGeometryCollections[
-            this.Options.RoadStateGeometryCollections.length - 1
-          ],
-        );
+          this.VectorLayer.addGeometry(
+            this.Options.RoadStateGeometryCollections[
+              this.Options.RoadStateGeometryCollections.length - 1
+            ],
+          );
+        }
       })
       .finally(() => {
         this.IsLoading = false;

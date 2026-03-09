@@ -1,1 +1,3 @@
-<div class="PanelRow"><ng-content></ng-content> <CloseButtonComponent /></div>
+<div class="PanelRow">
+  <ng-content></ng-content> <CloseButtonComponent (click)="this.Close()" />
+</div>

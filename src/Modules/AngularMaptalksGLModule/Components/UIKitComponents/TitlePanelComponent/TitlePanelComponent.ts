@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+} from "@angular/core";
 
 @Component({
   selector: "TitlePanelComponent",
@@ -6,4 +11,10 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
-export default class TitlePanelComponent {}
+export default class TitlePanelComponent {
+  @Output()
+  OnClose = new EventEmitter();
+  Close() {
+    this.OnClose.emit();
+  }
+}

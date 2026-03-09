@@ -1,5 +1,7 @@
 <div class="MapToolContainer">
-  <TitlePanelComponent>Состояние дорог</TitlePanelComponent>
+  <TitlePanelComponent (OnClose)="this.Close()"
+    >Состояние дорог</TitlePanelComponent
+  >
   <div class="PanelRow">
     <div class="MinimalGap">
       <TruckIconComponent title="Категория модели" />
