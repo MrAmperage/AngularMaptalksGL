@@ -27,6 +27,7 @@
 }
 
 .MapToolContainer {
+  display: block;
   padding: var(--PanelPadding);
   background-color: var(--BackgroundColor);
   border-radius: var(--BorderRadius);

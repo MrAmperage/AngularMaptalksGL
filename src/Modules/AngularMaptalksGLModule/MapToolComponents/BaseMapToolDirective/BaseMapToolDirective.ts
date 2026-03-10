@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit } from "@angular/core";
+import { Directive, HostBinding, Input, OnInit } from "@angular/core";
 import { MapTool, PolygonLayer, VectorLayer } from "maptalks-gl";
 import MapComponent from "../../Components/MapComponent/MapComponent";
 import MapService from "../../Services/MapService/MapService";
@@ -9,7 +9,9 @@ import {
   HandlerGetNodeKeyOperationType,
 } from "./BaseMapToolDirectiveTypes";
 
-@Directive({ selector: "BaseMapToolDirective" })
+@Directive({
+  selector: "BaseMapToolDirective",
+})
 export default abstract class BaseMapToolDirective<
   OptionsType extends BaseOptionsType,
 >
@@ -19,6 +21,8 @@ export default abstract class BaseMapToolDirective<
   constructor(private MapService: MapService) {
     super();
   }
+  @HostBinding("class.MapToolContainer")
+  IsBindHostClass = true;
   /*Z index для отображаемых слоев*/
   @Input()
   ZIndex: number | undefined = undefined;
