@@ -1,6 +1,5 @@
 import { Directive, HostBinding, Input, OnInit } from "@angular/core";
 import { MapTool, PolygonLayer, VectorLayer } from "maptalks-gl";
-import MapComponent from "../../Components/MapComponent/MapComponent";
 import MapService from "../../Services/MapService/MapService";
 import { Paths } from "../../AngularMaptalksGLModuleTypes";
 import { NzTreeNode } from "ng-zorro-antd/tree";
