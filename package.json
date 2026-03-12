@@ -2,32 +2,25 @@
   "name": "@mr.amperage/angular-maptalks-gl",
   "version": "0.0.1",
   "peerDependencies": {
+    "@angular/animations": "^20.3.16",
     "@angular/common": "^20.3.16",
     "@angular/core": "^20.3.16",
     "@angular/forms": "^20.3.16",
     "h3-js": "^4.3.0",
-    "luxon": "^3.6.1",
     "maptalks-gl": "^0.124.4",
-    "ng-zorro-antd": "^20.4.4",
-    "@angular/animations": "^20.3.16",
-    "rxjs": "~7.8.1",
-    "uuid": "^13.0.0"
+    "rxjs": "~7.8.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
   "devDependencies": {
-    "@types/luxon": "^3.7.1",
-    "@types/uuid": "^10.0.0",
-    "ng-packagr": "^20.3.2",
-    "@angular/compiler-cli": "20.3.17"
+    "@angular/compiler-cli": "20.3.17",
+    "ng-packagr": "^20.3.2"
   },
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
     "pack": "npm run build && cd dist/@mr.amperage/angular-maptalks-gl && npm pack"
   },
-  "exports": {
-    "./Assets/Styles/Styles.css": "./Assets/Styles/Styles.css"
-  }
+  "exports": {}
 }

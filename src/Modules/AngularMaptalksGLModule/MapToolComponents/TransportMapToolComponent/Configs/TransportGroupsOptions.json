@@ -1,9 +1,0 @@
-[
-  { "label": "Все", "value": "All" },
-  { "label": "Тип объектов", "value": "Type" },
-  { "label": "Модель", "value": "Model" },
-  { "label": "Категория модели", "value": "ModelCategory" },
-  { "label": "Тип объектов + Модель", "value": "Type+Model" },
-  { "label": "Подразделение", "value": "Division" },
-  { "label": "Подразделение + Тип техники", "value": "Division+Type" }
-]
