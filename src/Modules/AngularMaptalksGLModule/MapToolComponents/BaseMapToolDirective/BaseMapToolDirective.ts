@@ -9,11 +9,7 @@ import {
 import { MapTool, PolygonLayer, VectorLayer } from "maptalks-gl";
 import MapService from "../../Services/MapService/MapService";
 import { Paths } from "../../AngularMaptalksGLModuleTypes";
-import { NzTreeNode } from "ng-zorro-antd/tree";
-import {
-  BaseOptionsType,
-  HandlerGetNodeKeyOperationType,
-} from "./BaseMapToolDirectiveTypes";
+import { BaseOptionsType } from "./BaseMapToolDirectiveTypes";
 
 @Directive({
   selector: "BaseMapToolDirective",
@@ -122,30 +118,6 @@ export default abstract class BaseMapToolDirective<
     }
   }
 
-  static HandlerGetNodeKey(
-    Node: NzTreeNode,
-    CurrentCheckedKeys: string[],
-    OperationType: HandlerGetNodeKeyOperationType,
-  ) {
-    return Node.children.length > 0
-      ? Node.children.reduce((KeyArray: string[], Node) => {
-          if (Node.children.length > 0) {
-            KeyArray = KeyArray.concat(
-              this.HandlerGetNodeKey(Node, CurrentCheckedKeys, OperationType),
-            );
-          } else {
-            if (
-              OperationType === "Add"
-                ? !CurrentCheckedKeys.includes(Node.key)
-                : true
-            ) {
-              KeyArray.push(Node.key);
-            }
-          }
-          return KeyArray;
-        }, [])
-      : [Node.key];
-  }
   /*Инициализация инструмента*/
   abstract InitMapTool(): void;
   ngOnInit(): void {

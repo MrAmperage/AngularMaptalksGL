@@ -1,5 +1,3 @@
-export type HandlerGetNodeKeyOperationType = "Add" | "Remove";
-
 /*Базовый тип для опций плагинов*/
 export type BaseOptionsType = {
   Id: string;
