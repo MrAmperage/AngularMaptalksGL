@@ -1,4 +1,11 @@
-import { Directive, HostBinding, Input, OnInit } from "@angular/core";
+import {
+  Directive,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+} from "@angular/core";
 import { MapTool, PolygonLayer, VectorLayer } from "maptalks-gl";
 import MapService from "../../Services/MapService/MapService";
 import { Paths } from "../../AngularMaptalksGLModuleTypes";
@@ -19,6 +26,12 @@ export default abstract class BaseMapToolDirective<
 {
   constructor(private MapService: MapService) {
     super();
+  }
+
+  @Output()
+  OnClose = new EventEmitter();
+  Close() {
+    this.OnClose.emit();
   }
   @HostBinding("class.MapToolContainer")
   IsBindHostClass = true;

@@ -1,7 +1,7 @@
 import { LineStringLayer, PointLayer, PolygonLayer } from "maptalks-gl";
 import BaseMapToolDirective from "../BaseMapToolDirective/BaseMapToolDirective";
 import {
-  GeoFeatureType,
+  GeometryType,
   GeozoneMapToolOptions,
   GeozoneType,
 } from "./GeozoneMapToolComponentTypes";
@@ -78,7 +78,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
       Event.node !== null &&
       Event.node.children.length === 0
     ) {
-      const Type: GeozoneType | GeoFeatureType = Event.node.origin["type"];
+      const Type: GeozoneType | GeometryType = Event.node.origin["type"];
       switch (true) {
         case Type !== "line" &&
           Type !== "segment" &&
@@ -315,7 +315,7 @@ export default class GeozoneMapToolComponent extends BaseMapToolDirective<Geozon
   //TODO унифицировать добавление и удаление разных геометрий
   CheckTreeNode(Event: NzFormatEmitEvent) {
     if (Event.node !== undefined && Event.node !== null) {
-      const NodeType: GeozoneType | GeoFeatureType = Event.node.origin["type"];
+      const NodeType: GeozoneType | GeometryType = Event.node.origin["type"];
       const AddedKeys = BaseMapToolDirective.HandlerGetNodeKey(
         Event.node,
         this.Options.CheckedKeys,

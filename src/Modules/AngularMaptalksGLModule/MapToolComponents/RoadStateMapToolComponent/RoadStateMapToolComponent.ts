@@ -34,11 +34,7 @@ export default class RoadStateMapToolComponent extends BaseMapToolDirective<Road
   ) {
     super(MapServiceInstance);
   }
-  @Output()
-  OnClose = new EventEmitter();
-  Close() {
-    this.OnClose.emit();
-  }
+
   WorkModes: WorkMode[] = [];
   Transports: Transport[] = [];
   ModelCaegories: ModelCategory[] = [];

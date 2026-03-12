@@ -32,6 +32,8 @@ import TreeConstructorPipe from "./Pipe/TreeGeozoneConstructorPipe/TreeGeozoneCo
 import { NzInputModule } from "ng-zorro-antd/input";
 import TreeTransportConstructorPipe from "./Pipe/TreeTransportConstructorPipe/TreeTransportConstructorPipe";
 import TransportTooltipComponent from "./MapToolComponents/TransportMapToolComponent/TooltipComponents/TransportTooltipComponent/TransportTooltipComponent";
+import CoordinateMapToolComponent from "./MapToolComponents/CoordinateMapToolComponent/CoordinateMapToolComponent";
+import GLTFLayerDirective from "./Directives/LayerDirectives/GLTFLayerDirective/GLTFLayerDirective";
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import TransportTooltipComponent from "./MapToolComponents/TransportMapToolCompo
     DefaultItemComponent,
     GeozoneMapToolComponent,
     TransportTooltipComponent,
+    CoordinateMapToolComponent,
+    GLTFLayerDirective,
   ],
   exports: [
     RoadStateMapToolComponent,
@@ -65,6 +69,8 @@ import TransportTooltipComponent from "./MapToolComponents/TransportMapToolCompo
     TileLayerDirective,
     ToolbarMapToolComponent,
     GeozoneMapToolComponent,
+    CoordinateMapToolComponent,
+    GLTFLayerDirective,
   ],
   providers: [HttpService],
   imports: [

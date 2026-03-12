@@ -20,16 +20,12 @@ export default class EdgeMapToolComponent extends BaseMapToolDirective<EdgeMapTo
   ) {
     super(MapServiceInstance);
   }
-  @Output()
-  OnClose = new EventEmitter();
-  Close() {
-    this.OnClose.emit();
-  }
+
   override Options: EdgeMapToolOptions = {
     Id: "EdgeMapTool",
     EdgeGeometries: [],
     LineStringLayer: new LineStringLayer("EdgeMapToolLineStringLayer", {
-      //TODO не работает усановка ZIndex
+      //TODO не работает установка ZIndex
       ...LayerConfig,
       ...{ zIndex: this.ZIndex },
     }),

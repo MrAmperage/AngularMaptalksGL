@@ -1,6 +1,6 @@
 import {
-  GeoJson,
-  GeoJsonType,
+  GeoFeature,
+  GeoFeatureType,
   HexColor,
   Meta,
   Organization,
@@ -39,7 +39,7 @@ export type GeozoneMapToolOptions = {
 export type Line = {
   id: UUIDType;
   style: LineStyle;
-  features: GeoFeature<"Point", {}>[];
+  features: GeoJson<"Point", {}>[];
   properties: LineProperties;
 };
 export type PointStyle = {
@@ -52,7 +52,7 @@ export type Point = {
   meta: Meta;
   properties: PointProperties;
   style: PointStyle;
-  feature: GeoFeature<"Point", PointGeoJsonProperties>;
+  feature: GeoJson<"Point", PointGeoJsonProperties>;
 };
 enum PointSymbolEnum {
   /*Закрашенная */
@@ -88,13 +88,13 @@ export type Segement = {
   id: UUIDType;
   external_id_1: string | null;
   external_id_2: string | null;
-  features: GeoFeature<"LineString", {}>[];
+  features: GeoJson<"LineString", {}>[];
   meta: Meta;
   properties: SegemntProperties;
 };
 export type CloudPoints = {
   id: UUIDType;
-  features: GeoFeature<"Point", PointGeoJsonProperties>[];
+  features: GeoJson<"Point", PointGeoJsonProperties>[];
   meta: Meta;
   organization_id: UUIDType;
   properties: CloudPointsProperties;
@@ -103,15 +103,15 @@ export type CloudPointsProperties = {
   active: boolean;
   name: string;
 };
-//TODO Поменять GeoJson и GeoFeature местами
-export type GeoFeature<Type extends GeoJsonType, Properties> = {
-  geometry: GeoJson<Type>;
+
+export type GeoJson<Type extends GeoFeatureType, Properties> = {
+  geometry: GeoFeature<Type>;
   properties: Properties;
 };
 export type LineStyle = { lineColor: HexColor; lineWidth: number };
 export type Geozone = {
   id: UUIDType;
-  location: GeoJson<"Polygon">;
+  location: GeoFeature<"Polygon">;
   meta: Meta;
   organization_id: UUIDType;
   properties: GeozoneProperties;
@@ -149,7 +149,7 @@ export type GeozoneStyle = {
 
 export type GeozoneTitleProperties = {
   azimuth: number;
-  location: GeoJson<"Point">;
+  location: GeoFeature<"Point">;
   show: boolean;
   style: GeozoneTitlePropertiesStyle;
 };
@@ -175,7 +175,7 @@ export type GeozoneType =
   | "BlastUserContour"
   | "DrillingRockContour";
 
-export type GeoFeatureType = "dot" | "cloud" | "line" | "segment";
+export type GeometryType = "dot" | "cloud" | "line" | "segment";
 export type GeozoneInfo = {
   altitude: number;
   holder_id: UUIDType | null;

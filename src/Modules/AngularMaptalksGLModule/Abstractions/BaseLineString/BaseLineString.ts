@@ -1,12 +1,12 @@
 import { LineString } from "maptalks-gl";
-import { GeoFeature } from "../../MapToolComponents/GeozoneMapToolComponent/GeozoneMapToolComponentTypes";
-import { GeoJsonType } from "../../AngularMaptalksGLModuleTypes";
+import { GeoJson } from "../../MapToolComponents/GeozoneMapToolComponent/GeozoneMapToolComponentTypes";
+import { GeoFeatureType } from "../../AngularMaptalksGLModuleTypes";
 
 /*Абстрактный класс для отрисовки линий */
 export default abstract class BaseLineString extends LineString {
   abstract DefaultSymbol: any;
   constructor(
-    GeoFeatures: GeoFeature<"Point", any>[] | GeoFeature<"LineString", any>,
+    GeoFeatures: GeoJson<"Point", any>[] | GeoJson<"LineString", any>,
   ) {
     super(BaseLineString.GetCoordinatesByGeoFeatyreType(GeoFeatures));
     this.on("add", () => {
@@ -14,19 +14,18 @@ export default abstract class BaseLineString extends LineString {
     });
   }
   static GetCoordinatesByGeoFeatyreType(
-    GeoFeature: GeoFeature<"Point", any>[] | GeoFeature<"LineString", any>,
+    GeoFeature: GeoJson<"Point", any>[] | GeoJson<"LineString", any>,
   ) {
-    const Type: GeoJsonType = Array.isArray(GeoFeature)
+    const Type: GeoFeatureType = Array.isArray(GeoFeature)
       ? "Point"
       : "LineString";
     switch (Type) {
       case "Point":
-        return (GeoFeature as GeoFeature<"Point", any>[]).map((Feature) => {
+        return (GeoFeature as GeoJson<"Point", any>[]).map((Feature) => {
           return Feature.geometry.coordinates;
         });
       case "LineString":
-        return (GeoFeature as GeoFeature<"LineString", any>).geometry
-          .coordinates;
+        return (GeoFeature as GeoJson<"LineString", any>).geometry.coordinates;
     }
   }
   abstract GenerateSymbol(): any;

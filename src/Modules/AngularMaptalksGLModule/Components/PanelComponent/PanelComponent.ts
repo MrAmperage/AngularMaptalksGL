@@ -8,11 +8,11 @@ import {
   ViewChild,
 } from "@angular/core";
 import { control } from "maptalks-gl";
-import MapComponent from "../MapComponent/MapComponent";
 import {
   PositionObject,
   PositionString,
 } from "../../AngularMaptalksGLModuleTypes";
+import MapService from "../../Services/MapService/MapService";
 /*Компонент  панели для карты*/
 @Component({
   selector: "PanelComponent",
@@ -21,7 +21,7 @@ import {
   standalone: false,
 })
 export default class PanelComponent implements OnInit, OnDestroy {
-  constructor(private MapComponent: MapComponent) {}
+  constructor(private MapService: MapService) {}
   @ViewChild("Panel", { static: true })
   Container!: ElementRef<HTMLDivElement>;
   Panel!: control.Panel;
@@ -35,11 +35,11 @@ export default class PanelComponent implements OnInit, OnDestroy {
       position: this.Position,
       content: this.Container.nativeElement,
     });
-    this.MapComponent.Map.addControl(this.Panel);
+    this.MapService.Map.addControl(this.Panel);
   }
 
   RemovePanel() {
-    this.MapComponent.Map.removeControl(this.Panel);
+    this.MapService.Map.removeControl(this.Panel);
   }
   ngOnInit(): void {
     this.InitPanel();

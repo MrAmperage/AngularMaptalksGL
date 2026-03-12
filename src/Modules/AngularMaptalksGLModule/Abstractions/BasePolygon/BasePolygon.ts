@@ -1,9 +1,10 @@
 import { Polygon } from "maptalks-gl";
-import { GeoJson } from "../../AngularMaptalksGLModuleTypes";
+import { GeoFeature } from "../../AngularMaptalksGLModuleTypes";
+
 /*Абстрактный класс для отображения полигонов */
 export default abstract class BasePolygon extends Polygon {
   abstract DefaultSymbol: any;
-  constructor(GeoJson: GeoJson<"Polygon">) {
+  constructor(GeoJson: GeoFeature<"Polygon">) {
     super(GeoJson.coordinates);
     this.on("add", () => {
       this.setSymbol(this.GenerateSymbol());

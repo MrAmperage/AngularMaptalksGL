@@ -24,19 +24,19 @@ export type PositionObject = {
 /*Позиционирование через строку */
 export type PositionString = "top-right";
 
-/*GeoJSON*/
-export type GeoJson<Type extends GeoJsonType> = {
+/*GeoFeature*/
+export type GeoFeature<Type extends GeoFeatureType> = {
   type: Type;
-  coordinates: GeoJsonCoordinates<Type>;
+  coordinates: GeoFeatureCoordinates<Type>;
 };
-export type GeoJsonCoordinates<Type> = Array<
+export type GeoFeatureCoordinates<Type> = Array<
   Type extends "Polygon"
     ? number[]
     : Type extends "LineString"
       ? number[]
       : number
 >;
-export type GeoJsonType = "Polygon" | "Point" | "LineString";
+export type GeoFeatureType = "Polygon" | "Point" | "LineString";
 /*Категория модели*/
 export type ModelCategory = {
   name: string;

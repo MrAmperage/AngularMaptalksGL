@@ -1,6 +1,6 @@
-import { Directive, input, Input, OnDestroy, OnInit } from "@angular/core";
+import { Directive, Input, OnDestroy, OnInit } from "@angular/core";
 import { Layer } from "maptalks-gl";
-import MapComponent from "../../../Components/MapComponent/MapComponent";
+import MapService from "../../../Services/MapService/MapService";
 
 /*Базовый родительский слой для наследования другими слоями*/
 @Directive({
@@ -9,7 +9,7 @@ import MapComponent from "../../../Components/MapComponent/MapComponent";
 export default abstract class BaseLayerDirective<LayerClass extends Layer>
   implements OnInit, OnDestroy
 {
-  constructor(protected MapComponent: MapComponent) {}
+  constructor(protected MapService: MapService) {}
   /*Id слоя*/
   @Input({ required: true })
   Id!: string;
@@ -42,11 +42,11 @@ export default abstract class BaseLayerDirective<LayerClass extends Layer>
   abstract InitLayer(): LayerClass;
   /*Добавление слоя на карту*/
   AddLayer() {
-    this.MapComponent.Map.addLayer(this.Layer);
+    this.MapService.Map.addLayer(this.Layer);
   }
   /*Удаление слоя с карты*/
   RemoveLayer() {
-    this.MapComponent.Map.removeLayer(this.Layer);
+    this.MapService.Map.removeLayer(this.Layer);
   }
 
   ngOnInit(): void {

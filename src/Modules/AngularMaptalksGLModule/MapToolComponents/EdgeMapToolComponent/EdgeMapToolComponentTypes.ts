@@ -1,7 +1,7 @@
 import { LineStringLayer } from "maptalks-gl";
 import {
   DateType,
-  GeoJson,
+  GeoFeature,
   UUIDType,
 } from "../../AngularMaptalksGLModuleTypes";
 import EdgeGeometry from "./Geometries/EdgeGeometry/EdgeGeometry";
@@ -18,5 +18,5 @@ export type Edge = {
   from_beacon_id: UUIDType;
   organization_id: UUIDType;
   update_time: DateType;
-  path: GeoJson<"LineString">;
+  path: GeoFeature<"LineString">;
 };

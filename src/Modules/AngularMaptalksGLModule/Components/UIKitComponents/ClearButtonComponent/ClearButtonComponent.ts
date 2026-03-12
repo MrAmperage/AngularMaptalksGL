@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { ClearOutline } from "@ant-design/icons-angular/icons";
 import { NzIconService } from "ng-zorro-antd/icon";
 
@@ -12,4 +12,6 @@ export default class ClearButtonComponent {
   constructor(private NzIconService: NzIconService) {
     this.NzIconService.addIcon(ClearOutline);
   }
+  @Input()
+  IsDisabled: boolean = false;
 }
