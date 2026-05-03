@@ -1,5 +1,2 @@
-import { OptionsApi } from "../../MapToolComponents/BaseMapToolDirective/BaseMapToolDirectiveTypes";
-
-export type MapToolListType = {
-  MapTool: OptionsApi<{}>;
-};
+/*Тип с настройками для плагинов*/
+export type MapToolListType = {};
