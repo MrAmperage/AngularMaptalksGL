@@ -73,3 +73,8 @@ export type Organization = {
   default_work_place_id: UUIDType | null;
   description: string;
 };
+
+export type GeoJson<Type extends GeoFeatureType, Properties> = {
+  geometry: GeoFeature<Type>;
+  properties: Properties;
+};

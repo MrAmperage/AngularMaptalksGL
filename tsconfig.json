@@ -4,8 +4,6 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["es2024", "DOM"],
-    "baseUrl": ".",
-    "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -13,9 +11,8 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
     "paths": {
-      "angular-maptalks-gl": ["dist/@mr.amperage/angular-maptalks-gl"]
+      "angular-maptalks-gl": ["./dist/@mr.amperage/angular-maptalks-gl"]
     }
   }
 }
