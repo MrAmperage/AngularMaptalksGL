@@ -6,7 +6,7 @@ import { lastValueFrom } from "rxjs";
 export default abstract class BaseDataStoreService<ResponseType> {
   constructor(private http: HttpClient) {}
   protected abstract Url: string;
-  private Data: ResponseType | undefined;
+  protected Data: ResponseType | undefined;
   private RequestPromise?: Promise<ResponseType>;
   Request(): Promise<ResponseType> {
     if (this.Data) {
@@ -29,4 +29,13 @@ export default abstract class BaseDataStoreService<ResponseType> {
 
     return this.RequestPromise;
   }
+
+  Refresh() {
+    this.RequestPromise = undefined;
+    this.Data = undefined;
+  }
+  //TODO запихнуть Http запросы сюда
+  abstract Delete(Object: any): void;
+  abstract Create(Object: any): void;
+  abstract Update(Object: any): void;
 }

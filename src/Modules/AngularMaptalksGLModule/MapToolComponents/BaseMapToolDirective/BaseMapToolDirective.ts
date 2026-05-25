@@ -37,7 +37,7 @@ export default abstract class BaseMapToolDirective<
   abstract Options: OptionsType;
   Register() {
     this.MapService.RegisterPlugin<OptionsType>(this.Options);
-    const CurrentOptions = this.MapService.PluginsConfigsMap.get(
+    const CurrentOptions = this.MapService.PluginsOptionsMap.get(
       this.Options.Id,
     );
     if (CurrentOptions !== undefined) {
