@@ -1,10 +1,14 @@
 import {
+  ApplicationRef,
+  createComponent,
   Directive,
+  EnvironmentInjector,
   EventEmitter,
   HostBinding,
   Input,
   OnInit,
   Output,
+  Type,
 } from "@angular/core";
 import { MapTool, PolygonLayer, VectorLayer } from "maptalks-gl";
 import MapService from "../../Services/MapService/MapService";
@@ -46,6 +50,24 @@ export default abstract class BaseMapToolDirective<
         this.Options = NewOptions;
       });
     }
+  }
+  CreateTooltip<TooltipOwner, TooltipComponent>(
+    Owner: TooltipOwner,
+    Tooltip: Type<TooltipComponent>,
+    IsPanel: boolean,
+    EnvironmentInjector: EnvironmentInjector,
+    ApplicationRef: ApplicationRef,
+  ) {
+    const TooltipComponentInstance = createComponent(Tooltip, {
+      environmentInjector: EnvironmentInjector,
+      hostElement: document.createElement("div"),
+    });
+    TooltipComponentInstance.setInput("Data", Owner);
+    if (!IsPanel) {
+      ApplicationRef.attachView(TooltipComponentInstance.hostView);
+    }
+
+    return TooltipComponentInstance;
   }
   override onAdd(): void {
     this.InitMapTool();
